@@ -9,7 +9,7 @@ $global-font-size:12px; // Global font sizing
 $global-font-weight:800; // Global font weight
 $global-font-smoothing:antialiased; // Global smoothing method
 $content-width:700px; // Width of wrapper
-$background:linear-gradient(135deg, #bf52e0 0%,#af2dd6 15%, #8254EA 100%); // Body background
+$background:linear-gradient(135deg, #ffffff 90%,#4939d6 100%); // Body background
 $full-height: 100vh; // Height of body
 
 $title-width:400px; // Width of title block
@@ -312,20 +312,216 @@ input[type='radio']:checked + label{
   }
 }
 .h1-intro{
-    color: white;
+    color: #6453a3;
     padding-right: 70%;
 }
 
 .h3-intro{
-    color: white;
+    color: #6453a3;
     padding-left: 4%;
 }
 
 .icono-sync{
-    transform: scale(0.5);
+    transform: scale(0.4);
+    top:22vh;
+    position: relative;
 }
 
 .icono-sync_bussi{
     transform: scale(0.6);
-    background: white;
+    background: #6453a3;
+}
+.icons-sync{
+    position: relative;
+    top: -40vh;
+    left: 35%;
+}
+.icon-top{
+    position: relative;
+    top: 20vh;
+    right: 50%;
+}
+.icon-left{
+    position: relative;
+    top: 14vh;
+    left: -15%;
+}
+.icon-right{
+    position: relative;
+    top: 14vh;
+    left: -80%;
+}
+.icon-bg{
+    position: fixed;
+    z-index: -5;
+    opacity: 0.15;
+    top: 25%;
+    left: 25%;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Nunito:400,700,300);
+*{
+  box-sizing:border-box
+}
+body{
+  font-family: 'Nunito', sans-serif;
+  .page{
+    margin:0 auto;
+    width:920px;
+  }
+  .content{
+    width:33.33%;
+    display:inline-block;
+    margin:0 auto;
+    position:relative;
+    height:100vh;
+    max-width:300px;
+  }
+  %layer{
+    width:600px;
+    height:200px;
+    transition:all .4s;
+    position:absolute;
+    top:0;
+    left:-200px;
+    img{
+      width:100%;
+      position:absolute;
+      bottom:0;
+    }
+  }
+  .circle{
+    position:absolute;
+    left:0;
+    right:0;
+    margin:auto;
+    top:50%;
+    width:200px;
+    transform:translateY(-50%);
+    transition:all .5s;
+    cursor:pointer;
+    &:hover .circle_shine{
+      top: 330px;
+      left: -200px;
+    }
+    &_shine{
+      background: white;
+      width: 600px;
+      transition:.3s;
+      height: 200px;
+      opacity: 0.2;
+      top: -10px;
+      left: -90px;
+      transform: rotate(45deg);
+      position: absolute;
+      z-index: 2;
+    }
+    &:hover h2, &:hover h3{
+      opacity:1;
+      top:-36px
+    }
+
+    &:hover .content_shadow{
+      transform:scale(1.1);
+      top:-22px;
+    }
+    &:hover h3{
+      transition:all .2s .04s;
+    }
+    &:hover h2{
+      transition:all .2s;
+    }
+    .circle_inner__layer:nth-of-type(1){
+      top:0px;
+      left:0px;
+    }
+    .circle_inner__layer:nth-of-type(2){
+      top:0px;
+      left:-210px;
+    }
+    .circle_inner__layer:nth-of-type(3){
+      top:0px;
+      left:-440px;
+    }
+    &_title{
+      text-align:center;
+      h2,h3{
+        opacity:0;
+        color:#4A7479;
+        margin:0;
+        transition:all .2s .04s;
+        position:relative;
+        top:-10px;
+      }
+      h3{
+        transition:all .2s;
+        color: #6453a3;
+        font-size:15px;
+      }
+    }
+    &_inner{
+      border-radius:200px;
+      background: #6453a3;
+      overflow:hidden;
+      margin: auto;
+      width:200px;
+      z-index:1;
+      transition:all .3s;
+      height:200px;
+      position:relative;
+      &:hover{
+        transform:scale(1.1);
+        //border: 7px solid #F8F8F8;
+      }
+
+      &:hover .circle_inner__layer:nth-of-type(1){
+        left:-80px;  
+        transition:all 4s linear;
+      }
+      &:hover .circle_inner__layer:nth-of-type(2){
+        left:-400px;  
+        transition:all 4s linear;
+      }
+      &:hover .circle_inner__layer:nth-of-type(3){
+        left:-140px;  
+        transition:all 4s linear;
+      }
+      &__layer{
+        @extend %layer;
+      }
+    }
+  }
+  .content_shadow{
+    width: 200px;
+    box-shadow: 0px 31px 19px -2px #E0E8F9;
+    height: 20px;
+    border-radius: 70%;
+    position: relative;
+    top: -44px;
+    transition:all .3s;
+    z-index: 0;
+  }
+}
+
+.icon-a{
+    top:-22vh;
+    left: 2%;
+    transform: scale(0.25);
+}
+
+.icon-jira{
+    top:-20vh;
+    left: 1%;
+    transform: scale(0.15);
+}
+
+
+.icon-trello{
+    top:-21vh;
+    left: 1%;
+    transform: scale(0.22);
+}
+
+.icon-circle{
+    transform: scale(0.9);
 }
