@@ -24,13 +24,13 @@ class IconCircle extends React.Component {
                     </div>
                     <div className='circle_inner'>
                         <div className='circle_inner__layer'>
-                            <img src={this.props.img} alt="..." class={this.props.imgClass}></img>
+                            <img src={this.props.img} alt="..." className={this.props.imgClass}></img>
                         </div>
                         <div className='circle_inner__layer'>
-                            <img src={this.props.img} alt="..." class={this.props.imgClass}></img>
+                            <img src={this.props.img} alt="..." className={this.props.imgClass}></img>
                         </div>
                         <div className='circle_inner__layer'>
-                            <img src={this.props.img} alt="..." class={this.props.imgClass}></img>
+                            <img src={this.props.img} alt="..." className={this.props.imgClass}></img>
                         </div>
                     </div>
                     <div className='content_shadow'></div>

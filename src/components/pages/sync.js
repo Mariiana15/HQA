@@ -22,10 +22,10 @@ class Sync extends React.Component {
             "xs_circle_asana": "icon-top icon-circle",
             "xs_circle_jira": "icon-left icon-circle",
             "xs_circle_trello": "icon-right icon-circle",
-            "xs_icon": "icono-sync"
+            "xs_icon": "icono-sync",
+            "icon_bg":"icon-bg"
         };
-
-        if (window.innerWidth < 500) {
+        if (window.innerWidth < 800) {
             ch_icon = {
                 "xs_asana": "icon-a-xs",
                 "xs_trello": "icon-trello-xs",
@@ -33,7 +33,8 @@ class Sync extends React.Component {
                 "xs_circle_asana": "icon-top-xs icon-circle-xs",
                 "xs_circle_jira": "icon-left-xs icon-circle-xs",
                 "xs_circle_trello": "icon-right-xs icon-circle-xs",
-                "xs_icon": "icono-sync-xs"
+                "xs_icon": "icono-sync-xs",
+                "icon_bg":"icon-bg-xs"
             };
         }
         return ch_icon;
@@ -43,10 +44,10 @@ class Sync extends React.Component {
         let ch_icon = this.elementXs();
         return (
             <div>
-                <div className="container heigh-sync">
+                <div className="container">
                     <div className="row padding-center justify-content-start ">
-                        <div className="col-md-4 col-xs-8">
-                            <img src={logo} alt="..." class="icon-bg"></img>
+                        <div className="col-md-4 col-xs-12">
+                            <img src={logo} alt="..." className={ch_icon["icon_bg"]}></img>
                             <h1 className="h1-intro">Sincroniza</h1>
                             <h3 className='h3-intro'>Con tus tareas y con tus historias de usuario</h3>
                         </div>
@@ -58,7 +59,7 @@ class Sync extends React.Component {
                             </div>
                             <div className="row justify-content-around">
                                 <div className="col">
-                                    <img src={logo} alt="..." class={ch_icon["xs_icon"]}></img>
+                                    <img src={logo} alt="..." className={ch_icon["xs_icon"]}></img>
                                 </div>
                             </div>
                             <div className="row ">

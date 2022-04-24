@@ -353,24 +353,35 @@ input[type='radio']:checked + label{
     left: -80%;
 }
 .icon-top-xs{
-    position: relative;
-    top: 100vh;
-    right: 30%;
+    position: absolute;
+    top: 50vh;
+    right: 5%;
+    height: 32em;
+    width: 18em;
 }
 .icon-left-xs{
-    position: relative;
+    position: absolute;
     top: 49.5vh;
     left: 40%;
+    height: 32em;
+    width: 18em;
 }
 .icon-right-xs{
-    position: relative;
+    position: absolute;
     top: 49.5vh;
-    right: 100%;
+    right: 70%;
+    height: 32em;
+    width: 18em;
 }
 .icon-bg{
     position: absolute;
     opacity: 0.15;
     bottom:  15%;
+}
+
+.icon-bg-xs{
+    position: absolute;
+    opacity: 0.15;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,700,300);
@@ -565,6 +576,3 @@ body{
     visibility: hidden;
 }
 
-.heigh-sync{
-
-}
