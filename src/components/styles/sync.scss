@@ -324,6 +324,7 @@ input[type='radio']:checked + label{
 .icono-sync{
     transform: scale(0.4);
     top:22vh;
+    right: 25%;
     position: relative;
 }
 
@@ -351,12 +352,26 @@ input[type='radio']:checked + label{
     top: 14vh;
     left: -80%;
 }
+.icon-top-xs{
+    position: relative;
+    top: 100vh;
+    right: 30%;
+}
+.icon-left-xs{
+    position: relative;
+    top: 49.5vh;
+    left: 40%;
+}
+.icon-right-xs{
+    position: relative;
+    top: 49.5vh;
+    right: 100%;
+}
 .icon-bg{
-    position: fixed;
+    position: absolute;
     z-index: -5;
     opacity: 0.15;
     top: 25%;
-    left: 25%;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,700,300);
@@ -515,13 +530,42 @@ body{
     transform: scale(0.15);
 }
 
-
 .icon-trello{
     top:-21vh;
     left: 1%;
     transform: scale(0.22);
 }
 
+.icon-a-xs{
+    top:-24vh;
+    left: 2%;
+    transform: scale(0.25);
+}
+
+.icon-jira-xs{
+    top:-23vh;
+    left: 1%;
+    transform: scale(0.15);
+}
+
+.icon-trello-xs{
+    top:-23vh;
+    left: 1%;
+    transform: scale(0.22);
+}
+
 .icon-circle{
     transform: scale(0.9);
+}
+
+.icon-circle-xs{
+    transform: scale(0.5);
+}
+
+.icono-sync-xs{
+    visibility: hidden;
+}
+
+.heigh-sync{
+    overflow-y: scroll;
 }

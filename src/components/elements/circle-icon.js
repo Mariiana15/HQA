@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import '../word.scss';
 import '../styles/sync.scss';
 import '../styles/myStyle.scss';
 import logo from '../../images/logo3.png';
