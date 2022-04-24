@@ -323,8 +323,8 @@ input[type='radio']:checked + label{
 
 .icono-sync{
     transform: scale(0.4);
-    top:22vh;
-    right: 25%;
+    top: 25em;
+    left: 15%;
     position: relative;
 }
 
@@ -369,9 +369,8 @@ input[type='radio']:checked + label{
 }
 .icon-bg{
     position: absolute;
-    z-index: -5;
     opacity: 0.15;
-    top: 25%;
+    bottom:  15%;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,700,300);
@@ -567,5 +566,5 @@ body{
 }
 
 .heigh-sync{
-    overflow-y: scroll;
+
 }
