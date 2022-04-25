@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './Header';
 import history from '../history';
-import Word from './pages/formSync';
+import Word from './forms/formSync';
 
-import Sync from './pages/sync';
+import Sync from './pages/dashboard';
 
 const App = () => {
   return (

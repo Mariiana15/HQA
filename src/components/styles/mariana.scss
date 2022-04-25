@@ -1,10 +1,10 @@
 :root {
-    --primary-light: #8abdff;
-    --primary: #6453a3;
-    --primary-dark: #9f78e7;
+    --primary-light: hsl(281, 94%, 51%);
+    --primary: hsl(253deg 40% 25%);
+    --primary-dark: #020007;
     
     --white: #FFFFFF;
-    --greyLight-1: #E4EBF5;
+    --greyLight-1: #ede9f1;
     --greyLight-2: #c8d0e7;
     --greyLight-3: #bec8e4;
     --greyDark: #9baacf;
@@ -190,8 +190,8 @@
   
   /*  BUTTONS  */
   .btn {
-    width: 15rem;
-    height: 4rem;
+    width: 80%;
+    height: 5rem;
     border-radius: 1rem;
     box-shadow: $shadow;
     justify-self: center;
@@ -228,7 +228,7 @@
     }
   
     p { 
-      font-size: 1.6rem;
+      font-size: medium;
     }
   }
   
@@ -390,7 +390,7 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      font-size: 3.2rem;
+      font-size: 5.2rem;
       color: var(--primary);
       z-index: 300;
       background: var(--greyLight-1);
@@ -469,48 +469,6 @@
       &:focus { outline: none; box-shadow: $shadow; }
     }
     
-  }
-  
-  /*  SEARCH  */
-  .search {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    position: relative;
-    display: flex;
-    align-items: center;
-  
-    &__input {
-      width: 20.4rem;
-      height: 4rem;
-      border: none;
-      border-radius: 1rem;
-      font-size: 1.4rem;
-      padding-left: 3.8rem;
-      box-shadow: $inner-shadow;
-      background: none;
-      font-family: inherit;
-      color: var(--greyDark);
-  
-      &::placeholder { color: var(--greyLight-3); }
-      &:focus { 
-        outline: none; 
-        box-shadow: $shadow; 
-  
-         + .search__icon {
-          color: var(--primary);
-        }
-      }
-    }
-  
-    &__icon {
-      height: 2rem;
-      position: absolute;
-      font-size: 2rem;
-      padding: 0 1rem;
-      display: flex;
-      color: var(--greyDark);
-      transition: .3s ease;
-    }
   }
   
   /*  SEGMENTED-CONTROL */
@@ -715,5 +673,14 @@
     }
   }
   
+  .icon{
+    transform: scale(0.4);
+    position: absolute;
+    bottom: 0.1em;
+    right: 2em;
+  }
 
+  .form_label{
+    color: var(--primary);
+  }
   
