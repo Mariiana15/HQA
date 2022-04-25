@@ -3,13 +3,13 @@ $default-font: "Roboto", sans-serif; // Roboto Google font
 $shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
 $inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
 
-.heigh-sync {
+.heigh-sync{
     position: relative;
     height: 100vh;
 }
 
-.padding-center {
-    padding-top: 30%;
+.padding-center{
+    padding-top: 35%;
 }
 
 body {

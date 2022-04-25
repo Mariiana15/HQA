@@ -385,8 +385,15 @@ a:focus {
 }
 
 .main__col-2 {
-    width: 100%;
-    padding-left: 6rem;
+    width: 72%;
+    left: 28%;
+    position: relative;
+    padding-left: 8rem;
+    height: 60vh;   
+}
+.menu_aux_overflow{
+    height: 28vh;
+    overflow: auto;
 }
 
 .main__cards-container {
@@ -749,17 +756,16 @@ a:focus {
     &:hover {
         width: 6.8em;
         transition: width 0.1s;
-        -webkit-transition: width 0.1s ; /* Safari */
+        -webkit-transition: width 0.1s; /* Safari */
     }
 
     &:active {
-       
         transition: background 0.1s;
         -webkit-transition: background hsl(253deg 40% 25%); /* Safari */
     }
 }
 .icon_intro_on {
-    background: linear-gradient(110deg, white 10%,  hsl(253deg 40% 25%) 100%);
+    background: linear-gradient(110deg, white 10%, hsl(253deg 40% 25%) 100%);
 }
 .logo_intro {
     transform: scale(1.2);

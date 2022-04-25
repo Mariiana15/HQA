@@ -5,6 +5,8 @@ import '../styles/myStyle.scss';
 import Header from '../elements/header';
 import Menu from '../elements/lateral-menu';
 
+import Formulario from '../forms/formSync';
+
 
 class Dashboard extends React.Component {
 
@@ -80,9 +82,7 @@ class Dashboard extends React.Component {
                             <div class="main__cards-container">
                                 <div class="main__cards-container-heading-wrap">
                                     <h2 class="main__cards-container-heading ss-heading">Traveling Plans</h2>
-                                    <a href="#" class="ss-show">show all</a>
                                 </div>
-
 
                                 <ul class="main__cards">
                                     <li class="main__card">
@@ -112,8 +112,9 @@ class Dashboard extends React.Component {
                                         <p class="main__card-heading-type">Work</p>
                                     </li>
                                 </ul>
-
-
+                                <div className='menu_aux_overflow'>
+                                    <Formulario />
+                                </div>
                             </div>
 
                         </div>
