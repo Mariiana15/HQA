@@ -2,17 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/dashboard.scss';
 import '../styles/myStyle.scss';
-import logo from '../../images/logo3.png';
 import Header from '../elements/header';
+import Menu from '../elements/lateral-menu';
 
 
 class Dashboard extends React.Component {
 
-    state = {
-    };
+    state = { };
 
     componentDidMount() {
-
     }
 
     variables() {
@@ -29,6 +27,9 @@ class Dashboard extends React.Component {
         return (
             <div className='dash'>
                 <Header headers={variables} />
+                <div className="body">
+                    <Menu />
+                </div >
             </div >
         )
     }
