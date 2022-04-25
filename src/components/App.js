@@ -12,7 +12,7 @@ const App = () => {
       <BrowserRouter history={history}>
         <div>
           <Routes>
-            <Route path="/" exact element={  <Sync />} />
+            <Route path="/" exact element={  <Word />} />
             <Route path="/jose" exact element={  <Sync />} />
 
           </Routes>
