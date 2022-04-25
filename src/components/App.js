@@ -4,7 +4,7 @@ import Header from './Header';
 import history from '../history';
 import Word from './pages/formSync';
 
-import Sync from './pages/sync';
+import Sync from './pages/dashboard';
 
 const App = () => {
   return (
