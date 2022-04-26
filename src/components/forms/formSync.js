@@ -20,6 +20,11 @@ class Sync extends React.Component {
         return (
             <div class="container">
                 <div class="row justify-content-md-center">
+                <div class="row ">
+                        <div class="col-10 offset-md-1">
+                        <h2 for="exampleFormControlInput1" className="form-label styles">Muy bien ahora sincroniza tu worksapece de trabajo</h2>
+                        </div>
+                    </div>
                     <div class="col-9 ">
                         <div >
                             <div className="mb-3">
