@@ -71,7 +71,7 @@ class EList extends React.Component {
         return (
             <div class="main__cards-container">
                 <div class="main__cards-container-heading-wrap">
-                    <h2 class="main__cards-container-heading ss-heading">Traveling Plans</h2>
+                    <h2 class="main__cards-container-heading ss-heading">{this.props.title}</h2>
                 </div>
 
                 <ul class="main__cards" id='elist'>
