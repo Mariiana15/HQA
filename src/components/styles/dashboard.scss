@@ -12,14 +12,16 @@ html {
     font-size: 62.5%;
 }
 
+:body {
+    --hue: 15;
+}
 body {
-    display: grid;
-    place-content: center;
     color: hsl(270, 10%, 80%);
     font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
-    padding: 3rem;
+    padding: 5rem;
     overflow-x: hidden;
+    background: white;
 }
 
 button {
@@ -40,12 +42,16 @@ a:focus {
 }
 
 .dash {
-    background:linear-gradient(110deg, hsl(253deg 40% 25%) 10%, white 315%,);
+    left: 7vw;
+    position: absolute;
+    width: 85vw;
+    height: 90vh;
+    background: linear-gradient(110deg, rgb(22, 17, 39) 1%, hsl(253deg 40% 25%) 10%, white 250%);
     display: flex;
     flex-direction: column;
     border-radius: 8px;
     box-shadow: 4px 4px 30px hsla(270, 30%, 10%, 0.4);
-    max-width: 1266px;
+    max-width: 200%;
 }
 
 .dash * {
@@ -53,7 +59,7 @@ a:focus {
 }
 
 .header {
-    height: 5rem;
+    height: 8rem;
     display: flex;
     align-items: center;
     z-index: 2;
@@ -71,16 +77,19 @@ a:focus {
     font-weight: bold;
     letter-spacing: 2px;
     color: hsl(270, 50%, 10%);
-    background: hsl(253deg 40% 25%);
+    background: rgb(22, 17, 39);
     padding: 0.2rem 0.7rem;
     font-size: 1.5rem;
     border-radius: 4px;
 }
 
 .header__heading > a:hover {
-    background: hsl(220, 80%, 64%);
+    background: hsla(300, 24%, 96%, 0.356);
+    border-radius: 15em;
 }
-
+.header_name {
+    padding-left: 5vw;
+}
 .header__search {
     flex-grow: 1;
     padding: 0 8.6rem;
@@ -156,6 +165,7 @@ a:focus {
 .sidebar {
     width: 8rem;
     box-shadow: 2px 0 12px hsla(270, 30%, 10%, 0.2);
+    height: 100%;
 }
 
 .sidebar__icon {
@@ -181,7 +191,7 @@ a:focus {
 }
 
 .sidebar__icon_on {
-    opacity: 1 ;
+    opacity: 1;
 }
 
 .sidebar__icon:last-child {
@@ -375,12 +385,19 @@ a:focus {
 }
 
 .main__col-2 {
-    width: 70%;
-    padding-left: 6rem;
+    width: 72%;
+    left: 28%;
+    position: relative;
+    padding-left: 8rem;
+    height: 60vh;
+}
+.menu_aux_overflow {
+    height: 28vh;
+    overflow: auto;
 }
 
 .main__cards-container {
-    width: 70%;
+    width: 50%;
     border-radius: 8px;
     padding: 3rem;
     background: hsl(270, 50%, 11%);
@@ -400,9 +417,13 @@ a:focus {
 }
 
 .main__cards {
-    list-style: none;
-    padding: 2.6rem 0 2rem;
+    padding:0.5rem 0 2rem;
     display: flex;
+    width: 37vw;
+    overflow-x: auto;
+    padding-left: 13em;
+    right: 8vw;
+    position: relative;
 }
 
 .main__card {
@@ -663,8 +684,9 @@ a:focus {
 }
 
 .icono-logo {
-    transform: scale(0.1);
+    transform: scale(0.15);
     top: 0.3em;
+    padding: 1.2em;
     position: relative;
 }
 
@@ -680,10 +702,10 @@ a:focus {
     }
 }
 
-.menu_lateral{
+.menu_lateral {
     position: relative;
     top: 1em;
-        
+
     .name {
         padding-left: 1em;
         left: 2.7em;
@@ -711,23 +733,123 @@ a:focus {
         position: relative;
         padding-left: 0.5em;
     }
-    
+
     .iconTest {
         position: relative;
         bottom: 2em;
     }
-    
+
     .iconInt {
         position: relative;
         padding-left: 0.5em;
     }
 }
 
+.icon_intro {
+    position: fixed;
+    bottom: 8vh;
+    right: 9vw;
+    width: 7em;
+    height: 7em;
+    border-radius: 12em;
+    padding: 3rem;
+    background: linear-gradient(110deg, rgb(22, 17, 39) 1%, hsl(253deg 40% 25%) 10%, white 200%);
+    box-shadow: 0 6px 16px 0 hsla(270, 30%, 3%, 0.4);
+    margin-left: auto;
+    transform: translateX(4rem);
+    &:hover {
+        width: 6.8em;
+        transition: width 0.1s;
+        -webkit-transition: width 0.1s; /* Safari */
+    }
 
+    &:active {
+        transition: background 0.1s;
+        -webkit-transition: background hsl(253deg 40% 25%); /* Safari */
+    }
+}
+.icon_intro_on {
+    background: linear-gradient(110deg, white 10%, hsl(253deg 40% 25%) 100%);
+}
+.logo_intro {
+    transform: scale(1.2);
+}
 
+.change_image {
+    fill: #fff;
+}
 
+#svg-wrapper {
+    position: fixed;
+    bottom: 2vh;
+    right: 1vw;
+    width: 53px;
+    border-radius: 12em;
+    height: auto;
+    fill: white;
+    svg {
+        position: relative;
+        padding: 0px !important;
+        stroke: none;
+    }
+    &:active {
+        width: 56px;
+        transition: width 2s;
+        fill: #8a9cff;
+        -webkit-transition: width 0.1s; /* Safari */
+        transform: scale(0.2);
+    }
+    &:hover {
+        width: 56px;
+        transition: width 2s;
+        fill: #8a9cff;
+        -webkit-transition: width 0.1s; /* Safari */
+    }
+}
 
+#svg-wrapperOff {
+    position: fixed;
+    bottom: 2vh;
+    right: 1vw;
+    width: 53px;
+    border-radius: 12em;
+    height: auto;
+    fill: hsl(253deg 40% 25%);
+    svg {
+        position: relative;
+        padding: 0px !important;
+        stroke: none;
+    }
+    &:active {
+        width: 56px;
+        transition: width 2s;
+        fill: #b8bdda;
+        -webkit-transition: width 0.1s; /* Safari */
+        transform: scale(0.2);
+    }
+}
 
+// Toggle
+.toggle-animation {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: solid 1px;
+    font-family: helvetica;
+}
+
+.menu_On {
+    visibility: hidden;
+}
+
+.btn_cards_change{
+    opacity: 0.4;
+}
+
+.index_menu_card{
+    opacity: 1 !important;
+}
 /*.leftw {
     width: 57px;
     height: 100%;

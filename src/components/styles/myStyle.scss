@@ -1,10 +1,7 @@
-
-$background:linear-gradient(135deg, #ffffff 90%,#4939d6 100%); // Body background
-$default-font:'Roboto', sans-serif; // Roboto Google font
-$shadow: .3rem .3rem .6rem var(--greyLight-2), 
--.2rem -.2rem .5rem var(--white);
-$inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
-inset -.2rem -.2rem .5rem var(--white);
+$background: linear-gradient(135deg, #ffffff 90%, #4939d6 100%); // Body background
+$default-font: "Roboto", sans-serif; // Roboto Google font
+$shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+$inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
 
 .heigh-sync{
     position: relative;
@@ -15,48 +12,48 @@ inset -.2rem -.2rem .5rem var(--white);
     padding-top: 35%;
 }
 
-body{
-    font-family:$default-font;
-    background:$background;
+body {
+    font-family: $default-font;
+    background: $background;
 }
-
-
 
 .search {
     position: relative;
     display: flex;
     align-items: center;
-  
+    padding-left: 5vw;
     &__input {
-      width: 20em;
-      height: 4rem;
-      border: none;
-      border-radius: 1rem;
-      font-size: 1.4rem;
-      padding-left: 3.8rem;
-      box-shadow: $inner-shadow;
-      background: none;
-      font-family: inherit;
-      color: var(--greyDark);
-  
-      &::placeholder { color: var(--greyLight-3); }
-      &:focus { 
-        outline: none; 
-        box-shadow: $shadow; 
-  
-         + .search__icon {
-          color: var(--primary);
+        width: 20em;
+        height: 4rem;
+        border: none;
+        border-radius: 1rem;
+        font-size: 1.4rem;
+        padding-left: 3.8rem;
+        box-shadow: $inner-shadow;
+        background: none;
+        font-family: inherit;
+        color: var(--greyDark);
+
+        &::placeholder {
+            color: var(--greyLight-3);
         }
-      }
+        &:focus {
+            outline: none;
+            box-shadow: $shadow;
+
+            + .search__icon {
+                color: var(--primary);
+            }
+        }
     }
-  
+
     &__icon {
-      height: 2rem;
-      position: absolute;
-      font-size: 2rem;
-      padding: 0 1rem;
-      display: flex;
-      color: var(--greyDark);
-      transition: .3s ease;
+        height: 2rem;
+        position: absolute;
+        font-size: 2rem;
+        padding: 0 1rem;
+        display: flex;
+        color: var(--greyDark);
+        transition: 0.3s ease;
     }
-  }
+}

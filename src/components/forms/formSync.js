@@ -18,11 +18,11 @@ class Sync extends React.Component {
 
     render() {
         return (
-            <div class="container">
+            <form class=" padding-center">
                 <div class="row justify-content-md-center">
                 <div class="row ">
-                        <div class="col-10 offset-md-1">
-                        <h2 for="exampleFormControlInput1" className="form-label styles">Muy bien ahora sincroniza tu worksapece de trabajo</h2>
+                        <div class="col-10 offset-md-2">
+                        <h2 for="exampleFormControlInput1" className="form-label title-form "> Sincroniza tu worksapece de trabajo</h2>
                         </div>
                     </div>
                     <div class="col-9 ">
@@ -56,11 +56,11 @@ class Sync extends React.Component {
                     </div>
                     <div class="row ">
                         <div class="col-1 offset-md-11">
-                            <img src={logo} alt="..." className="icon"></img>
+                            <img src={logo} alt="..." className="icon_form"></img>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         )
     }
 }
