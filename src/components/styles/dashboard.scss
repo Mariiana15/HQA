@@ -389,9 +389,9 @@ a:focus {
     left: 28%;
     position: relative;
     padding-left: 8rem;
-    height: 60vh;   
+    height: 60vh;
 }
-.menu_aux_overflow{
+.menu_aux_overflow {
     height: 28vh;
     overflow: auto;
 }
@@ -417,9 +417,13 @@ a:focus {
 }
 
 .main__cards {
-    list-style: none;
-    padding: 2.6rem 0 2rem;
+    padding:0.5rem 0 2rem;
     display: flex;
+    width: 37vw;
+    overflow-x: auto;
+    padding-left: 13em;
+    right: 8vw;
+    position: relative;
 }
 
 .main__card {
@@ -771,6 +775,10 @@ a:focus {
     transform: scale(1.2);
 }
 
+.change_image {
+    fill: #fff;
+}
+
 #svg-wrapper {
     position: fixed;
     bottom: 2vh;
@@ -835,6 +843,13 @@ a:focus {
     visibility: hidden;
 }
 
+.btn_cards_change{
+    opacity: 0.4;
+}
+
+.index_menu_card{
+    opacity: 1 !important;
+}
 /*.leftw {
     width: 57px;
     height: 100%;

@@ -4,13 +4,14 @@ import '../styles/dashboard.scss';
 import '../styles/myStyle.scss';
 import Header from '../elements/header';
 import Menu from '../elements/lateral-menu';
+import Elist from '../elements/elist';
 
 import Formulario from '../forms/formSync';
 
 
 class Dashboard extends React.Component {
 
-    state = { b: null, a: true };
+    state = { b: null, a: true, };
 
     componentDidMount() {
         this.setState({
@@ -27,11 +28,13 @@ class Dashboard extends React.Component {
 
     variables() {
         return {
-            "hu": "10 HU terminadas",
+            "hu": "10 User Stoy finalized",
             "name": "Vecindario",
             "logo": "https://viewinmobiliario2.s3-sa-east-1.amazonaws.com/static_assets/vecindario-logo.svg",
         }
     }
+
+
 
     iconosInit() {
         let element = document.getElementById('menu');
@@ -68,7 +71,19 @@ class Dashboard extends React.Component {
         this.setState({ a: !this.state.a });
     }
 
-
+    /*
+    imagen renderizada
+       <div class="main__crossing-container">
+                                        <div class="main__crossing-current">
+                                            <p class="main__crossing-upper">
+                                                Now crossing
+                                            </p>
+                                            <h3 class="main__crossing-heading">
+                                                Center Point
+                                            </h3>
+                                        </div>
+                                    </div>
+    */
     render() {
         let variables = this.variables();
         return (
@@ -79,45 +94,12 @@ class Dashboard extends React.Component {
                     <Menu />
                     <main class="main">
                         <div class="main__col-2 menu_On" id="menu">
-                            <div class="main__cards-container">
-                                <div class="main__cards-container-heading-wrap">
-                                    <h2 class="main__cards-container-heading ss-heading">Traveling Plans</h2>
-                                </div>
-
-                                <ul class="main__cards">
-                                    <li class="main__card">
-                                        <div class="main__card-image-container">
-                                            <img src="https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=140&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=220" alt="" class="main__card-image" />
-                                        </div>
-                                        <h3 class="main__card-heading">Daman-e-Koh</h3>
-                                        <p class="main__card-heading-sub">Pakistan</p>
-                                        <p class="main__card-heading-type">Visit</p>
-                                    </li>
-
-                                    <li class="main__card" >
-                                        <div class="main__card-image-container">
-                                            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=140&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=220" alt="" class="main__card-image" />
-                                        </div>
-                                        <h3 class="main__card-heading">Mahodand Lake</h3>
-                                        <p class="main__card-heading-sub">Pakistan</p>
-                                        <p class="main__card-heading-type">Visit</p>
-                                    </li>
-
-                                    <li class="main__card" >
-                                        <div class="main__card-image-container">
-                                            <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=140&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=220" alt="" class="main__card-image" />
-                                        </div>
-                                        <h3 class="main__card-heading">London</h3>
-                                        <p class="main__card-heading-sub">England</p>
-                                        <p class="main__card-heading-type">Work</p>
-                                    </li>
-                                </ul>
-                                <div className='menu_aux_overflow'>
-                                    <Formulario />
-                                </div>
+                            <Elist />
+                            <div className='menu_aux_overflow'>
+                                <Formulario />
                             </div>
-
                         </div>
+
 
                         {this.state.b}
 
