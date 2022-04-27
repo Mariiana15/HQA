@@ -5,7 +5,12 @@ import {
   CREATE_STREAM,
   EDIT_STREAM,
   DELETE_STREAM,
+  MAIN_CARD,
 } from "../actions/types";
+
+const INTIAL_STATE = {
+  card: null,
+};
 
 const streamReducer = (state = {}, action) => {
   switch (action.type) {
@@ -17,6 +22,16 @@ const streamReducer = (state = {}, action) => {
       return { ...state, [action.payload.id]: action.payload };
     case EDIT_STREAM:
       return { ...state, [action.payload.id]: action.payload };
+
+
+
+      case MAIN_CARD:
+        return { ...state, card: action.payload };
+
+
+
+
+
     case DELETE_STREAM:
       return _.omit(state, action.payload);
     default:

@@ -9,8 +9,13 @@ import Elist from '../elements/elist';
 import EForm from '../elements/eform';
 import ELayout from '../elements/elayout';
 
+import i_alert from '../../images/ico_alert.png';
+
 import ListCard from '../elements/card-list';
+import MainCard from '../elements/card-main';
+
 import IconAux from '../elements/icon-menu-aux';
+
 
 
 
@@ -33,6 +38,7 @@ class Dashboard extends React.Component {
 
     render() {
         let variables = this.variables();
+
         return (
             <div className='dash'>
                 <Header headers={variables} />
@@ -40,7 +46,8 @@ class Dashboard extends React.Component {
                     <Menu />
                     <main class="main">
                         <div class="main__col-1">
-                            <ListCard />
+                            <MainCard />
+                            <ListCard tablero="Tablero Mi primera prueba" />
                         </div>
                         <div class="main__col-2 menu_On" id="menu">
                             {

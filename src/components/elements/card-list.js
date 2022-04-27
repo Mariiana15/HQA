@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import '../styles/card.scss';
 import '../styles/myStyle.scss';
 import Card from './card';
+import { mainCard } from '../../actions';
 
 const US = [{ "cardOK": "ok", "indexIm": "1", "typeUS": "Alert", "typeTest": "Test login Xss", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "1", "date": Date.now(), "progress": 15 },
 
-{ "indexIm": "2", "typeUS": "Process", "typeTest": "Test login SQL", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "3", "date": Date.now(), "progress": 25 },
+{ "tablero": "Mi tablero", "state": "terminado", "idUS": "US-123123", "indexIm": "2", "typeUS": "Process", "typeTest": "Test login SQL", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "3", "date": Date.now(), "progress": 25 },
 { "indexIm": "3", "typeUS": "Business", "typeTest": "Test Injection SQL", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "2", "scripts": "1", "date": Date.now(), "progress": 35 },
 { "indexIm": "1", "typeUS": "Alert", "typeTest": "Test login Xss", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "1", "date": Date.now(), "progress": 55 },
 { "cardOK": "ok", "indexIm": "3", "typeUS": "Business", "typeTest": "Test login Xss", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "2", "scripts": "2", "date": Date.now(), "progress": 68 },
@@ -21,8 +22,11 @@ class CardList extends React.Component {
 
     createCard() {
         let list = [];
-        US.forEach(element => {
-            list.push(<Card cardOK={element.cardOK} indexIm={element.indexIm} typeUS={element.typeUS} typeTest={element.typeTest} US={element.US} alerts={element.alerts} scripts={element.scripts} date={element.date} progress={element.progress}></Card>);
+        US.forEach((element, index) => {
+            element["id"] = element.idUS ? element.idUS : "US-" + Date.now() + index;
+            if (index === 0)
+                this.props.mainCard(element)
+            list.push(<Card card={element}></Card>);
         });
         return list;
     }
@@ -35,7 +39,7 @@ class CardList extends React.Component {
                         <hr class="bg-danger border-2 border-top " />
                     </div>
                     <div className='col'>
-                        <div>Tablero Mi primera prueba</div>
+                        <div>{this.props.tablero}</div>
                     </div>
                     <div className='col-4'>
                         <hr class="bg-danger border-2 border-top " />
@@ -50,4 +54,9 @@ class CardList extends React.Component {
 }
 
 
-export default connect()(CardList);
+
+const mapStateToProps = state => {
+    return {  };
+};
+
+export default connect(mapStateToProps, { mainCard })(CardList);

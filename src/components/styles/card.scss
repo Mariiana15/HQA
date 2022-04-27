@@ -14,11 +14,17 @@ $withCard: 45em;
 }
 
 .card_unit {
-    --hue: 235;
     height: 8em;
     box-shadow: 0 2px 12px hsla(var(--hue), 50%, 60%, 0.2), 0 4px 32px hsla(var(--hue), 50%, 60%, 0.2);
 }
 .card_unit_ok {
+    filter: grayscale(1);
+    background-image: linear-gradient(to right,#191024 1%, white 100%) !important;
+   
+}
+
+.card_unit_select {
+    --hue: 35;
     background-image: linear-gradient(
         to right,
         hsla(var(--hue), 60%, 60%, 0.3),
@@ -26,6 +32,7 @@ $withCard: 45em;
         hsl(var(--hue), 70%, 60%)
     ) !important;
 }
+
 .barbarian {
     height: 8em;
     background-image: linear-gradient(to right, hsla(var(--hue), 60%, 60%, 0.3), 40%, hsl(var(--hue), 70%, 60%));
@@ -120,7 +127,7 @@ $withCard: 45em;
     position: relative;
     padding-left: 6.8em;
 }
-.row_card{
+.row_card {
     position: relative;
     height: 100%;
     bottom: 1em;
@@ -151,7 +158,6 @@ $withCard: 45em;
     color: black;
     font-weight: 900;
     margin-bottom: 5px;
-   
 }
 
 .clash-card__unit-description {
@@ -259,7 +265,7 @@ $withCard: 45em;
     background: #191024;
     border-radius: 5px;
     position: relative;
-//bottom: 13em;
+    //bottom: 13em;
     left: 6em;
     height: 0.8em;
     width: 10em;
@@ -302,4 +308,37 @@ $withCard: 45em;
 
 .list_card_unit {
     box-shadow: 0 6px 16px 0 hsla(270, 30%, 3%, 0.4);
+}
+
+.main__heading {
+    font-size: 3rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+}
+
+.main__heading img {
+    height: 2em;
+}
+.main__heading > span {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    margin-right: 1.6rem;
+    margin-bottom: -2px;
+}
+
+.main__heading svg {
+    height: 0.7em;
+}
+
+.col_state {
+    padding-left: 2em;
+}
+
+.col_tablero {
+    padding-left: 1.5em;
 }
