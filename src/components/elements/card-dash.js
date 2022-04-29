@@ -27,10 +27,10 @@ class CardDash extends React.Component {
                     </div>
 
                 </div>
-                <div className='col-6'>
+                <div className='col-6 '>
                     <ListCard  />
                 </div>
-                <div className='col-6'>
+                <div className='col-5'>
                     <ListCard  test="2" />
                 </div>
             </div>

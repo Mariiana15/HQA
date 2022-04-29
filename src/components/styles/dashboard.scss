@@ -18,7 +18,7 @@ html {
 body {
     color: hsl(270, 10%, 80%);
     font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
+    min-height: 104vh;
     padding: 5rem;
     overflow-x: hidden;
     background: white;
@@ -42,10 +42,10 @@ a:focus {
 }
 
 .dash {
-    left: 3vw;
-    position: absolute;
+    left: -23vw;
+    position: relative;
     width: 85vw;
-    height: 90vh;
+    height: 100%;
     background: linear-gradient(110deg, rgb(22, 17, 39) 1%, hsl(253deg 40% 25%) 10%, white 250%);
     display: flex;
     flex-direction: column;
@@ -252,7 +252,6 @@ a:focus {
     padding: 0.2rem 0 0 8rem;
     display: flex;
     border-bottom-right-radius: 8px;
- 
 }
 
 .con_row_col {
@@ -829,13 +828,8 @@ a:focus {
 .index_menu_card {
     opacity: 1 !important;
 }
-.cont_row_col{
+.cont_row_col {
     position: relative;
     max-width: 200vw !important;
     width: 100%;
 }
-
-
-
-
-

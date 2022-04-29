@@ -19,11 +19,8 @@ class Home extends React.Component {
     render() {
         return (
             <div className='col'>
-                <div className='row row_card_main'>
-                    <div className='col-6'>
-                        <MainCard />
-                    </div>
-                </div>
+
+                <MainCard />
                 <CardFilter />
                 <CardDash tablero="Tablero Mi primera prueba" />
                 <CardIndex />
