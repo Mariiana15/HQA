@@ -10,11 +10,14 @@ import EForm from '../elements/eform';
 import ELayout from '../elements/elayout';
 
 import i_alert from '../../images/ico_alert.png';
-
-import ListCard from '../elements/card-list';
 import MainCard from '../elements/card-main';
 
+import FilterCard from '../elements/card-filter';
+
 import IconAux from '../elements/icon-menu-aux';
+import CardFilter from '../elements/card-filter';
+import CardIndex from '../elements/card-index';
+import CardDash from '../elements/card-dash';
 
 
 
@@ -24,7 +27,6 @@ class Dashboard extends React.Component {
     state = {};
 
     componentDidMount() {
-
     }
 
     variables() {
@@ -35,30 +37,38 @@ class Dashboard extends React.Component {
         }
     }
 
-
     render() {
         let variables = this.variables();
-
         return (
             <div className='dash'>
                 <Header headers={variables} />
                 <div className="body">
                     <Menu />
-                    <main class="main">
-                        <div class="main__col-1">
-                            <MainCard />
-                            <ListCard tablero="Tablero Mi primera prueba" />
-                        </div>
-                        <div class="main__col-2 menu_On" id="menu">
-                            {
-                                // <Elist title="You Activity"/>
-                                // <EForm title="You Activity" />
-                                //<ELayout title="Urgent" text="You don't stop of to learn"/>
-                            }
-                            <Elist title="You Activity" />
+                    <div className='container cont_row_col main '>
+                        <div className='row'>
+                            <div className='col'>
+                                <div className='row row_card_main'>
+                                    <div className='col-6'>
+                                        <MainCard />
+                                    </div>
+                                </div>
+                                <CardFilter />
+                                <CardDash tablero="Tablero Mi primera prueba" />
+                                <CardIndex />
+                            </div>
+                            <div></div>
+                             <div className='col main__col-2 menu_On' id="menu">
+                                {
+                                    // <Elist title="You Activity"/>
+                                    // <EForm title="You Activity" />
+                                    //<ELayout title="Urgent" text="You don't stop of to learn"/>
+                                }
+                                <Elist title="You Activity" />
+
+                            </div>
                         </div>
                         <IconAux />
-                    </main>
+                    </div>
                 </div >
             </div >
         )

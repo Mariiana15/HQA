@@ -22,8 +22,6 @@ class LateralMenu extends React.Component {
 
     }
 
-
-
     render() {
         return (
                 <div>
@@ -51,7 +49,7 @@ class LateralMenu extends React.Component {
                                     </svg>
                                 </div>
                                 <div className='col-1 menu_lateral'>
-                                    <a className='name'>Alert</a>
+                                    <a className='name'>Script</a>
                                 </div>
                             </div>
                         </div>
