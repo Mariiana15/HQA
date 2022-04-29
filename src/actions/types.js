@@ -8,3 +8,4 @@ export const EDIT_STREAM = 'EDIT_STREAM';
 
 
 export const MAIN_CARD = 'MAIN_CARD';
+export const PAGE_DASH = 'PAGE_DASH';

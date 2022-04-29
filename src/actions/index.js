@@ -10,7 +10,8 @@ import {
   EDIT_STREAM,
 
 
-  MAIN_CARD
+  MAIN_CARD,
+  PAGE_DASH
 } from "./types";
 
 export const signIn = (userId) => {
@@ -65,5 +66,12 @@ export const mainCard = (card) => {
   return {
     type: MAIN_CARD,
     payload: card,
+  };
+};
+
+export const pageDash = (page) => {
+  return {
+    type: PAGE_DASH,
+    payload: page,
   };
 };

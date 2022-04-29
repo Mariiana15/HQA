@@ -18,6 +18,8 @@ import IconAux from '../elements/icon-menu-aux';
 import CardFilter from '../elements/card-filter';
 import CardIndex from '../elements/card-index';
 import CardDash from '../elements/card-dash';
+import { pageDash } from '../../actions';
+import Home from './home';
 
 
 
@@ -27,6 +29,7 @@ class Dashboard extends React.Component {
     state = {};
 
     componentDidMount() {
+        this.props.pageDash(<Home></Home>);
     }
 
     variables() {
@@ -46,18 +49,9 @@ class Dashboard extends React.Component {
                     <Menu />
                     <div className='container cont_row_col main '>
                         <div className='row'>
-                            <div className='col'>
-                                <div className='row row_card_main'>
-                                    <div className='col-6'>
-                                        <MainCard />
-                                    </div>
-                                </div>
-                                <CardFilter />
-                                <CardDash tablero="Tablero Mi primera prueba" />
-                                <CardIndex />
-                            </div>
+                            {this.props.page}
                             <div></div>
-                             <div className='col main__col-2 menu_On' id="menu">
+                            <div className='col main__col-2 menu_On' id="menu">
                                 {
                                     // <Elist title="You Activity"/>
                                     // <EForm title="You Activity" />
@@ -77,4 +71,9 @@ class Dashboard extends React.Component {
 }
 
 
-export default connect()(Dashboard);
+
+const mapStateToProps = state => {
+    return { page: state.streams.page };
+};
+
+export default connect(mapStateToProps, { pageDash })(Dashboard);

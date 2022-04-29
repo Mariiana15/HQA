@@ -6,10 +6,12 @@ import {
   EDIT_STREAM,
   DELETE_STREAM,
   MAIN_CARD,
+  PAGE_DASH,
 } from "../actions/types";
 
 const INTIAL_STATE = {
   card: null,
+  page: null,
 };
 
 const streamReducer = (state = {}, action) => {
@@ -27,6 +29,8 @@ const streamReducer = (state = {}, action) => {
 
       case MAIN_CARD:
         return { ...state, card: action.payload };
+        case PAGE_DASH:
+        return { ...state, page: action.payload };
 
 
 
