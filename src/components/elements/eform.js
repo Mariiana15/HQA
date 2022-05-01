@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/dashboard.scss';
 import '../styles/myStyle.scss';
-import Formulario from '../forms/formSync';
+import Formulario from '../forms/form-Sync';
 
 class EForm extends React.Component {
 
