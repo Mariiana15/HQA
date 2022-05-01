@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './Header';
 import history from '../history';
-import Word from './forms/formSync';
+import FormSyncro from './forms/formSync';
+import Dashboard from './pages/dashboard';
+import Sync from './pages/sync';
 
-import Sync from './pages/dashboard';
 
 const App = () => {
   return (
@@ -12,9 +13,9 @@ const App = () => {
       <BrowserRouter history={history}>
         <div>
           <Routes>
-            <Route path="/" exact element={  <Word />} />
-            <Route path="/jose" exact element={  <Sync />} />
-
+            <Route path="/" exact element={<Sync />} />
+            <Route path="/dashboard" exact element={<Dashboard />} />
+            <Route path="/sync" exact element={<FormSyncro />} />
           </Routes>
         </div>
       </BrowserRouter>

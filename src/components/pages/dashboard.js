@@ -1,13 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/dashboard.scss';
+import '../styles/card.scss';
 import '../styles/myStyle.scss';
 import Header from '../elements/header';
 import Menu from '../elements/lateral-menu';
 import Elist from '../elements/elist';
 import EForm from '../elements/eform';
 import ELayout from '../elements/elayout';
+
+import i_alert from '../../images/ico_alert.png';
+import MainCard from '../elements/card-main';
+
+import FilterCard from '../elements/card-filter';
+
 import IconAux from '../elements/icon-menu-aux';
+import CardFilter from '../elements/card-filter';
+import CardIndex from '../elements/card-index';
+import CardDash from '../elements/card-dash';
+import { pageDash } from '../../actions';
+import Home from './home';
+
 
 
 
@@ -16,7 +29,7 @@ class Dashboard extends React.Component {
     state = {};
 
     componentDidMount() {
-
+        this.props.pageDash(<Home></Home>);
     }
 
     variables() {
@@ -27,46 +40,30 @@ class Dashboard extends React.Component {
         }
     }
 
-
-
-
-
-    /*
-    imagen renderizada
-       <div class="main__crossing-container">
-                                        <div class="main__crossing-current">
-                                            <p class="main__crossing-upper">
-                                                Now crossing
-                                            </p>
-                                            <h3 class="main__crossing-heading">
-                                                Center Point
-                                            </h3>
-                                        </div>
-                                    </div>
-    */
     render() {
         let variables = this.variables();
         return (
             <div className='dash'>
                 <Header headers={variables} />
                 <div className="body">
-
                     <Menu />
-                    <main class="main">
-                        <div class="main__col-2 menu_On" id="menu">
-                            {
-                                // <Elist title="You Activity"/>
-                                // <EForm title="You Activity" />
-                                //<ELayout title="Urgent" text="You don't stop of to learn"/>
-                            }
+                    <div className='container cont_row_col main '>
+                        <div className='row'>
+                            {this.props.page}
+                            <div></div>
+                            <div className='col main__col-2 menu_On' id="menu">
+                                {
+                                    // <Elist title="You Activity"/>
+                                    // <EForm title="You Activity" />
+                                    //<ELayout title="Urgent" text="You don't stop of to learn"/>
+                                }
+                                <Elist title="You Activity" />
+
+                            </div>
                         </div>
                         <IconAux />
-
-
-                    </main>
-
+                    </div>
                 </div >
-
             </div >
         )
 
@@ -74,4 +71,9 @@ class Dashboard extends React.Component {
 }
 
 
-export default connect()(Dashboard);
+
+const mapStateToProps = state => {
+    return { page: state.streams.page };
+};
+
+export default connect(mapStateToProps, { pageDash })(Dashboard);

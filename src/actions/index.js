@@ -8,6 +8,10 @@ import {
   FETCH_STREAM,
   DELETE_STREAM,
   EDIT_STREAM,
+
+
+  MAIN_CARD,
+  PAGE_DASH
 } from "./types";
 
 export const signIn = (userId) => {
@@ -55,4 +59,19 @@ export const deleteStream = (id) => async (dispatch) => {
 
   dispatch({ type: DELETE_STREAM, payload: id });
   history.push("/");
+};
+
+
+export const mainCard = (card) => {
+  return {
+    type: MAIN_CARD,
+    payload: card,
+  };
+};
+
+export const pageDash = (page) => {
+  return {
+    type: PAGE_DASH,
+    payload: page,
+  };
 };

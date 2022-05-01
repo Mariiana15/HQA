@@ -25,7 +25,6 @@ class EList extends React.Component {
         if (this.state.index + 2 < list.childElementCount) {
             let element = document.getElementById('elist1');
             list.scroll((element.clientWidth * 1.09) + list.scrollLeft, 0);
-            console.log('indexElement' + (this.state.index + 2))
             let index = document.getElementById('indexElement' + (this.state.index + 2));
             index.classList.add("index_menu_card");
             index = document.getElementById('indexElement' + (this.state.index + 1));

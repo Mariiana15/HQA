@@ -4,14 +4,22 @@ import '../styles/sync.scss';
 import '../styles/myStyle.scss';
 import logo from '../../images/logo3.png';
 import Circle from '../elements/circle-icon';
+import { Code } from '../../apis/asana';
+
+
 
 class Sync extends React.Component {
-
-    state = {
+    state = { 
     };
 
     componentDidMount() {
+        this.props.Code();
+      
+        }
 
+    getCodeVerifier() {
+        sessionStorage.setItem("code_verifier", this.props.asanaOauth.code_verifier)
+        return this.props.asanaOauth.url;
     }
 
     elementXs() {
@@ -23,7 +31,7 @@ class Sync extends React.Component {
             "xs_circle_jira": "icon-left icon-circle",
             "xs_circle_trello": "icon-right icon-circle",
             "xs_icon": "icono-sync",
-            "icon_bg":"icon-bg"
+            "icon_bg": "icon-bg"
         };
         if (window.innerWidth < 800) {
             ch_icon = {
@@ -34,7 +42,7 @@ class Sync extends React.Component {
                 "xs_circle_jira": "icon-left-xs icon-circle-xs",
                 "xs_circle_trello": "icon-right-xs icon-circle-xs",
                 "xs_icon": "icono-sync-xs",
-                "icon_bg":"icon-bg-xs"
+                "icon_bg": "icon-bg-xs"
             };
         }
         return ch_icon;
@@ -43,7 +51,7 @@ class Sync extends React.Component {
     render() {
         let ch_icon = this.elementXs();
         return (
-            <div>
+            <div className="sync">
                 <div className="container">
                     <div className="row padding-center justify-content-start ">
                         <div className="col-md-4 col-xs-12">
@@ -53,8 +61,10 @@ class Sync extends React.Component {
                         </div>
                         <div className="col-6 icons-sync">
                             <div className="row ">
-                                <div className="col">
-                                    <Circle container={`container ${ch_icon["xs_circle_asana"]}`} h2="Asana" h3="Sincroniza tu tablero" img="https://cdn.iconscout.com/icon/free/png-256/asana-226537.png" imgClass={ch_icon["xs_asana"]} ></Circle>
+                                <div className="col icon_sync_oauth">
+                                    <a href={this.props.asanaOauth ? this.getCodeVerifier() : ""}>
+                                        <Circle container={`container ${ch_icon["xs_circle_asana"]}`} h2="Asana" h3="Sincroniza tu tablero" img="https://cdn.iconscout.com/icon/free/png-256/asana-226537.png" imgClass={ch_icon["xs_asana"]} ></Circle>
+                                    </a>
                                 </div>
                             </div>
                             <div className="row justify-content-around">
@@ -63,14 +73,18 @@ class Sync extends React.Component {
                                 </div>
                             </div>
                             <div className="row ">
-                                <div className="col">
-                                    <Circle container={`container ${ch_icon["xs_circle_jira"]}`} h2="Jira" h3="Sincroniza tu tablero" img="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" imgClass={ch_icon["xs_jira"]} ></Circle>
+                                <div className="col icon_sync_oauth_disable_jira">
+                                    <a>
+                                        <Circle container={`container ${ch_icon["xs_circle_jira"]}`} h2="Jira" h3="Sincroniza tu tablero" img="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" imgClass={ch_icon["xs_jira"]} ></Circle>
+                                    </a>
                                 </div>
                             </div>
 
                             <div className="row ">
-                                <div className="col">
-                                    <Circle container={`container ${ch_icon["xs_circle_trello"]}`} h2="Trello" h3="Sincroniza tu tablero" img="https://icons-for-free.com/download-icon-logo+social+trello+icon-1320194696754621808_512.png" imgClass={ch_icon["xs_trello"]} ></Circle>
+                                <div className="col icon_sync_oauth_disable">
+                                    <a>
+                                        <Circle container={`container ${ch_icon["xs_circle_trello"]}`} h2="Trello" h3="Sincroniza tu tablero" img="https://icons-for-free.com/download-icon-logo+social+trello+icon-1320194696754621808_512.png" imgClass={ch_icon["xs_trello"]} ></Circle>
+                                    </a>
                                 </div>
                             </div>
 
@@ -84,4 +98,10 @@ class Sync extends React.Component {
 }
 
 
-export default connect()(Sync);
+
+const mapStateToProps = state => {
+    return { asanaOauth: state.streams.asanaOauth };
+};
+
+export default connect(mapStateToProps, { Code })(Sync);
+
