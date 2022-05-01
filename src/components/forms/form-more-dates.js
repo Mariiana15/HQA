@@ -17,18 +17,18 @@ class Sync extends React.Component {
 
 
     render() {
+        
         return (
-            <form class=" padding-center">
                 <div class="row justify-content-md-center">
                 <div class="row ">
                         <div class="col-10 offset-md-2">
-                        <h2 for="exampleFormControlInput1" className="form-label title-form "> Sincroniza tu worksapece de trabajo</h2>
+                        <h2 for="exampleFormControlInput1" className="title-form "> Que tipo de datos utilizara esta Hu</h2>
                         </div>
                     </div>
                     <div class="col-9 ">
                         <div >
                             <div className="mb-3">
-                                <h3 for="exampleFormControlInput1" className="form-label form_label">Selecciona el tablero a trabajar</h3>
+                                <div for="exampleFormControlInput1" className=" form_label form-label">Selecciona el tablero a trabajar</div>
                                 <select className="form-select __input" required aria-label="select example">
                                     <option value="">Selecciona una opcion</option>
                                     <option value="1">Tablero A</option>
@@ -37,7 +37,7 @@ class Sync extends React.Component {
                                 </select>
                             </div>
                             <div className="mb-3">
-                                <h3 for="exampleFormControlTextarea1" className="form-label form_label">Selecciona la lista o fila de trabajo</h3>
+                                <h3 for="exampleFormControlTextarea1" className=" form_label">Selecciona la lista o fila de trabajo</h3>
                                 <select className="form-select __input" required aria-label="select example">
                                     <option value="">Selecciona una opcion</option>
                                     <option value="1">Lista A</option>
