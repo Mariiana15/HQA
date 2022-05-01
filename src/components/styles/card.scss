@@ -23,7 +23,7 @@ $withCard: 45em;
 }
 
 .card_unit_select {
-    --hue: 35;
+    --hue: 7;
     background-image: linear-gradient(
         to right,
         hsla(var(--hue), 60%, 60%, 0.3),
@@ -311,6 +311,11 @@ $withCard: 45em;
 }
 .row_card_main {
     margin: 1.2em;
+    h2{
+        font-size: 2.5em;
+        font-weight: 900;
+      
+    }
 }
 .col_result{
     margin-top: 6em;

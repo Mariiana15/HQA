@@ -5,14 +5,26 @@ import '../styles/sync.scss';
 import '../styles/myStyle.scss';
 import logo from '../../images/logo3.png';
 import '../styles/mariana.scss'
+import history from "../../history";
+import { Link } from 'react-router-dom';
+import { Oauth } from '../../apis/asana';
 
-class Sync extends React.Component {
+class FormSync extends React.Component {
 
     state = {
     };
 
     componentDidMount() {
+        const querystring = window.location.search;
+        const params = new URLSearchParams(querystring);
+        let code = params.get('code');
+        if (code != undefined) {
+            this.props.Oauth(code, sessionStorage.getItem('code_verifier'));
+        }
+    }
 
+    Save() {
+        history.push("/dashboard");
     }
 
 
@@ -46,11 +58,16 @@ class Sync extends React.Component {
 
                     <div class="row justify-content-md-center">
                         <div class="col-3">
-                            <div className="btn btn__primary" ><p>Guardar</p></div>
+                            <div className="btn btn__primary" onClick={() => { this.Save() }} >
+                                <Link to="/dashboard" className="item">
+                                    <p>Guardar</p>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div class="row ">
                         <div class="col-1 offset-md-11">
+
                             <img src={logo} alt="..." className="icon_form"></img>
                         </div>
                     </div>
@@ -61,4 +78,9 @@ class Sync extends React.Component {
 }
 
 
-export default connect()(Sync);
+
+const mapStateToProps = state => {
+    return { asanaOauth: state.streams.asanaOauth };
+};
+
+export default connect(mapStateToProps, { Oauth })(FormSync);

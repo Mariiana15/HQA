@@ -9,3 +9,11 @@ export const EDIT_STREAM = 'EDIT_STREAM';
 
 export const MAIN_CARD = 'MAIN_CARD';
 export const PAGE_DASH = 'PAGE_DASH';
+
+
+// APIS
+// -----ASANA
+export const ASANA_OAUTH = 'ASANA_OAUTH';
+
+
+

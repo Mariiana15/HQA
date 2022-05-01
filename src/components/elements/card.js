@@ -17,7 +17,6 @@ class Card extends React.Component {
 
 
     selectCard(id) {
-        console.log(this.props.card_)
         if (this.props.card_ != undefined && this.props.card_.idLast != undefined && this.props.card_.idLast !== id) {
 
             let cardLast = document.getElementById(this.props.card_.idLast);
@@ -36,71 +35,70 @@ class Card extends React.Component {
         let end = this.props.card.cardOK ? "card_unit_ok" : "";
         let us = this.props.card.US.length > 65 ? this.props.card.US.substring(0, 65) + " ..." : this.props.card.US;
 
-        return (
-            <div className='card_unit' onClick={() => { this.selectCard(this.props.card.id)}}>
-                <div class={`clash-card barbarian ${end}`} id={this.props.card.id}>
-                    <div class="clash-card__image--barbarian">
-                        <img src={image} alt="barbarian" />
-                    </div>
-                    <div className='container row_card'>
-                        <div className='row'>
-                            <div className='col-3'>
-                                <div className='row'>
-                                    <div className='col'>
-                                        <div class="clash-card__level clash-card__level--barbarian">{this.props.card.typeUS}</div>
+        if (this.props.card) {
+            return (
+                <div className='card_unit' onClick={() => { this.selectCard(this.props.card.id) }}>
+                    <div class={`clash-card barbarian ${end}`} id={this.props.card.id}>
+                        <div class="clash-card__image--barbarian">
+                            <img src={image} alt="barbarian" />
+                        </div>
+                        <div className='container row_card'>
+                            <div className='row'>
+                                <div className='col-3'>
+                                    <div className='row'>
+                                        <div className='col'>
+                                            <div class="clash-card__level clash-card__level--barbarian">{this.props.card.typeUS}</div>
+                                        </div>
+                                    </div>
+                                    <div className='row'>
+                                        <div className='col'>
+                                            <div class="progress-bar">
+                                                <div class={progress} style={{ "width": `${this.props.card.progress}%` }}></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className='row'>
-                                    <div className='col'>
-                                        <div class="progress-bar">
-                                            <div class={progress} style={{ "width": `${this.props.card.progress}%` }}></div>
+                                <div className='col-9'>
+                                    <div class="clash-card__unit-name"> {this.props.card.typeTest}</div>
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className='col'>
+                                    <div class="clash-card__unit-description">
+                                        {us}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='row metric_card'>
+                                <div className='col-2'>
+                                    <div className='row'>
+                                        <div className='col'>
+                                            Alerts:  {this.props.card.alerts}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col-2'>
+                                    <div className='row'>
+                                        <div className='col'>
+                                            Scripts: {this.props.card.scripts}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col-2'>
+                                    <div className='row'>
+                                        <div className='col'>
+                                            Date: {this.props.card.date}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='col-9'>
-                                <div class="clash-card__unit-name"> {this.props.card.typeTest}</div>
-                            </div>
-                        </div>
-                        <div className='row'>
-                            <div className='col'>
-                                <div class="clash-card__unit-description">
-                                    {us}
-                                </div>
-                            </div>
-                        </div>
-                        <div className='row metric_card'>
-                            <div className='col-2'>
-                                <div className='row'>
-                                    <div className='col'>
-                                        Alerts:  {this.props.card.alerts}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-2'>
-                                <div className='row'>
-                                    <div className='col'>
-                                        Scripts: {this.props.card.scripts}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-2'>
-                                <div className='row'>
-                                    <div className='col'>
-                                        Date: {this.props.card.date}
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
-            </div>
-        )
+            )
+        }
+        else
+            return <div></div>
     }
 }
 

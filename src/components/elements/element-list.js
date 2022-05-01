@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import '../styles/dashboard.scss';
 import '../styles/myStyle.scss';
 import images from '../utils/image.json'
+import styles from '../utils/styles.json'
 
 class ElementList extends React.Component {
 
@@ -10,11 +11,10 @@ class ElementList extends React.Component {
 
     componentDidMount() {
     }
-
     
     render() {
         return (
-            <li class="main__card" id={`elist${this.props.id}`} style={{ "--hue": Math.round(Math.random() * (254) + 1) }} >
+            <li class="main__card" id={`elist${this.props.id}`} style={{ "--hue": styles.hue[Math.round(Math.random() * (9) + 1)] }} >
                 <div class="main__card-image-container">
                     <img src={images.unsplash[Math.round(Math.random() * (9) + 1)]} alt="" class="main__card-image" />
                 </div>
