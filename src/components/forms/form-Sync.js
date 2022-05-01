@@ -5,13 +5,28 @@ import '../styles/myStyle.scss';
 import logo from '../../images/logo3.png';
 import '../styles/mariana.scss'
 
-class Sync extends React.Component {
+import history from "../../history";
+import { Link } from 'react-router-dom';
+import { Oauth } from '../../apis/asana';
+class FormSync extends React.Component {
 
     state = {
     };
 
     componentDidMount() {
+        let index = document.getElementById('bodyid');
+        index.classList.add("body_form");
 
+        const querystring = window.location.search;
+        const params = new URLSearchParams(querystring);
+        let code = params.get('code');
+        if (code != undefined) {
+            this.props.Oauth(code, sessionStorage.getItem('code_verifier'));
+        }
+    }
+
+    Save() {
+        history.push("/dashboard");
     }
 
 
@@ -66,4 +81,9 @@ class Sync extends React.Component {
 }
 
 
-export default connect()(Sync);
+
+const mapStateToProps = state => {
+    return { asanaOauth: state.streams.asanaOauth };
+};
+
+export default connect(mapStateToProps, { Oauth })(FormSync);
