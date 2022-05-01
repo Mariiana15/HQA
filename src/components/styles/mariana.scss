@@ -32,6 +32,10 @@ html {
   }
 }
 
+body{
+  background: white;
+}
+
 .components {
   width: 75rem;
   height: 40rem;
@@ -692,7 +696,7 @@ html {
 .title-form {
   color: var(--primary);
   position: relative;
-  bottom: 3em;
+  margin-bottom: 2em;
   font-weight: bold;
 }
 

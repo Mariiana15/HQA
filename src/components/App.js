@@ -9,7 +9,7 @@ import Sync from './pages/sync';
 
 const App = () => {
   return (
-    <div className="ui container">
+    <div className="container">
       <BrowserRouter history={history}>
         <div>
           <Routes>
