@@ -33,11 +33,11 @@ class FormSync extends React.Component {
     render() {
 
         return (
-            <form class=" padding-center" style={{ "--size": this.props.formWith > 1200 ? (this.props.formWith * 0.001) : 1.2 + "em" }}>
+            <form class="padding-center" style={{ "--size": this.props.formWith > 1200 ? (this.props.formWith * 0.001) : 1.2 + "em" }}>
                 <div class="row justify-content-md-center">
                     <div class="row ">
                         <div class="col-5 offset-md-4">
-                            <h1 for="exampleFormControlInput1" className="title-form "> Sincroniza tu worksapece de trabajo</h1>
+                            <h1 for="exampleFormControlInput1" className="title-form "> Sincroniza tu workspace de trabajo</h1>
                         </div>
                     </div>
                     <div class="col-6">
@@ -52,7 +52,7 @@ class FormSync extends React.Component {
                                 </select>
                             </div>
                             <div className="mb-3">
-                                <h3 for="exampleFormControlTextarea1" className=" form_label">Selecciona la lista o fila de trabajo</h3>
+                                <h3 for="exampleFormControlTextarea1" className=" form-label">Selecciona la lista o fila de trabajo</h3>
                                 <select className="form-select __input" required aria-label="select example">
                                     <option value="">Selecciona una opcion</option>
                                     <option value="1">Lista A</option>
@@ -65,12 +65,12 @@ class FormSync extends React.Component {
                     </div>
 
                     <div class="row justify-content-md-center">
-                        <div class="col-3">
+                        <div class="col-1">
                             <div className="btn btn__primary" ><p>Guardar</p></div>
                         </div>
                     </div>
-                    <div class="row ">
-                        <div class="col-1 offset-md-11">
+                    <div className="row ">
+                        <div className="col-1 offset-md-11">
                             <img src={logo} alt="..." className="icon_form"></img>
                         </div>
                     </div>
