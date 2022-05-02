@@ -17,7 +17,7 @@ html {
 }
 body {
     color: hsl(270, 10%, 80%);
-    font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Nunito", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     min-height: 104vh;
     padding: 5rem;
     overflow-x: hidden;
@@ -42,7 +42,7 @@ a:focus {
 }
 
 .dash {
-    left: -23vw;
+    left: -13vw;
     position: relative;
     width: 85vw;
     height: 100%;
@@ -261,9 +261,13 @@ a:focus {
 
 .main__desc {
     margin: 1.5rem 0 1rem;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     opacity: 1;
 
+}
+
+.main_heading_card{
+ color: #af78ee;
 }
 
 .main__sub {
@@ -730,8 +734,9 @@ a:focus {
 
 .icon_intro {
     position: fixed;
-    bottom: 8vh;
-    right: 12vw;
+    float: inline-start;
+    bottom: 8%;
+    right: 13%;
     width: 7em;
     height: 7em;
     border-radius: 12em;

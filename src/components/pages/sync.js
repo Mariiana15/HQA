@@ -54,12 +54,12 @@ class Sync extends React.Component {
             <div className="sync">
                 <div className="container">
                     <div className="row padding-center justify-content-start ">
-                        <div className="col-md-4 col-xs-12">
+                        <div className="col-md-3 col-xs-12">
                             <img src={logo} alt="..." className={ch_icon["icon_bg"]}></img>
                             <h1 className="h1-intro">Sincroniza</h1>
                             <h3 className='h3-intro'>Con tus tareas y con tus historias de usuario</h3>
                         </div>
-                        <div className="col-6 icons-sync">
+                        <div className="col-6 offset-md-1 icons-sync">
                             <div className="row ">
                                 <div className="col icon_sync_oauth">
                                     <a href={this.props.asanaOauth ? this.getCodeVerifier() : ""}>
@@ -67,8 +67,8 @@ class Sync extends React.Component {
                                     </a>
                                 </div>
                             </div>
-                            <div className="row justify-content-around">
-                                <div className="col">
+                            <div className="row ">
+                                <div className="col-2 sync_haq ">
                                     <img src={logo} alt="..." className={ch_icon["xs_icon"]}></img>
                                 </div>
                             </div>
