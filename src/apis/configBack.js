@@ -54,6 +54,6 @@ export const GetProtocol = (token, query) => async (dispatch) => {
         },
         params: { q: query }
     }).then(({ data }) => { return data });
-
+    console.log(response)
     dispatch({ type: PROTOCOL, payload: response });
 }

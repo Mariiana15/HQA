@@ -26,7 +26,7 @@ class App extends React.Component {
               <Route path="/" exact element={<Sync />} />
               <Route path="/dashboard" exact element={<Dashboard />} />
               <Route path="/sync" exact element={<FormSyncro />} />
-              <Route path="/tecnichal" exact element={<FromMores />} />
+              <Route path="/technical" exact element={<FromMores />} />
             </Routes>
           </div>
         </BrowserRouter>
