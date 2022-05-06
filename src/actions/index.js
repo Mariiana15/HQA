@@ -12,9 +12,10 @@ import {
 
   MAIN_CARD,
   PAGE_DASH,
-
+  TOKEN,
   ASANA_PROJECT,
-  ASANA_SESCTION
+  ASANA_SESCTION,
+  US
 } from "./types";
 
 export const signIn = (userId) => {
@@ -93,3 +94,17 @@ export const asanaSetSectionId = (id) => {
   };
 };
 
+export const setUS = (uss) => {
+  return {
+    type: US,
+    payload: uss,
+  };
+};
+
+
+export const setTokenHack = (token) => {
+  return {
+    type: TOKEN,
+    payload: token,
+  };
+};

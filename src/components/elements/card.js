@@ -13,6 +13,7 @@ class Card extends React.Component {
     state = {};
 
     componentDidMount() {
+        console.log(this.props.card)
     }
 
 
@@ -30,10 +31,12 @@ class Card extends React.Component {
     }
 
     render() {
-        let image = this.props.card.indexIm === "1" ? i_alert : this.props.card.indexIm === "2" ? i_busi : i_prod;
-        let progress = this.props.card.progress > 0 && this.props.card.progress < 34 ? "progress-level-basic" : this.props.card.progress > 33 && this.props.card.progress < 67 ? "progress-level-medium" : "progress-level";
-        let end = this.props.card.cardOK ? "card_unit_ok" : "";
-        let us = this.props.card.US.length > 65 ? this.props.card.US.substring(0, 65) + " ..." : this.props.card.US;
+        let image = this.props.card.typeUS === "alert" ? i_alert : this.props.card.typeUS === "business" ? i_busi : i_prod;
+        let priority = this.props.card.priority > 0 && this.props.card.priority < 34 ? "progress-level-basic" : this.props.card.priority > 33 && this.props.card.priority < 67 ? "progress-level-medium" : "progress-level";
+        let end = this.props.card.state === "close" ? "card_unit_ok" : "";
+        let userStory = this.props.card.userStory.length > 65 ? this.props.card.userStory.substring(0, 65) + " ..." : this.props.card.userStory;
+        let name = this.props.card.name.length > 15 ? this.props.card.name.substring(0, 15)  : this.props.card.name;
+
 
         if (this.props.card) {
             return (
@@ -53,19 +56,19 @@ class Card extends React.Component {
                                     <div className='row'>
                                         <div className='col'>
                                             <div class="progress-bar">
-                                                <div class={progress} style={{ "width": `${this.props.card.progress}%` }}></div>
+                                                <div class={priority} style={{ "width": `${this.props.card.priority}%` }}></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col-9 offset-md-2'>
-                                    <div class="clash-card__unit-name"> {this.props.card.typeTest}</div>
+                                    <div class="clash-card__unit-name"> {name}-{this.props.card.typeTest}</div>
                                 </div>
                             </div>
                             <div className='row'>
                                 <div className='col'>
                                     <div class="clash-card__unit-description">
-                                        {us}
+                                        {userStory}
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +87,7 @@ class Card extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-2'>
+                                <div className='col-5'>
                                     <div className='row'>
                                         <div className='col'>
                                             Date: {this.props.card.date}

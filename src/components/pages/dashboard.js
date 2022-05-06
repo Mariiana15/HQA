@@ -9,7 +9,7 @@ import Elist from '../elements/elist';
 import IconAux from '../elements/icon-menu-aux';
 import { pageDash } from '../../actions';
 import Home from './home';
-
+import { GetHackToken, RefreshToken, DeleteToken } from '../../apis/configBack'
 
 
 
@@ -29,6 +29,14 @@ class Dashboard extends React.Component {
         }
     }
 
+    componentDidUpdate() {
+        console.log("actualiza")
+        let currentTimestamp = Date.now()
+        if (currentTimestamp > Number(this.props.token.AtExpires) * 1000) {
+            this.props.RefreshToken(this.props.token.AccessToken, this.props.token.RefreshToken)
+            // this.props.DeleteToken(this.props.token.AccessToken)
+        }
+    }
     render() {
         let variables = this.variables();
         return (
@@ -62,7 +70,10 @@ class Dashboard extends React.Component {
 
 
 const mapStateToProps = state => {
-    return { page: state.streams.page };
+    return {
+        page: state.streams.page,
+        token: state.streams.token,
+    };
 };
 
-export default connect(mapStateToProps, { pageDash })(Dashboard);
+export default connect(mapStateToProps, { pageDash, GetHackToken, RefreshToken, DeleteToken })(Dashboard);

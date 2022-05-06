@@ -6,13 +6,13 @@ import {
     ASANA_SESCTIONS,
 } from "../actions/types";
 import axios from "axios";
-import config from '../actions/configuration.json'
+import config from '../components/utils/configuration.json'
 
 export const Code = () => async (dispatch) => {
    
-    const response = await axios.get(config.oauthAsanaCode, {
+    const response = await axios.get(config.asana.oauthAsanaCode, {
         headers: {
-            "Authorization": config.userBasic,
+            "Authorization": config.asana.userBasic,
         }
     }).then(({ data }) => { return data });
     dispatch({ type: ASANA_OAUTH, payload: response });
@@ -21,9 +21,9 @@ export const Code = () => async (dispatch) => {
 
 export const Oauth = (code, code_verifier) => async (dispatch) => {
     
-    const response = await axios.post(config.oauth2Asana, { code, code_verifier }, {
+    const response = await axios.post(config.asana.oauth2Asana, { code, code_verifier }, {
         headers: {
-            "Authorization": config.userBasic,
+            "Authorization": config.asana.userBasic,
         }
     }).then(({ data }) => { return data });
     dispatch({ type: ASANA_TOKEN, payload: response.token });
@@ -31,9 +31,9 @@ export const Oauth = (code, code_verifier) => async (dispatch) => {
 
 export const Projects = (token) => async (dispatch) => {
     
-    const response = await axios.get(config.asanaProjects, {
+    const response = await axios.get(config.asana.asanaProjects, {
         headers: {
-            "Authorization": config.userBasic,
+            "Authorization": config.asana.userBasic,
             token
         }
     }).then(({ data }) => { return data });
@@ -43,9 +43,9 @@ export const Projects = (token) => async (dispatch) => {
 
 export const Sections = (token, projectId) => async (dispatch) => {
     
-    const response = await axios.get(config.asanaSections, {
+    const response = await axios.get(config.asana.asanaSections, {
         headers: {
-            "Authorization": config.userBasic,
+            "Authorization": config.asana.userBasic,
             token,
             projectId
         }

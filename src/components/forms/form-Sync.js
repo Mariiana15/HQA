@@ -8,7 +8,12 @@ import '../styles/mariana.scss'
 import history from "../../history";
 import { Link } from 'react-router-dom';
 import { Oauth, Projects, Sections } from '../../apis/asana';
-import { asanaSetProjectId, asanaSetSectionId } from '../../actions'
+import { GetTasksRich } from '../../apis/webSocket';
+import { asanaSetProjectId, asanaSetSectionId, setTokenHack, setUS } from '../../actions'
+import { GetToken } from '../utils'
+import { GetProtocol } from '../../apis/configBack';
+
+
 class FormSync extends React.Component {
 
     state = {
@@ -18,12 +23,14 @@ class FormSync extends React.Component {
     componentDidMount() {
         let index = document.getElementById('bodyid');
         index.classList.add("body_form");
-
         const querystring = window.location.search;
         const params = new URLSearchParams(querystring);
         let code = params.get('code');
         if (code != undefined) {
+            let token = GetToken()
+            this.props.setTokenHack(token);
             this.props.Oauth(code, sessionStorage.getItem('code_verifier'));
+            this.props.GetProtocol(token.AccessToken, "tasks")
         }
     }
 
@@ -70,7 +77,11 @@ class FormSync extends React.Component {
     }
 
     Save() {
-        history.push("/dashboard");
+        
+        let ws = GetTasksRich(this.props.asanaToken, this.props.asanaSectionId, this.props.protocol.protocol, this)
+        this.timeout = setTimeout((ws) => {
+            ws.close()
+        }, this.props.protocol.timer)
     }
 
 
@@ -109,7 +120,7 @@ class FormSync extends React.Component {
                     <div class="row justify-content-md-center">
                         <div class="col-3">
                             <Link to="/dashboard">
-                                <div className="btn btn__primary" ><p>Guardar</p></div>
+                                <div className="btn btn__primary" onClick={() => { this.Save() }} ><p>Guardar</p></div>
                             </Link>
                         </div>
                     </div>
@@ -132,7 +143,10 @@ const mapStateToProps = state => {
         asanaToken: state.streams.asanaToken,
         asanaProjects: state.streams.asanaProjects,
         asanaSections: state.streams.asanaSections,
+        asanaSectionId: state.streams.asanaSectionId,
+        protocol: state.streams.protocol,
+        token: state.streams.token,
     };
 };
 
-export default connect(mapStateToProps, { Oauth, Projects, asanaSetProjectId, Sections, asanaSetSectionId })(FormSync);
+export default connect(mapStateToProps, { Oauth, Projects, asanaSetProjectId, Sections, asanaSetSectionId, setTokenHack, GetProtocol, setUS })(FormSync);
