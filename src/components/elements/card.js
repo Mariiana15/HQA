@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/card.scss';
 import '../styles/myStyle.scss';
-import images from '../utils/image.json'
 import i_alert from '../../images/ico_alert.png';
 import i_prod from '../../images/ico_prod.png';
 import i_busi from '../../images/ico_business.png';
@@ -13,13 +12,11 @@ class Card extends React.Component {
     state = {};
 
     componentDidMount() {
-        console.log(this.props.card)
     }
 
 
     selectCard(id) {
-        if (this.props.card_ != undefined && this.props.card_.idLast != undefined && this.props.card_.idLast !== id) {
-
+        if (this.props.card_ !== undefined && this.props.card_.idLast !== undefined && this.props.card_.idLast !== id) {
             let cardLast = document.getElementById(this.props.card_.idLast);
             cardLast.classList.remove("card_unit_select");
         }
@@ -35,14 +32,13 @@ class Card extends React.Component {
         let priority = this.props.card.priority > 0 && this.props.card.priority < 34 ? "progress-level-basic" : this.props.card.priority > 33 && this.props.card.priority < 67 ? "progress-level-medium" : "progress-level";
         let end = this.props.card.state === "close" ? "card_unit_ok" : "";
         let userStory = this.props.card.userStory.length > 65 ? this.props.card.userStory.substring(0, 65) + " ..." : this.props.card.userStory;
-        let name = this.props.card.name.length > 15 ? this.props.card.name.substring(0, 15)  : this.props.card.name;
-
+        let name = this.props.card.name.length > 15 ? this.props.card.name.substring(0, 15) : this.props.card.name;
 
         if (this.props.card) {
             return (
-                <div className='card_unit' onClick={() => { this.selectCard(this.props.card.id) }}>
-                    <div class={`clash-card barbarian ${end}`} id={this.props.card.id}>
-                        <div class="clash-card__image--barbarian">
+                <div className='card_unit' key={this.props.card.id} onClick={() => { this.selectCard(this.props.card.id) }}>
+                    <div className={`clash-card barbarian ${end}`} id={this.props.card.id}>
+                        <div className="clash-card__image--barbarian">
                             <img src={image} alt="barbarian" />
                         </div>
                         <div className='container row_card'>
@@ -50,24 +46,24 @@ class Card extends React.Component {
                                 <div className='col-1'>
                                     <div className='row'>
                                         <div className='col'>
-                                            <div class="clash-card__level clash-card__level--barbarian">{this.props.card.typeUS}</div>
+                                            <div className="clash-card__level clash-card__level--barbarian">{this.props.card.typeUS}</div>
                                         </div>
                                     </div>
                                     <div className='row'>
                                         <div className='col'>
-                                            <div class="progress-bar">
-                                                <div class={priority} style={{ "width": `${this.props.card.priority}%` }}></div>
+                                            <div className="progress-bar">
+                                                <div className={priority} style={{ "width": `${this.props.card.priority}%` }}></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col-9 offset-md-2'>
-                                    <div class="clash-card__unit-name"> {name}-{this.props.card.typeTest}</div>
+                                    <div className="clash-card__unit-name"> {name}-{this.props.card.typeTest}</div>
                                 </div>
                             </div>
                             <div className='row'>
                                 <div className='col'>
-                                    <div class="clash-card__unit-description">
+                                    <div className="clash-card__unit-description">
                                         {userStory}
                                     </div>
                                 </div>
@@ -90,7 +86,7 @@ class Card extends React.Component {
                                 <div className='col-5'>
                                     <div className='row'>
                                         <div className='col'>
-                                            Date: {this.props.card.date}
+                                            Date: {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(Number(this.props.card.date) * 1000)}
                                         </div>
                                     </div>
                                 </div>

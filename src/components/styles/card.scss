@@ -376,8 +376,9 @@ $withCard: 45em;
 }
 
 .list_name {
-    padding-top: 0.5em;
-    font-size: 15px;
+    padding-top: 4px;
+    font-size: 18px;
+    font-weight: 800;
 }
 
 .border-top {
@@ -415,12 +416,14 @@ $withCard: 45em;
 
 .btn_menu_card {
     width: 70%;
-    transform: scale(0.85);
+    transform: scale(0.70);
+    background-color: #280463;
 }
 
 .btn_menu_card_date {
     width: 30%;
-    transform: scale(0.85);
+    transform: scale(0.70);
+    background-color: #280463;
 }
 .row_filter_a {
     position: relative;
@@ -529,4 +532,12 @@ $withCard: 45em;
             stroke-dashoffset: 0;
         }
     }
+}
+
+.empty_list{
+    top: 10vh;
+    position: relative;
+    font-size: 15px;
+    left: 5vw;
+    opacity: 0.4;
 }

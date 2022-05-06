@@ -14,15 +14,17 @@ class Construction extends React.Component {
 
     render() {
         return (
-            <div className='col'>
+            <div className='col loader_page_'>
                 <div className='dash_construction'>
                     <div className='container'>
-                        <h1>{this.props.message}</h1>
-                        <div className='container__bg'>
+                        <div className='loader_title'>
+                            {this.props.message}
+                        </div>
+                        <div className='container__bg loader_page'>
                             <svg className='circle_' >
-                                <circle cx="200" cy="200" r="200" 
+                                <circle cx="200" cy="200" r="200"
                                 />
-                                <circle cx="200" cy="200" r="200" 
+                                <circle cx="200" cy="200" r="200"
                                 />
                             </svg>
                             <div className='hexagons'>

@@ -69,7 +69,7 @@ class CardIndex extends React.Component {
     createIndex(arr) {
         let list = [];
         arr.forEach(element => {
-            list.push(<div class="index">{element}</div>);
+            list.push(<div key={element} className="index">{element}</div>);
         });
         return list;
     }
@@ -79,8 +79,8 @@ class CardIndex extends React.Component {
         return (
             <div className='row'>
                 <div className='col-3 offset-md-4'>
-                    <div class="container___" >
-                        <div class="container" id="card_cont"  >
+                    <div className="container___" >
+                        <div className="container" id="card_cont"  >
                             <span>
                                 {
                                     this.createIndex(this.state.arrayCurrent)

@@ -17,7 +17,7 @@ class Header extends React.Component {
         return (
                 <header className="header">
                     <h1 className="header__heading icono-logo">
-                        <a href="https://github.com/AbubakerSaeed/dashboard-ui-n20" target="_blank" rel="noreferrer noopener">
+                        <a href="/" target="_blank" rel="noreferrer noopener">
                             <img src={logo} alt="..." className=""></img>
                         </a>
                     </h1>
@@ -29,13 +29,13 @@ class Header extends React.Component {
                     </div>
                     <div className="row justify-content-around header_row">
                         <div className="col-2 offset-md-1">
-                            <a href="#" className="header__link">{this.props.headers["hu"]}</a>
+                            <a href="/" className="header__link">{this.props.headers["hu"]}</a>
                         </div>
                         <div className="col-1 offset-md-5">
-                            <a href="#" className="header__link header_name">{this.props.headers["name"]}</a>
+                            <a href="/" className="header__link header_name">{this.props.headers["name"]}</a>
                         </div>
                         <div className="col offset-md-1">
-                            <a href="#" className="header__link">
+                            <a href="/" className="header__link">
                                 <img src={this.props.headers["logo"]} alt="..." className="header_profile"></img>
                             </a>
                         </div>

@@ -14,13 +14,13 @@ class ElementList extends React.Component {
     
     render() {
         return (
-            <li class="main__card" id={`elist${this.props.id}`} style={{ "--hue": styles.hue[Math.round(Math.random() * (9) + 1)] }} >
-                <div class="main__card-image-container">
-                    <img src={images.unsplash[Math.round(Math.random() * (9) + 1)]} alt="" class="main__card-image" />
+            <li className="main__card" id={`elist${this.props.id}`} style={{ "--hue": styles.hue[Math.round(Math.random() * (9) + 1)] }} >
+                <div className="main__card-image-container">
+                    <img src={images.unsplash[Math.round(Math.random() * (9) + 1)]} alt="" className="main__card-image" />
                 </div>
-                <h3 class="main__card-heading">{this.props.head}</h3>
-                <p class="main__card-heading-sub">{this.props.shead}</p>
-                <p class="main__card-heading-type">{this.props.etype}</p>
+                <h3 className="main__card-heading">{this.props.head}</h3>
+                <p className="main__card-heading-sub">{this.props.shead}</p>
+                <p className="main__card-heading-type">{this.props.etype}</p>
             </li>
 
         )

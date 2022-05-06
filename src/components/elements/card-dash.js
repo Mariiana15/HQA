@@ -16,22 +16,22 @@ class CardDash extends React.Component {
         return (
             <div className='row con_rw_col'>
                 <div className='row'>
-                    <div className='col-3 offset-md-2'>
-                        <hr class=" border-2 border-top " />
+                    <div className='col-2 offset-md-1'>
+                        <hr className=" border-2 border-top " />
                     </div>
-                    <div className='col-2 list_name'>
-                        <div>{this.props.tablero}</div>
+                    <div className='col-4 offset-md-1 list_name'>
+                        <div>{this.props.uss  && this.props.uss  !== "[]"? this.props.uss[0].projects[0].name : undefined}</div>
                     </div>
-                    <div className='col-3'>
-                        <hr class=" border-2 border-top " />
+                    <div className='col-2'>
+                        <hr className=" border-2 border-top " />
                     </div>
 
                 </div>
                 <div className='col-6 '>
-                    <ListCard  />
+                    <ListCard />
                 </div>
                 <div className='col-5'>
-                    <ListCard  test="2" />
+                    <ListCard test="2" />
                 </div>
             </div>
 
@@ -40,4 +40,10 @@ class CardDash extends React.Component {
 }
 
 
-export default connect()(CardDash);
+const mapStateToProps = state => {
+    return {
+        uss: state.streams.uss
+    };
+};
+
+export default connect(mapStateToProps, {})(CardDash);

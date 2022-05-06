@@ -9,7 +9,7 @@
   --hue: 15;
   --greyLight-2: #c8d0e7;
   --greyLight-3: #bec8e4;
-  --greyDark: #9baacf;
+  --greyDark: #bc9bcf;
   --primary_title:rgb(22, 17, 39);
 }
 
@@ -737,7 +737,7 @@ body {
     box-shadow: $shadow;
   }
   &:hover {
-    color: var(--white);
+    color: var(--greyLight-3);
   }
   &:active {
     box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
