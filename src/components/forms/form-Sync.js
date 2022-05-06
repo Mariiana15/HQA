@@ -33,8 +33,6 @@ class FormSync extends React.Component {
         }
     }
 
-
-
     loadProjects() {
 
         if (this.props.asanaToken && !this.state.project) {

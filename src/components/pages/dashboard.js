@@ -18,8 +18,10 @@ class Dashboard extends React.Component {
     state = {};
 
     componentDidMount() {
-        this.props.pageDash(<Loader message="Beginning ..."></Loader>);
 
+        let index = document.getElementById('bodyid');
+        index.classList.remove("body_form");
+        this.props.pageDash(<Loader message="Beginning ..."></Loader>);
         this.timeout = setTimeout(() => {
             this.props.pageDash(<Home></Home>);
         }, timerLoadPage)
