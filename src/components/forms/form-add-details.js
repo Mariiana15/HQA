@@ -17,9 +17,9 @@ class FormAddDetails extends React.Component {
     };
 
     componentDidMount() {
+      
         let index = document.getElementById('bodyid');
         index.classList.add("body_form");
-
     }
 
 

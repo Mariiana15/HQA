@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import '../styles/dashboard.scss';
 import '../styles/myStyle.scss';
 import EleList from './element-list';
+import { setMenu } from '../../actions';
+import EForm from './eform'; 
 
 const opciones = [{ "id": "1", "head": "18 User story", "shead": "Analyze", "etype": "Show more" },
 { "id": "2", "head": "5 User story", "shead": "In testing", "etype": "Show more" },
@@ -67,6 +69,10 @@ class EList extends React.Component {
 
     }
 
+    CallForm() {
+        this.props.setMenu(<EForm title="Your Activity" typeWindow="subMenu" />)
+    }
+
     render() {
 
         return (
@@ -94,10 +100,16 @@ class EList extends React.Component {
                         </button>
                     </div>
                 </div>
+                <div className='btn call_form_menu' onClick={() => { this.CallForm() }}>
+                    <h3>Add Project</h3>
+                </div>
             </div>
         )
     }
 }
 
+const mapStateToProps = state => {
+    return {};
+};
 
-export default connect()(EList);
+export default connect(mapStateToProps, { setMenu })(EList);

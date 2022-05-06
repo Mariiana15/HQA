@@ -10,7 +10,7 @@
   --greyLight-2: #c8d0e7;
   --greyLight-3: #bec8e4;
   --greyDark: #bc9bcf;
-  --primary_title:rgb(22, 17, 39);
+  --primary_title: rgb(22, 17, 39);
 }
 
 $shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
@@ -699,8 +699,9 @@ body {
 .title-form {
   color: var(--primary_title);
   position: relative;
-  margin-bottom: 2em;
+  margin-bottom: 0.5em;
   font-weight: bold;
+  font-size: 35px;
 }
 
 .form-label {
@@ -745,6 +746,7 @@ body {
 }
 
 .icon_form {
+  z-index: -1;
   opacity: 0.1;
   transform: scale(0.6);
   bottom: 5em;
@@ -761,53 +763,52 @@ body {
 }
 
 /////icon chip
-button{
-  cursor:pointer;
+button {
+  cursor: pointer;
 }
-.chip-group{
-  display:flex;
-  flex-wrap:wrap;
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
 }
 .chip.chip-checkbox > .chip-add-icon::after {
-  content:"add"
+  content: "add";
 }
 .chip.chip-checkbox.active > .chip-add-icon::after {
-  content:"done"
+  content: "done";
 }
 .chip > * {
-  margin-right:20%;
-  margin-left:-2px;
+  margin-right: 20%;
+  margin-left: -2px;
   color: #000000;
-  align-self:center;
-
-
+  align-self: center;
 }
 .chip input {
   display: none;
 }
 .chip.chip-checkbox,
 .chip.chip-toggle,
-.chip.clickable{
+.chip.clickable {
   cursor: pointer;
 }
 .chip.active {
   background-color: var(--primary);
-  border-color:#b62dec;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.12)
+  border-color: #b62dec;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
 }
-.chip:hover, .chip:focus {
+.chip:hover,
+.chip:focus {
   background-color: #e3e2e2;
 }
-.chip:active:focus{
-  background-color: #d3d2d2;  
+.chip:active:focus {
+  background-color: #d3d2d2;
 }
-.chip button{
-  border:none;
-  margin-top:0;
-  margin-bottom:0;
-  padding:0;
-  background:none;
-  display:inline-flex;
+.chip button {
+  border: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  background: none;
+  display: inline-flex;
 }
 .chip {
   transition: all 0.3s ease-in-out;
@@ -815,10 +816,10 @@ button{
   border-radius: 30px;
   border: 1px solid #d3d2d2;
   display: inline-flex;
-  align-items:center;
+  align-items: center;
   padding: 4px 6px 4px 6px;
-  margin-right:6px;
-  margin-bottom:6px;
+  margin-right: 6px;
+  margin-bottom: 6px;
   width: 10em;
 }
 .chip i.material-icons {
@@ -827,20 +828,39 @@ button{
   -moz-osx-font-smoothing: grayscale;
 }
 
-.form_buttons{
-width: 20px ;
+.form_buttons {
+  width: 20px;
 }
 
-.form_HU{
-  margin-top: 10% ;
-  
-  }
-  .form_HU_1{
-    margin-bottom: 2em ;
-    
-    }
+.form_HU {
+  margin-top: 10%;
+}
+.form_HU_1 {
+  margin-bottom: 2em;
+}
 
-  .padding-center-lef{
+.padding-center-lef {
+  margin-top: 5%;
+}
 
-    margin-top: 5%;
+.form_sub_menu {
+  .title-form {
+    color: var(--primary);
+    position: relative;
+    margin-bottom: 2em;
+    font-weight: bold;
+    text-align: center;
   }
+  .form-label {
+    font-weight: 400;
+    font-size: var(--size);
+    color: rgb(242, 238, 245);
+  }
+  .control_integration{
+    visibility: visible;
+  }
+}
+
+.control_integration{
+  visibility: hidden;
+}

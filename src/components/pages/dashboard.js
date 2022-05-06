@@ -7,7 +7,7 @@ import Header from '../elements/header';
 import Menu from '../elements/lateral-menu';
 import Elist from '../elements/elist';
 import IconAux from '../elements/icon-menu-aux';
-import { pageDash } from '../../actions';
+import { pageDash, setMenu } from '../../actions';
 import Home from './home';
 import { GetHackToken, RefreshToken, DeleteToken } from '../../apis/configBack'
 import Loader from './loader'
@@ -22,6 +22,7 @@ class Dashboard extends React.Component {
         let index = document.getElementById('bodyid');
         index.classList.remove("body_form");
         this.props.pageDash(<Loader message="Beginning ..."></Loader>);
+        this.props.setMenu( <Elist title="Your Activity" />);
         this.timeout = setTimeout(() => {
             this.props.pageDash(<Home></Home>);
         }, timerLoadPage)
@@ -59,8 +60,8 @@ class Dashboard extends React.Component {
                                     // <EForm title="You Activity" />
                                     //<ELayout title="Urgent" text="You don't stop of to learn"/>
                                 }
-                                <Elist title="You Activity" />
-
+                                {this.props.menu}
+                               
                             </div>
                         </div>
                         <IconAux />
@@ -78,7 +79,8 @@ const mapStateToProps = state => {
     return {
         page: state.streams.page,
         token: state.streams.token,
+        menu: state.streams.menu,
     };
 };
 
-export default connect(mapStateToProps, { pageDash, GetHackToken, RefreshToken, DeleteToken })(Dashboard);
+export default connect(mapStateToProps, { pageDash, GetHackToken, RefreshToken, DeleteToken, setMenu })(Dashboard);

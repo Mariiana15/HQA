@@ -15,7 +15,8 @@ import {
   ASANA_SESCTION,
   TOKEN,
   PROTOCOL,
-  US
+  US,
+  MENU
 } from "../actions/types";
 
 const INTIAL_STATE = {
@@ -30,6 +31,7 @@ const INTIAL_STATE = {
   token: null,
   protocol: null,
   uss: null,
+  menu: null,
 };
 
 const streamReducer = (state = {}, action) => {
@@ -68,6 +70,8 @@ const streamReducer = (state = {}, action) => {
       return { ...state, token: action.payload };
     case US:
       return { ...state, uss: action.payload };
+    case MENU:
+      return { ...state, menu: action.payload };
 
 
 

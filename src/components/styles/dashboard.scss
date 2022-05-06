@@ -865,8 +865,6 @@ a:focus {
     width: 100%;
 }
 
-
-
 .loader_page_ {
     width: 50vw;
 }
@@ -879,4 +877,10 @@ a:focus {
     position: relative;
     left: 22vw;
     text-transform: uppercase;
+}
+
+.call_form_menu {
+    margin-left: 5vw;
+    margin-top: 1em;
+    color: var(--primary);
 }

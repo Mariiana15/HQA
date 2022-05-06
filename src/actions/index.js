@@ -15,7 +15,8 @@ import {
   TOKEN,
   ASANA_PROJECT,
   ASANA_SESCTION,
-  US
+  US, 
+  MENU
 } from "./types";
 
 export const signIn = (userId) => {
@@ -106,5 +107,12 @@ export const setTokenHack = (token) => {
   return {
     type: TOKEN,
     payload: token,
+  };
+};
+
+export const setMenu = (menu) => {
+  return {
+    type: MENU,
+    payload: menu,
   };
 };

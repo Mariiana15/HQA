@@ -14,13 +14,13 @@ class EForm extends React.Component {
 
     render() {
         return (
-            <div class="main__cards-container">
-                <div class="main__cards-container-heading-wrap">
-                    <h2 class="main__cards-container-heading ss-heading">{this.props.title}</h2>
+            <div className="main__cards-container">
+                <div className="main__cards-container-heading-wrap">
+                    <h2 className="main__cards-container-heading ss-heading">{this.props.title}</h2>
                 </div>
 
                 <div className='menu_aux_overflow'>
-                    <Formulario />
+                    <Formulario typeWindow={this.props.typeWindow} />
                 </div>
 
             </div>
