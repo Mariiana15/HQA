@@ -13,7 +13,6 @@ class Card extends React.Component {
     state = {};
 
     componentDidMount() {
-        console.log(this.props.card)
     }
 
 

@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
     componentDidUpdate() {
         console.log("actualiza")
         let currentTimestamp = Date.now()
-        if (currentTimestamp > Number(this.props.token.AtExpires) * 1000) {
+        if (this.props.token && currentTimestamp > Number(this.props.token.AtExpires) * 1000) {
             this.props.RefreshToken(this.props.token.AccessToken, this.props.token.RefreshToken)
             // this.props.DeleteToken(this.props.token.AccessToken)
         }
