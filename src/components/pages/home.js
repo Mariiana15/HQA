@@ -15,11 +15,9 @@ class Home extends React.Component {
     componentDidMount() {
     }
 
-
     render() {
         return (
             <div className='col'>
-
                 <MainCard />
                 <CardFilter />
                 <CardDash tablero="Tablero Mi primera prueba" />

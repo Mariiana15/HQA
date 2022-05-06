@@ -6,15 +6,32 @@ import logo from '../../images/logo3.png';
 import Circle from '../elements/circle-icon';
 import { Code } from '../../apis/asana';
 
-import { GetHackToken, RefreshToken, DeleteToken, GetProtocol } from '../../apis/configBack'
 
 
 class Sync extends React.Component {
-    state = {
+    state = { 
     };
+
     componentDidMount() {
         this.props.Code();
-    }
+      
+            const ws = new WebSocket('ws://localhost:3000/app')
+            ws.onopen = () => {
+                // on connecting, do nothing but log it to the console
+                console.log('connected')
+            }
+            ws.onmessage = evt => {
+                // listen to data sent from the websocket server
+              //  const message = JSON.parse(evt.data)
+                //this.setState({ dataFromServer: message })
+                console.log(evt)
+            }
+            ws.onclose = () => {
+                console.log('disconnected')
+                // automatically try to reconnect on connection loss
+            }
+       
+        }
 
     getCodeVerifier() {
         sessionStorage.setItem("code_verifier", this.props.asanaOauth.code_verifier)
@@ -47,11 +64,10 @@ class Sync extends React.Component {
         return ch_icon;
     }
 
-
     render() {
         let ch_icon = this.elementXs();
         return (
-            <div className="sync" websocket={this.ws} >
+            <div className="sync" >
                 <div className="container">
                     <div className="row padding-center justify-content-start ">
                         <div className="col-md-3 col-xs-12">
@@ -74,7 +90,7 @@ class Sync extends React.Component {
                             </div>
                             <div className="row ">
                                 <div className="col icon_sync_oauth_disable_jira">
-                                    <a onClick={() => { }}>
+                                    <a>
                                         <Circle container={`container ${ch_icon["xs_circle_jira"]}`} h2="Jira" h3="Sincroniza tu tablero" img="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" imgClass={ch_icon["xs_jira"]} ></Circle>
                                     </a>
                                 </div>
@@ -82,7 +98,7 @@ class Sync extends React.Component {
 
                             <div className="row ">
                                 <div className="col icon_sync_oauth_disable">
-                                    <a onClick={() => { }}>
+                                    <a>
                                         <Circle container={`container ${ch_icon["xs_circle_trello"]}`} h2="Trello" h3="Sincroniza tu tablero" img="https://icons-for-free.com/download-icon-logo+social+trello+icon-1320194696754621808_512.png" imgClass={ch_icon["xs_trello"]} ></Circle>
                                     </a>
                                 </div>
@@ -100,13 +116,8 @@ class Sync extends React.Component {
 
 
 const mapStateToProps = state => {
-    return {
-        asanaOauth: state.streams.asanaOauth,
-        token: state.streams.token,
-        protocol: state.streams.protocol,
-       
-    };
+    return { asanaOauth: state.streams.asanaOauth };
 };
 
-export default connect(mapStateToProps, { Code, GetHackToken, RefreshToken, DeleteToken, GetProtocol })(Sync);
+export default connect(mapStateToProps, { Code })(Sync);
 

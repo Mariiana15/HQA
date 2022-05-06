@@ -12,7 +12,10 @@ import {
   ASANA_PROJECTS,
   ASANA_PROJECT,
   ASANA_SESCTIONS,
-  ASANA_SESCTION
+  ASANA_SESCTION,
+  TOKEN,
+  PROTOCOL,
+  US
 } from "../actions/types";
 
 const INTIAL_STATE = {
@@ -23,7 +26,10 @@ const INTIAL_STATE = {
   asanaProjects: null,
   asanaProjectId: null,
   asanaSections: null,
-  asanaSectionId: null
+  asanaSectionId: null,
+  token: null,
+  protocol: null,
+  uss: null,
 };
 
 const streamReducer = (state = {}, action) => {
@@ -55,6 +61,14 @@ const streamReducer = (state = {}, action) => {
       return { ...state, asanaSections: action.payload };
     case ASANA_SESCTION:
       return { ...state, asanaSectionId: action.payload };
+
+    case PROTOCOL:
+      return { ...state, protocol: action.payload };
+    case TOKEN:
+      return { ...state, token: action.payload };
+    case US:
+      return { ...state, uss: action.payload };
+
 
 
     case DELETE_STREAM:
