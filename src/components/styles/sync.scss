@@ -316,11 +316,14 @@ input[type='radio']:checked + label{
 .h1-intro{
     color: #9f8de0;
     padding-right: 70%;
+    font-weight: 700;
+    font-size: 40px;
 }
 
 .h3-intro{
     color: #d4cbf7;
     padding-left: 4%;
+    font-size: 26px;
 }
 
 .icono-sync{
@@ -378,7 +381,7 @@ input[type='radio']:checked + label{
 .icon-bg{
     position: absolute;
     opacity: 0.15;
-    bottom:  15%;
+    bottom:  28%;
 }
 
 .icon-bg-xs{
@@ -386,24 +389,12 @@ input[type='radio']:checked + label{
     opacity: 0.15;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Nunito:400,700,300);
-*{
-  box-sizing:border-box
-}
 body{
-  font-family: 'Nunito', sans-serif;
   .page{
     margin:0 auto;
     width:920px;
   }
-  .content{
-    width:33.33%;
-    display:inline-block;
-    margin:0 auto;
-    position:relative;
-    height:100vh;
-    max-width:300px;
-  }
+  
   %layer{
     width:600px;
     height:200px;
@@ -596,4 +587,10 @@ body{
   a{
     padding-left: 25%;
   }
+}
+
+.sync_haq{
+  position: relative;
+  right: 17rem;
+  top: 3em;
 }

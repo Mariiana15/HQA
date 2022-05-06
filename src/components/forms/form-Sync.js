@@ -7,10 +7,12 @@ import '../styles/mariana.scss'
 
 import history from "../../history";
 import { Link } from 'react-router-dom';
-import { Oauth } from '../../apis/asana';
+import { Oauth, Projects, Sections } from '../../apis/asana';
+import { asanaSetProjectId, asanaSetSectionId } from '../../actions'
 class FormSync extends React.Component {
 
     state = {
+        project: false, indexProject: -1, indexSection: -1
     };
 
     componentDidMount() {
@@ -23,6 +25,48 @@ class FormSync extends React.Component {
         if (code != undefined) {
             this.props.Oauth(code, sessionStorage.getItem('code_verifier'));
         }
+    }
+
+
+
+    loadProjects() {
+        if (this.props.asanaToken && !this.state.project) {
+            this.props.Projects(this.props.asanaToken)
+            this.setState({ project: true })
+        }
+    }
+
+    projects() {
+        if (this.props.asanaProjects) {
+            let list = [];
+            this.props.asanaProjects.forEach((element, index) => {
+                list.push(<option key={index} value={element.gid}>{element.name}</option>)
+            })
+            return list;
+        }
+    }
+
+    sections() {
+        if (this.props.asanaSections) {
+            let list = [];
+            this.props.asanaSections.forEach((element, index) => {
+                list.push(<option key={index} value={element.gid}>{element.name}</option>)
+            })
+            return list;
+        }
+    }
+
+    selectProject(e) {
+        let index = e.target.selectedIndex;
+        this.setState({ indexProject: index });
+        this.props.asanaSetProjectId(this.props.asanaProjects[index].gid);
+        this.props.Sections(this.props.asanaToken, this.props.asanaProjects[index].gid);
+    }
+
+    selectSection(e) {
+        let index = e.target.selectedIndex;
+        this.setState({ indexSection: index });
+        this.props.asanaSetSectionId(this.props.asanaSections[index].gid);
     }
 
     Save() {
@@ -44,20 +88,18 @@ class FormSync extends React.Component {
                         <div >
                             <div className="mb-3">
                                 <div for="exampleFormControlInput1" className=" form_label form-label">Selecciona el tablero a trabajar</div>
-                                <select className="form-select __input" required aria-label="select example">
-                                    <option value="">Selecciona una opcion</option>
-                                    <option value="1">Tablero A</option>
-                                    <option value="2">Tablero B</option>
-                                    <option value="3">Tablero C</option>
+                                <select className="form-select __input" onFocus={() => { this.loadProjects() }} required aria-label="select example"
+                                    value={this.state.indexProject != -1 ? this.props.asanaProjects[this.state.indexProject].gid : null} onChange={(e) => { this.selectProject(e) }}
+                                >
+                                    {this.projects()}
                                 </select>
                             </div>
                             <div className="mb-3">
-                                <h3 for="exampleFormControlTextarea1" className=" form-label">Selecciona la lista o fila de trabajo</h3>
-                                <select className="form-select __input" required aria-label="select example">
-                                    <option value="">Selecciona una opcion</option>
-                                    <option value="1">Lista A</option>
-                                    <option value="2">Lista B</option>
-                                    <option value="3">Lista  C</option>
+                                <h3 for="exampleFormControlTextarea1" className=" form_label">Selecciona la lista o fila de trabajo</h3>
+                                <select className="form-select __input" required aria-label="select example"
+                                    value={this.state.indexSection != -1 ? this.props.asanaSections[this.state.indexSection].gid : null} onChange={(e) => { this.selectSection(e) }}
+                                >
+                                    {this.sections()}
                                 </select>
                                 <br></br>
                             </div>
@@ -65,8 +107,10 @@ class FormSync extends React.Component {
                     </div>
 
                     <div class="row justify-content-md-center">
-                        <div class="col-1">
-                            <div className="btn btn__primary" ><p>Guardar</p></div>
+                        <div class="col-3">
+                            <Link to="/dashboard">
+                                <div className="btn btn__primary" ><p>Guardar</p></div>
+                            </Link>
                         </div>
                     </div>
                     <div className="row ">
@@ -83,7 +127,12 @@ class FormSync extends React.Component {
 
 
 const mapStateToProps = state => {
-    return { asanaOauth: state.streams.asanaOauth };
+    return {
+        asanaOauth: state.streams.asanaOauth,
+        asanaToken: state.streams.asanaToken,
+        asanaProjects: state.streams.asanaProjects,
+        asanaSections: state.streams.asanaSections,
+    };
 };
 
-export default connect(mapStateToProps, { Oauth })(FormSync);
+export default connect(mapStateToProps, { Oauth, Projects, asanaSetProjectId, Sections, asanaSetSectionId })(FormSync);

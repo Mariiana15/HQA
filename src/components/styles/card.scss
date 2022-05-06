@@ -154,14 +154,17 @@ $withCard: 45em;
 
 .clash-card__unit-name {
     font-size: 20px;
-    color: black;
+    color: #350b3f;
     font-weight: 900;
     margin-bottom: 5px;
+    left: 4em;
+    position: relative;
 }
 
 .clash-card__unit-description {
     margin-bottom: 7px;
     padding-left: 5em;
+    color: #350b3f79;
 }
 
 .clash-card__unit-stats--barbarian {
@@ -310,7 +313,7 @@ $withCard: 45em;
     margin-left: 1em;
 }
 .row_card_main {
-    margin: 1.2em;
+    margin: 2em;
     h2{
         font-size: 2.5em;
         font-weight: 900;
@@ -388,8 +391,8 @@ $withCard: 45em;
 }
 
 .icon_priority {
-    top: 0.3em;
-    left: -0.8em;
+    top: 1.5em;
+    left: -0.5em;
     padding-left: 1.8em;
     position: relative;
 }
@@ -398,14 +401,14 @@ $withCard: 45em;
     position: relative;
 }
 .icon_discovery {
-    top: 0.3em;
+    top: 0.8em;
     left: -0.2em;
     padding-left: 1.2em;
     position: relative;
 }
 .icon_date {
-    top: 0.1em;
-    left: -0.2em;
+    top: 0.6em;
+    left: 0.2em;
     padding-left: 1.2em;
     position: relative;
 }

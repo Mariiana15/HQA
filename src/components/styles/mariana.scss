@@ -2,7 +2,7 @@
 
 :root {
   --primary-light: #8abdff;
-  --primary: #6453a3;
+  --primary: #b62dec;
   --primary-dark: #9f78e7;
   --white: #ffffff;
   --greyLight-1: #e4ebf5;
@@ -10,6 +10,7 @@
   --greyLight-2: #c8d0e7;
   --greyLight-3: #bec8e4;
   --greyDark: #9baacf;
+  --primary_title:rgb(22, 17, 39);
 }
 
 $shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
@@ -696,7 +697,7 @@ body {
 }
 
 .title-form {
-  color: var(--primary);
+  color: var(--primary_title);
   position: relative;
   margin-bottom: 2em;
   font-weight: bold;
@@ -774,9 +775,12 @@ button{
   content:"done"
 }
 .chip > * {
-  margin-right:2px;
-  margin-left:2px;
-  color: #757373;
+  margin-right:20%;
+  margin-left:-2px;
+  color: #000000;
+  align-self:center;
+
+
 }
 .chip input {
   display: none;
@@ -787,8 +791,8 @@ button{
   cursor: pointer;
 }
 .chip.active {
-  background-color: #d3d2d2;
-  border-color:#c3c2c2;
+  background-color: var(--primary);
+  border-color:#b62dec;
   box-shadow: 0 1px 1px rgba(0,0,0,0.12)
 }
 .chip:hover, .chip:focus {
@@ -815,9 +819,28 @@ button{
   padding: 4px 6px 4px 6px;
   margin-right:6px;
   margin-bottom:6px;
+  width: 10em;
 }
 .chip i.material-icons {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.form_buttons{
+width: 20px ;
+}
+
+.form_HU{
+  margin-top: 10% ;
+  
+  }
+  .form_HU_1{
+    margin-bottom: 2em ;
+    
+    }
+
+  .padding-center-lef{
+
+    margin-top: 5%;
+  }

@@ -6,18 +6,7 @@ import '../styles/myStyle.scss';
 import Header from '../elements/header';
 import Menu from '../elements/lateral-menu';
 import Elist from '../elements/elist';
-import EForm from '../elements/eform';
-import ELayout from '../elements/elayout';
-
-import i_alert from '../../images/ico_alert.png';
-import MainCard from '../elements/card-main';
-
-import FilterCard from '../elements/card-filter';
-
 import IconAux from '../elements/icon-menu-aux';
-import CardFilter from '../elements/card-filter';
-import CardIndex from '../elements/card-index';
-import CardDash from '../elements/card-dash';
 import { pageDash } from '../../actions';
 import Home from './home';
 

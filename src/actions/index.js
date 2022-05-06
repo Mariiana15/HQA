@@ -11,7 +11,10 @@ import {
 
 
   MAIN_CARD,
-  PAGE_DASH
+  PAGE_DASH,
+
+  ASANA_PROJECT,
+  ASANA_SESCTION
 } from "./types";
 
 export const signIn = (userId) => {
@@ -75,3 +78,18 @@ export const pageDash = (page) => {
     payload: page,
   };
 };
+
+export const asanaSetProjectId = (id) => {
+  return {
+    type: ASANA_PROJECT,
+    payload: id,
+  };
+};
+
+export const asanaSetSectionId = (id) => {
+  return {
+    type: ASANA_SESCTION,
+    payload: id,
+  };
+};
+
