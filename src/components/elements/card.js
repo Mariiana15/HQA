@@ -34,7 +34,7 @@ class Card extends React.Component {
         let userStory = this.props.card.userStory.length > 65 ? this.props.card.userStory.substring(0, 65) + " ..." : this.props.card.userStory;
         let name = this.props.card.name.length > 15 ? this.props.card.name.substring(0, 15) : this.props.card.name;
 
-        if (this.props.card) {
+        if (this.props.card && this.props.card !== undefined ) {
             return (
                 <div className='card_unit' key={this.props.card.id} onClick={() => { this.selectCard(this.props.card.id) }}>
                     <div className={`clash-card barbarian ${end}`} id={this.props.card.id}>
@@ -76,7 +76,7 @@ class Card extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-2'>
+                                <div className='col-3'>
                                     <div className='row'>
                                         <div className='col'>
                                             Scripts: {this.props.card.scripts}
