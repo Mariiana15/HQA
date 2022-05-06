@@ -1,13 +1,16 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css);
+
 :root {
   --primary-light: #8abdff;
-  --primary: #6453a3;
+  --primary: #b62dec;
   --primary-dark: #9f78e7;
   --white: #ffffff;
   --greyLight-1: #e4ebf5;
   --hue: 15;
   --greyLight-2: #c8d0e7;
   --greyLight-3: #bec8e4;
-  --greyDark: #9baacf;
+  --greyDark: #bc9bcf;
+  --primary_title:rgb(22, 17, 39);
 }
 
 $shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
@@ -32,7 +35,7 @@ html {
   }
 }
 
-body{
+body {
   background: white;
 }
 
@@ -694,7 +697,7 @@ body{
 }
 
 .title-form {
-  color: var(--primary);
+  color: var(--primary_title);
   position: relative;
   margin-bottom: 2em;
   font-weight: bold;
@@ -703,6 +706,7 @@ body{
 .form-label {
   font-weight: 400;
   font-size: var(--size);
+  color: black;
 }
 
 .dribbble {
@@ -733,7 +737,7 @@ body{
     box-shadow: $shadow;
   }
   &:hover {
-    color: var(--white);
+    color: var(--greyLight-3);
   }
   &:active {
     box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
@@ -748,6 +752,95 @@ body{
   right: 5em;
 }
 
-.body_form{
+.body_form {
   background: white;
 }
+
+.form_col_details {
+  margin-top: 5%;
+}
+
+/////icon chip
+button{
+  cursor:pointer;
+}
+.chip-group{
+  display:flex;
+  flex-wrap:wrap;
+}
+.chip.chip-checkbox > .chip-add-icon::after {
+  content:"add"
+}
+.chip.chip-checkbox.active > .chip-add-icon::after {
+  content:"done"
+}
+.chip > * {
+  margin-right:20%;
+  margin-left:-2px;
+  color: #000000;
+  align-self:center;
+
+
+}
+.chip input {
+  display: none;
+}
+.chip.chip-checkbox,
+.chip.chip-toggle,
+.chip.clickable{
+  cursor: pointer;
+}
+.chip.active {
+  background-color: var(--primary);
+  border-color:#b62dec;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12)
+}
+.chip:hover, .chip:focus {
+  background-color: #e3e2e2;
+}
+.chip:active:focus{
+  background-color: #d3d2d2;  
+}
+.chip button{
+  border:none;
+  margin-top:0;
+  margin-bottom:0;
+  padding:0;
+  background:none;
+  display:inline-flex;
+}
+.chip {
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+  border-radius: 30px;
+  border: 1px solid #d3d2d2;
+  display: inline-flex;
+  align-items:center;
+  padding: 4px 6px 4px 6px;
+  margin-right:6px;
+  margin-bottom:6px;
+  width: 10em;
+}
+.chip i.material-icons {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.form_buttons{
+width: 20px ;
+}
+
+.form_HU{
+  margin-top: 10% ;
+  
+  }
+  .form_HU_1{
+    margin-bottom: 2em ;
+    
+    }
+
+  .padding-center-lef{
+
+    margin-top: 5%;
+  }

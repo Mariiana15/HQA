@@ -10,15 +10,19 @@ import IconAux from '../elements/icon-menu-aux';
 import { pageDash } from '../../actions';
 import Home from './home';
 import { GetHackToken, RefreshToken, DeleteToken } from '../../apis/configBack'
+import Loader from './loader'
 
-
-
+const timerLoadPage = 5500
 class Dashboard extends React.Component {
 
     state = {};
 
     componentDidMount() {
-        this.props.pageDash(<Home></Home>);
+        this.props.pageDash(<Loader message="Beginning ..."></Loader>);
+
+        this.timeout = setTimeout(() => {
+            this.props.pageDash(<Home></Home>);
+        }, timerLoadPage)
     }
 
     variables() {
@@ -47,7 +51,6 @@ class Dashboard extends React.Component {
                     <div className='container cont_row_col main '>
                         <div className='row'>
                             {this.props.page}
-                            <div></div>
                             <div className='col main__col-2 menu_On' id="menu">
                                 {
                                     // <Elist title="You Activity"/>

@@ -21,6 +21,7 @@ class EList extends React.Component {
     }
 
     nextElement() {
+
         let list = document.getElementById('elist');
         if (this.state.index + 2 < list.childElementCount) {
             let element = document.getElementById('elist1');
@@ -30,11 +31,11 @@ class EList extends React.Component {
             index = document.getElementById('indexElement' + (this.state.index + 1));
             index.classList.remove("index_menu_card");
             this.setState({ index: this.state.index + 1 });
-
         }
     }
 
     lastElement() {
+
         let list = document.getElementById('elist');
         if (this.state.index > 1) {
             let index = document.getElementById('indexElement' + (this.state.index + 1));
@@ -49,9 +50,10 @@ class EList extends React.Component {
     }
 
     createOptions() {
+
         let list = [];
         opciones.forEach(element => {
-            list.push(<EleList id={element.id} head={element.head} shead={element.shead} etype={element.etype} />);
+            list.push(<EleList key={element.id} id={element.id} head={element.head} shead={element.shead} etype={element.etype} />);
         });
         return list;
     }
@@ -59,7 +61,7 @@ class EList extends React.Component {
     createIndicator() {
         let list = [];
         opciones.forEach((element, ind) => {
-            list.push(<span id={`indexElement${ind}`}></span>);
+            list.push(<span key={ind} id={`indexElement${ind}`}></span>);
         });
         return list;
 
@@ -68,37 +70,31 @@ class EList extends React.Component {
     render() {
 
         return (
-            <div class="main__cards-container">
-                <div class="main__cards-container-heading-wrap">
-                    <h2 class="main__cards-container-heading ss-heading">{this.props.title}</h2>
+            <div className="main__cards-container">
+                <div className="main__cards-container-heading-wrap">
+                    <h2 className="main__cards-container-heading ss-heading">{this.props.title}</h2>
                 </div>
-
-                <ul class="main__cards" id='elist'>
+                <ul className="main__cards" id='elist'>
                     {this.createOptions()}
                 </ul>
-
-                <div class="main__cards-pagination">
-                    <span class="ss-dots">
+                <div className="main__cards-pagination">
+                    <span className="ss-dots">
                         {this.createIndicator()}
                     </span>
-                    <div class="main__cards-buttons">
+                    <div className="main__cards-buttons">
                         <button onClick={() => { this.lastElement() }} className="btn_cards_change">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" className='change_image' >
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
                             </svg>
                         </button>
                         <button onClick={() => { this.nextElement() }} className="btn_cards_change">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" className='change_image' >
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                             </svg>
                         </button>
                     </div>
                 </div>
-
-
             </div>
-
-
         )
     }
 }

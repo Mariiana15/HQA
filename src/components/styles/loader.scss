@@ -15,15 +15,10 @@ $time: 3.5s;
         left: 60%;
         transform: translate3d(-50%, -50%, 0);
     }
-    h1 {
-        margin-top: 7%;
-        position: relative;
-        left: 13em;
-        width: 10em;
-    }
     .container {
         position: relative;
         height: 80vw;
+        width: 45vw;
         overflow: hidden;
         &__bg {
             width: 1920px;

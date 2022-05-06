@@ -1,0 +1,17 @@
+{
+    "technologies": [
+        "Interfaz",
+        "Servidor",
+        "Archivos json",
+        "BBDD",
+        "Docker"
+    ],
+    "language": [
+        "Ruby   ",
+        "Python",
+        "Java",
+        "PHP",
+        "Go",
+        "Javascript"
+    ]
+}
