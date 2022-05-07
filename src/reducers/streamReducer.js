@@ -16,7 +16,9 @@ import {
   TOKEN,
   PROTOCOL,
   US,
-  MENU
+  MENU,
+  OPENMENU,
+
 } from "../actions/types";
 
 const INTIAL_STATE = {
@@ -32,6 +34,7 @@ const INTIAL_STATE = {
   protocol: null,
   uss: null,
   menu: null,
+  flagMenu: null,
 };
 
 const streamReducer = (state = {}, action) => {
@@ -72,6 +75,8 @@ const streamReducer = (state = {}, action) => {
       return { ...state, uss: action.payload };
     case MENU:
       return { ...state, menu: action.payload };
+    case OPENMENU:
+      return { ...state, flagMenu: action.payload };
 
 
 

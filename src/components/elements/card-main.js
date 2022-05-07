@@ -25,8 +25,9 @@ class CardMain extends React.Component {
             let result = "";
             if (this.props.card_.result.message !== undefined) {
                 result = this.props.card_.result.detail.length > 120 ? this.props.card_.result.detail.substring(0, 150) + " ..." : this.props.card_.result.detail;
-
             }
+
+            let resultClass =result.length > 0 ? 'col-4 col_result offset-md-1': 'car_menu_On';
 
             return (
                 <div className='row row_card_main'>
@@ -85,7 +86,7 @@ class CardMain extends React.Component {
                         </div>
 
                     </div>
-                    <div className='col-4 col_result offset-md-1' style={{ visibility: result.length > 0 ? "visible" : "hidden" }}>
+                    <div className={resultClass}>
                         <div className='row' >
                             <div className='col'>
                                 <p className="main__sub"><span>Result:</span> <span>{this.props.card_.result.message}</span></p>

@@ -762,6 +762,18 @@ body {
   margin-top: 5%;
 }
 
+.menu_alert_img {
+  .clash-card__image--warn {
+    height: 0.1em;
+    img {
+      width: 4em;
+      position: relative;
+      top: -2em;
+      left: -2em;
+    }
+  }
+}
+
 /////icon chip
 button {
   cursor: pointer;
@@ -789,6 +801,8 @@ button {
 .chip.chip-toggle,
 .chip.clickable {
   cursor: pointer;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
 }
 .chip.active {
   background-color: var(--primary);
@@ -842,6 +856,27 @@ button {
 .padding-center-lef {
   margin-top: 5%;
 }
+.form_menu_tech {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  .title-form {
+    color: var(--primary);
+    position: relative;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    font-size: 27px;
+    text-align: center;
+  }
+  .form-label {
+    font-weight: 400;
+    font-size: var(--size);
+    color: rgb(242, 238, 245);
+  }
+}
+
+.form_tech_sec {
+  margin-top: 2em;
+}
 
 .form_sub_menu {
   .title-form {
@@ -856,11 +891,11 @@ button {
     font-size: var(--size);
     color: rgb(242, 238, 245);
   }
-  .control_integration{
+  .control_integration {
     visibility: visible;
   }
 }
 
-.control_integration{
+.control_integration {
   visibility: hidden;
 }

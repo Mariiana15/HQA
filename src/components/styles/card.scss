@@ -79,6 +79,18 @@ $withCard: 45em;
     }
 }
 
+.clash-card__image--warn {
+    height: 1em;
+    img {
+        width: 3em;
+        position: relative;
+        top: 0.7em;
+        left: 3.5em;
+    }
+}
+.clash-card__image--warn-off {
+    visibility: hidden;
+}
 .clash-card__image--archer {
     background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/archer-bg.jpg");
     img {
@@ -314,13 +326,12 @@ $withCard: 45em;
 }
 .row_card_main {
     margin: 2em;
-    h2{
+    h2 {
         font-size: 2.5em;
         font-weight: 900;
-      
     }
 }
-.col_result{
+.col_result {
     margin-top: 6em;
 }
 .main__heading {
@@ -416,13 +427,13 @@ $withCard: 45em;
 
 .btn_menu_card {
     width: 70%;
-    transform: scale(0.70);
+    transform: scale(0.7);
     background-color: #280463;
 }
 
 .btn_menu_card_date {
     width: 30%;
-    transform: scale(0.70);
+    transform: scale(0.7);
     background-color: #280463;
 }
 .row_filter_a {
@@ -534,7 +545,7 @@ $withCard: 45em;
     }
 }
 
-.empty_list{
+.empty_list {
     top: 10vh;
     position: relative;
     font-size: 15px;

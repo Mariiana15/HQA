@@ -18,7 +18,7 @@ export const TOKEN = 'TOKEN';
 export const PROTOCOL = 'PROTOCOL';
 export const US = 'US';
 export const MENU = 'MENU';
-
+export const OPENMENU = 'OPENMENU';
 
 
 // -----ASANA

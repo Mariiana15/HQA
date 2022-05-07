@@ -70,7 +70,7 @@ class EList extends React.Component {
     }
 
     CallForm() {
-        this.props.setMenu(<EForm title="Your Activity" typeWindow="subMenu" />)
+        this.props.setMenu(<EForm title="Your Activity" form="sync" typeWindow="subMenu" />)
     }
 
     render() {

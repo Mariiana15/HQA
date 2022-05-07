@@ -16,7 +16,8 @@ import {
   ASANA_PROJECT,
   ASANA_SESCTION,
   US, 
-  MENU
+  MENU,
+  OPENMENU
 } from "./types";
 
 export const signIn = (userId) => {
@@ -114,5 +115,12 @@ export const setMenu = (menu) => {
   return {
     type: MENU,
     payload: menu,
+  };
+};
+
+export const openMenu = (open) => {
+  return {
+    type: OPENMENU,
+    payload: open,
   };
 };

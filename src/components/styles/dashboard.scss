@@ -395,6 +395,17 @@ a:focus {
     transform: translateX(4rem);
 }
 
+.main__cards-container-form {
+    width: 52%;
+    border-radius: 8px;
+    padding: 3rem;
+    background: hsl(270, 50%, 11%);
+    box-shadow: 0 6px 16px 0 hsla(270, 30%, 3%, 0.4);
+    margin-left: auto;
+    transform: translateX(18rem);
+    background-image: var(--bg);
+}
+
 .main__cards-container-heading-wrap {
     display: flex;
     align-items: center;
@@ -850,6 +861,16 @@ a:focus {
 
 .menu_On {
     visibility: hidden;
+    z-index: -2;
+    transition: z-index 0.5s;
+    -webkit-transition: z-index 0.2s;
+}
+.car_menu_On {
+    height: 1em;
+    visibility: hidden;
+    z-index: -2;
+    transition: z-index 2s;
+    -webkit-transition: z-index 0.2s;
 }
 
 .btn_cards_change {
