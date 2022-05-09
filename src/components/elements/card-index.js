@@ -2,31 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/card.scss';
 import '../styles/myStyle.scss';
+import { setIndexProject } from '../../actions';
 
 class CardIndex extends React.Component {
 
     state = { current: 0, arrayCurrent: [1, 2, 3, 4, 5] };
 
     componentDidMount() {
+
         this.timeout = setTimeout(() => {
             this.loadPageCard();
         }, 2000)
-
     }
 
     loadPageCard() {
+
         let c = document.getElementById('card_cont')
         let indexs = Array.from(document.querySelectorAll('.index'))
-        console.log(c)
-        console.log(indexs)
         let cur = -1
         indexs.forEach((index, i) => {
             index.addEventListener('click', (e) => {
-                // clear
+
+                this.props.setIndexProject(i);
                 c.className = 'container'
                 void c.offsetWidth; // Reflow
                 c.classList.add('open')
-
                 if (this.state.arrayCurrent[4] > 9) { c.classList.add(`i${i + 1}${i + 1}`) }
                 else { c.classList.add(`i${i + 1}`) }
 
@@ -60,13 +60,13 @@ class CardIndex extends React.Component {
     }
 
     renderIndex(i) {
+
         this.setState({ arrayCurrent: [i - 2, i - 1, i, i + 1, i + 2] })
     }
 
 
-
-
     createIndex(arr) {
+
         let list = [];
         arr.forEach(element => {
             list.push(<div key={element} className="index">{element}</div>);
@@ -83,7 +83,7 @@ class CardIndex extends React.Component {
                         <div className="container" id="card_cont"  >
                             <span>
                                 {
-                                    this.createIndex(this.state.arrayCurrent)
+                                    this.createIndex(this.state.arrayCurrent.slice(0, this.props.uss ? this.props.uss.length : 5))
                                 }
                             </span>
                             <svg viewBox="0 0 100 100">
@@ -98,14 +98,15 @@ class CardIndex extends React.Component {
                     </div>
                 </div>
             </div>
-
         )
     }
 }
 
 const mapStateToProps = state => {
-    return { card_: state.streams.card };
+    return {
+        uss: state.streams.uss
+    };
 };
 
 
-export default connect(mapStateToProps)(CardIndex);
+export default connect(mapStateToProps, { setIndexProject })(CardIndex);

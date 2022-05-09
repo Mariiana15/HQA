@@ -22,13 +22,14 @@ class Dashboard extends React.Component {
         let index = document.getElementById('bodyid');
         index.classList.remove("body_form");
         this.props.pageDash(<Loader message="Beginning ..."></Loader>);
-        this.props.setMenu( <Elist title="Your Activity" />);
+        this.props.setMenu(<Elist title="Your Activity" />);
         this.timeout = setTimeout(() => {
             this.props.pageDash(<Home></Home>);
         }, timerLoadPage)
     }
 
     variables() {
+
         return {
             "hu": "10 User Stoy finalized",
             "name": "Vecindario",
@@ -37,6 +38,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidUpdate() {
+
         let currentTimestamp = Date.now()
         if (this.props.token && currentTimestamp > Number(this.props.token.AtExpires) * 1000) {
             this.props.RefreshToken(this.props.token.AccessToken, this.props.token.RefreshToken)
@@ -54,13 +56,7 @@ class Dashboard extends React.Component {
                         <div className='row'>
                             {this.props.page}
                             <div className='col main__col-2 menu_On' id="menu">
-                                {
-                                    // <Elist title="You Activity"/>
-                                    // <EForm title="You Activity" />
-                                    //<ELayout title="Urgent" text="You don't stop of to learn"/>
-                                }
                                 {this.props.menu}
-                               
                             </div>
                         </div>
                         <IconAux />

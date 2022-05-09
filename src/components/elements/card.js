@@ -26,7 +26,7 @@ class Card extends React.Component {
             cardLast.classList.remove("card_unit_select");
         }
         let card = document.getElementById(id);
-        if (card && card.classList != null) {
+        if (card) {
             card.classList.add("card_unit_select");
             this.props.card['idLast'] = id;
             this.props.mainCard(this.props.card);
@@ -42,10 +42,13 @@ class Card extends React.Component {
 
 
     addFormDescription() {
+
         this.props.openMenu(true);
-        this.props.setMenu(<EForm title="You should complete" form="tech" typeWindow="subMenu" alert="true" icon="warn" />)
+        this.props.setMenu(<EForm title="You should be complete" form="tech" typeWindow="subMenu" alert="true" icon="warn" />)
     }
+
     formMetrics() {
+
         this.props.openMenu(false);
         this.props.setMenu(<Elist title="Your Activity" />)
     }
@@ -62,7 +65,7 @@ class Card extends React.Component {
         </div> : null;
         return (
             <div className='card_unit' key={this.props.card.name} >
-                <div className={`clash-card barbarian ${end}`} id={this.props.card.id} onClick={() => { this.selectCard(this.props.card.id, this.props.card.addInfo) }}>
+                <div className={`clash-card barbarian ${end}`} id={this.props.card.gid} onClick={() => { this.selectCard(this.props.card.gid, this.props.card.addInfo) }}>
                     <div className="clash-card__image--barbarian">
                         <img src={image} alt="barbarian" />
                     </div>

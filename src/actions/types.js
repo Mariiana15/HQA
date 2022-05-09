@@ -19,6 +19,13 @@ export const PROTOCOL = 'PROTOCOL';
 export const US = 'US';
 export const MENU = 'MENU';
 export const OPENMENU = 'OPENMENU';
+export const FILTER = 'FILTER';
+export const FILTERSPRING = 'FILTERSPRING';
+export const ORDER = 'ORDER';
+export const INDEXPROJECT = 'INDEXPROJECT';
+
+
+
 
 
 // -----ASANA

@@ -11,10 +11,12 @@ class LateralMenu extends React.Component {
     state = {};
 
     componentDidMount() {
+        
         this.currentMenu = 'home'
     }
 
     changeMenu(menu) {
+
         if (menu === 'home')
             this.props.pageDash(<Home></Home>);
         else
@@ -49,7 +51,6 @@ class LateralMenu extends React.Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="sidebar__icon" id='sec' onClick={() => { this.changeMenu('sec') }}>
                         <div className='row '>
                             <div className='col-8'>
@@ -66,7 +67,6 @@ class LateralMenu extends React.Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="sidebar__icon" id='met' onClick={() => { this.changeMenu('met') }}>
                         <div className='row'>
                             <div className='col-8 '>
@@ -82,7 +82,6 @@ class LateralMenu extends React.Component {
 
                         </div>
                     </div>
-
                     <div className="sidebar__icon" id='tests' onClick={() => { this.changeMenu('tests') }}>
                         <div className='row'>
                             <div className='col-8'>
@@ -97,9 +96,6 @@ class LateralMenu extends React.Component {
                             </div>
                         </div>
                     </div>
-
-
-
                     <div className="sidebar__icon" id='integrations' onClick={() => { this.changeMenu('integrations') }}>
                         <div className='row '>
                             <div className='col-8'>
@@ -117,8 +113,6 @@ class LateralMenu extends React.Component {
                             </div>
                         </div>
                     </div>
-
-
                     <div className="sidebar__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />

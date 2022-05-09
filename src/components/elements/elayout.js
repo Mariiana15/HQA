@@ -15,6 +15,7 @@ class ELayout extends React.Component {
     render() {
         
         return (
+
             <div class="main__crossing-container" style={{"--bg":  `linear-gradient(120deg, hsla(26, 80%, 50%, 0.5), 10%, hsl(270, 50%, 11%) 60%), url(${images.unsplash[Math.round(Math.random() * (9) + 1)]})`}}>
                 <div class="main__crossing-current">
                     <p class="main__crossing-upper">
@@ -25,7 +26,6 @@ class ELayout extends React.Component {
                     </h3>
                 </div>
             </div>
-
         )
     }
 }

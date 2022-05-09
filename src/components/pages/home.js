@@ -16,11 +16,18 @@ class Home extends React.Component {
     }
 
     render() {
+
+        let listProject = null
+        if (this.props.uss) {
+            listProject = <div className='card_dash_list'>
+                <CardDash tablero="Tablero Mi primera prueba" current={this.props.uss[this.props.indexProject ? this.props.indexProject : 0]}  />
+            </div>
+        }
         return (
             <div className='col'>
                 <MainCard />
                 <CardFilter />
-                <CardDash tablero="Tablero Mi primera prueba" />
+                {listProject}
                 <CardIndex />
             </div>
         )
@@ -28,4 +35,12 @@ class Home extends React.Component {
 }
 
 
-export default connect()(Home);
+const mapStateToProps = state => {
+    return {
+        uss: state.streams.uss,
+        indexProject: state.streams.indexProject
+
+    };
+};
+
+export default connect(mapStateToProps, {})(Home);

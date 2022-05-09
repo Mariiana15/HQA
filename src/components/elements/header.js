@@ -14,6 +14,7 @@ class Header extends React.Component {
     }
 
     render() {
+
         return (
                 <header className="header">
                     <h1 className="header__heading icono-logo">
@@ -41,7 +42,6 @@ class Header extends React.Component {
                         </div>
                     </div>
                 </header>
-           
         )
     }
 }

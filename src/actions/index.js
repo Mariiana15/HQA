@@ -17,7 +17,11 @@ import {
   ASANA_SESCTION,
   US, 
   MENU,
-  OPENMENU
+  OPENMENU,
+  FILTER,
+  FILTERSPRING,
+  ORDER,
+  INDEXPROJECT
 } from "./types";
 
 export const signIn = (userId) => {
@@ -122,5 +126,33 @@ export const openMenu = (open) => {
   return {
     type: OPENMENU,
     payload: open,
+  };
+};
+
+export const filterSearch = (filter) => {
+  return {
+    type: FILTER,
+    payload: filter,
+  };
+};
+
+export const filterSpring = (filter) => {
+  return {
+    type: FILTERSPRING,
+    payload: filter,
+  };
+};
+
+export const orderStory = (order) => {
+  return {
+    type: ORDER,
+    payload: order,
+  };
+};
+
+export const setIndexProject = (index) => {
+  return {
+    type: INDEXPROJECT,
+    payload: index,
   };
 };

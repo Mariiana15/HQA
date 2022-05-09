@@ -18,6 +18,10 @@ import {
   US,
   MENU,
   OPENMENU,
+  FILTER,
+  FILTERSPRING,
+  ORDER,
+  INDEXPROJECT
 
 } from "../actions/types";
 
@@ -35,9 +39,13 @@ const INTIAL_STATE = {
   uss: null,
   menu: null,
   flagMenu: null,
+  filter: null,
+  filterSprings: null,
+  order: [],
+  indexProject: 0,
 };
 
-const streamReducer = (state = {}, action) => {
+const streamReducer = (state = { INTIAL_STATE }, action) => {
   switch (action.type) {
     case FETCH_STREAMS:
       return { ...state, ..._.mapKeys(action.payload, "id") };
@@ -77,7 +85,14 @@ const streamReducer = (state = {}, action) => {
       return { ...state, menu: action.payload };
     case OPENMENU:
       return { ...state, flagMenu: action.payload };
-
+    case FILTER:
+      return { ...state, filter: action.payload };
+    case FILTERSPRING:
+      return { ...state, filterSprings: action.payload };
+    case ORDER:
+      return { ...state, order: action.payload };
+    case INDEXPROJECT:
+      return { ...state, indexProject: action.payload };
 
 
     case DELETE_STREAM:

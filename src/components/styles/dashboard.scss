@@ -18,11 +18,14 @@ html {
 body {
     color: hsl(270, 10%, 80%);
     font-family: "Nunito", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 104vh;
+    min-height: 90vh;
     padding-top: 3rem;
     padding-left: 2rem;
     overflow-x: hidden;
     background: linear-gradient(110deg, rgb(22, 17, 39) 1%, hsl(253deg 40% 25%) 10%, white 250%);
+    overflow-x: hidden;
+    -ms-overflow-style: none; /* IE 11 */
+    scrollbar-width: none; /* Firefox 64 */
 }
 
 button {
@@ -390,9 +393,9 @@ a:focus {
     border-radius: 8px;
     padding: 3rem;
     background: hsl(270, 50%, 11%);
-    box-shadow: 0 6px 16px 0 hsla(270, 30%, 3%, 0.4);
+    box-shadow: 0 6px 16px 0 hsla(274, 64%, 96%, 0.4);
     margin-left: auto;
-    transform: translateX(4rem);
+    transform: translateX(6rem);
 }
 
 .main__cards-container-form {

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/sync.scss';
 import '../styles/myStyle.scss';
-import logo from '../../images/logo3.png';
 
 class IconCircle extends React.Component {
 
@@ -15,6 +14,7 @@ class IconCircle extends React.Component {
 
 
     render() {
+
         return (
             <div className={this.props.container} >
                 <div className='circle '>

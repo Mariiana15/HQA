@@ -53,9 +53,6 @@ class IconMenu extends React.Component {
                 </div>
             })
         }
-
-
-
         this.setState({ icon_state: !this.state.icon_state });
     }
 

@@ -6,43 +6,51 @@ import ListCard from '../elements/card-list';
 
 class CardDash extends React.Component {
 
-    state = {};
+    state = { };
 
     componentDidMount() {
+
     }
 
+    componentDidUpdate() {
+
+        /*if (this.props.uss && this.props.uss[this.props.indexProject ? this.props.indexProject : 0].length > this.state.numUS) {
+                    this.setState({ numUS: this.props.uss[this.props.indexProject].length });
+                }*/
+
+    }
 
     render() {
-        return (
-            <div className='row con_rw_col'>
+
+        if (this.props.current.storyUser ) {
+            return <div className='row con_rw_col' >
                 <div className='row'>
                     <div className='col-2 offset-md-1'>
                         <hr className=" border-2 border-top " />
                     </div>
                     <div className='col-4 offset-md-1 list_name'>
-                        <div>{this.props.uss  && this.props.uss  !== "[]"? this.props.uss[0].projects[0].name : undefined}</div>
+                        <div>{this.props.current.storyUser.length > 2 ? this.props.current.storyUser[0].projects[0].name + "-" + this.props.current.name : this.props.current.name}</div>
                     </div>
                     <div className='col-2'>
                         <hr className=" border-2 border-top " />
                     </div>
-
                 </div>
                 <div className='col-6 '>
-                    <ListCard />
+                    <ListCard storyUS={this.props.current.storyUser} />
                 </div>
                 <div className='col-5'>
-                    <ListCard test="2" />
+                    <ListCard typetUs="2" storyUS={this.props.current.storyUser} />
                 </div>
-            </div>
-
-        )
+            </div >
+        }
     }
 }
 
 
 const mapStateToProps = state => {
     return {
-        uss: state.streams.uss
+        uss: state.streams.uss,
+        indexProject: state.streams.indexProject,
     };
 };
 

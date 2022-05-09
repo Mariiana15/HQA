@@ -14,6 +14,8 @@
         "deleteToken": "http://localhost:8081/token/logout"
     },
     "webSocket": {
-        "protocol": "http://localhost:8081/hack/protocol"
-    }
+        "protocol": "http://localhost:8081/hack/protocol",
+        "service": "ws://localhost:8081/app"
+    },
+    "daysSpring": 7
 }

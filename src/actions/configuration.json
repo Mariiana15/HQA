@@ -1,9 +1,0 @@
-{
-    "serverBack":"http://localhost:8081",
-    "userBasic":"Basic VEZNOlRGbQ==",
-    "oauthAsanaCode":"http://localhost:8081/asana/code",
-    "oauth2Asana":"http://localhost:8081/asana/oauth",
-    "asanaProjects":"http://localhost:8081/asana/projects",
-    "asanaSections":"http://localhost:8081/asana/sections"
-    
-}

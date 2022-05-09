@@ -61,15 +61,16 @@ class EList extends React.Component {
     }
 
     createIndicator() {
+
         let list = [];
         opciones.forEach((element, ind) => {
             list.push(<span key={ind} id={`indexElement${ind}`}></span>);
         });
         return list;
-
     }
 
     CallForm() {
+        
         this.props.setMenu(<EForm title="Your Activity" form="sync" typeWindow="subMenu" />)
     }
 

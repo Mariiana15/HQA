@@ -26,6 +26,7 @@ class FormAddDetails extends React.Component {
     }
 
     Save() {
+        
         history.push("/dashboard");
     }
 

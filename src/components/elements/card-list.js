@@ -3,47 +3,79 @@ import { connect } from 'react-redux';
 import '../styles/card.scss';
 import '../styles/myStyle.scss';
 import Card from './card';
-import { mainCard } from '../../actions';
+import { mainCard, filterSearch, filterSpring } from '../../actions';
+import Config from '../utils/configuration.json';
+import { GetSortStory, GetSortStoryMay } from '../utils';
 
-/*const US = [{ "indexIm": "1", "typeUS": "Alert", "typeTest": "Test login Xss", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "1", "date": Date.now(), "progress": 15 },
-{ "tablero": "Mi tablero", "state": "close", "idUS": "US-123123", "indexIm": "2", "typeUS": "Process", "typeTest": "Test login SQL", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "3", "date": Date.now(), "progress": 25 },
-{ "indexIm": "3", "typeUS": "Business", "typeTest": "Test Injection SQL", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "2", "scripts": "1", "date": Date.now(), "progress": 35 },
-{ "indexIm": "1", "typeUS": "Alert", "typeTest": "Test login Xss", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "1", "date": Date.now(), "progress": 55 },
-{ "indexIm": "3", "typeUS": "Business", "typeTest": "Test login Xss", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "2", "scripts": "2", "date": Date.now(), "progress": 68 },
-{ "indexIm": "2", "typeUS": "Process", "typeTest": "Test Injection SQL", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "1", "date": Date.now(), "progress": 92 },
-]
+let daysSpring = Config.daysSpring;
 
-const US2 = [{ "state": "close", "result": "successful", "alertResult": "0", "resultDes": "las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr las pruebas no presentan ningun erorr", "resultScript": "script_1", "cardOK": "ok", "indexIm": "1", "typeUS": "Alert", "typeTest": "Test login Xss", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma Como usuario quiero validar si me encuentro registrado en la plataforma Como usuario quiero validar si me encuentro registrado en la plataforma Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "1", "date": Date.now(), "progress": 15 },
-{ "state": "close", "result": "successful", "alertResult": "0", "resultDes": "las pruebas no presentan ningun erorr", "resultScript": "script_1", "cardOK": "ok", "tablero": "Mi tablero", "state": "terminado", "indexIm": "2", "typeUS": "Process", "typeTest": "Test login SQL", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "3", "date": Date.now(), "progress": 25 },
-{ "state": "close", "result": "successful", "alertResult": "0", "resultDes": "las pruebas no presentan ningun erorr", "resultScript": "script_1", "cardOK": "ok", "indexIm": "3", "typeUS": "Business", "typeTest": "Test Injection SQL", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "2", "scripts": "1", "date": Date.now(), "progress": 35 },
-{ "state": "close", "result": "successful", "alertResult": "0", "resultDes": "las pruebas no presentan ningun erorr", "resultScript": "script_1", "cardOK": "ok", "indexIm": "1", "typeUS": "Alert", "typeTest": "Test login Xss", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "1", "date": Date.now(), "progress": 55 },
-{ "state": "close", "result": "successful", "alertResult": "0", "resultDes": "las pruebas no presentan ningun erorr", "resultScript": "script_1", "cardOK": "ok", "indexIm": "3", "typeUS": "Business", "typeTest": "Test login Xss", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "2", "scripts": "2", "date": Date.now(), "progress": 68 },
-{ "state": "close", "cardOK": "ok", "indexIm": "2", "typeUS": "Process", "typeTest": "Test Injection SQL", "US": "Como usuario quiero validar si me encuentro registrado en la plataforma", "alerts": "1", "scripts": "1", "date": Date.now(), "progress": 92 },
-]*/
 class CardList extends React.Component {
 
-    state = {};
+    state = { storyUser: null, storyDiv: null, storyFlag: false };
 
     componentDidMount() {
+
+        this.createUserStory();
     }
 
-    createCard(UserHistory, state) {
+    createUserStory() {
+
+        let typeStory = this.props.typetUs === '2' ? 'close' : 'open';
+        this.setState({ storyUser: { stories: this.props.storyUS, state: typeStory } })
+        this.setState({ storyDiv: this.createCard(this.props.storyUS, typeStory) })
+    }
+
+    orderOptions(stories) {
+
+        if (this.props.order && this.props.order.length > 0) {
+            this.props.order.map((element) => {
+                if (element === 'priority') { stories.sort(GetSortStoryMay("priority")) }
+                else if (element === 'discovery') { stories.sort(GetSortStoryMay("alerts")) }
+                else if (element === 'date') { stories.sort(GetSortStory("date")) }
+                return element
+            })
+        }
+        return stories
+    }
+
+    createCard(stories, state, filter, fillSpring) {
+
         let list = [];
         let empty_list = <div key="1" className='empty_list'>Don't have user story in state "{state}"</div>
-        if (UserHistory !== undefined && UserHistory != null) {
-            if (UserHistory === "[]") {
+        if (stories !== undefined && stories != null) {
+            if (stories === "[]") {
                 list.push(empty_list);
             }
             else {
-                UserHistory.map((element, index) => {
+                let index = 0;
+                stories = this.orderOptions(stories)
+                stories.map((element) => {
                     element["id"] = element.idUS ? element.idUS : "US-" + Date.now() + index;
                     if (element.state === state) {
-                        if (index === 0)
+                        if (filter) {
+                            if (element.name.includes(filter) || element.notes.includes(filter)) {
+                                list.push(<Card key={index} card={element}></Card>);
+                                index++;
+                            }
+                        }
+                        else if (fillSpring && fillSpring === "spring") {
+                            let d1 = new Date(Number(element.date) * 1000);
+                            let d2 = new Date();
+                            d2.setDate(d2.getDate() - daysSpring)
+                            if (d1 >= d2) {
+                                list.push(<Card key={index} card={element}></Card>);
+                                index++;
+                            }
+                        }
+                        else {
+                            list.push(<Card key={index} card={element}></Card>);
+                            index++;
+                        }
+                        if (index === 1)
                             this.props.mainCard(element)
-                        list.push(<Card key={index} card={element}></Card>);
                     }
                     return element
-                });
+                }, filter);
             }
             if (list.length === 0) {
                 list.push(empty_list);
@@ -52,11 +84,32 @@ class CardList extends React.Component {
         return list;
     }
 
+    componentDidUpdate() {
+
+        if (this.props.filter !== undefined) {
+            let typeStory = this.props.typetUs === '2' ? 'close' : 'open';;
+            let storyUS = this.props.storyUS;
+            let fill = this.props.filter
+            this.setState({ storyDiv: this.createCard(storyUS, typeStory, fill) })
+            this.props.filterSearch(undefined);
+        }
+        if (this.props.filterSprings !== undefined) {
+            let typeStory = this.props.typetUs === '2' ? 'close' : 'open';;
+            let storyUS = this.props.storyUS;
+            let fill = this.props.filterSprings
+            this.setState({ storyDiv: this.createCard(storyUS, typeStory, null, fill) })
+            this.props.filterSpring(undefined);
+        }
+
+    }
+
     render() {
+       
+
         return (
             <div className='list_card_unit' key="1">
                 <div className='list_cards'>
-                    {this.props.test === '2' ? this.createCard(this.props.uss, "close") : this.createCard(this.props.uss, "open")}
+                    {this.state.storyDiv}
                 </div>
             </div>
         )
@@ -67,11 +120,14 @@ class CardList extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        uss: state.streams.uss
+        filter: state.streams.filter,
+        filterSprings: state.streams.filterSprings,
+        order: state.streams.order,
+        uss: state.streams.uss,
     };
 };
 
-export default connect(mapStateToProps, { mainCard })(CardList);
+export default connect(mapStateToProps, { mainCard, filterSearch, filterSpring })(CardList);
 
 
 

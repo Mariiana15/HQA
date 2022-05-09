@@ -313,11 +313,10 @@ $withCard: 45em;
 }
 
 .list_cards {
-    height: 25em;
-    overflow: auto;
     width: 48em;
     padding-left: 3em;
     padding-top: 1em;
+    min-height: 12em;
 }
 
 .list_card_unit {
@@ -429,6 +428,9 @@ $withCard: 45em;
     width: 70%;
     transform: scale(0.7);
     background-color: #280463;
+}
+.active_btn{
+    opacity: 0.4;
 }
 
 .btn_menu_card_date {
@@ -546,9 +548,16 @@ $withCard: 45em;
 }
 
 .empty_list {
-    top: 10vh;
+    top: 3.5em;
     position: relative;
     font-size: 15px;
     left: 5vw;
     opacity: 0.4;
+}
+
+.card_dash_list{
+    height: 35vh;
+    max-height: 38vh;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox 64 */
 }

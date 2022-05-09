@@ -6,3 +6,28 @@ export const GetToken = () => {
     }
     return token
 }
+
+
+
+export const GetSortStory = (prop) => {
+
+    return function (a, b) {
+        if (a[prop] > b[prop]) {
+            return 1;
+        } else if (a[prop] < b[prop]) {
+            return -1;
+        }
+        return 0;
+    }
+}
+
+export const GetSortStoryMay = (prop) => {
+    return function (a, b) {
+        if (a[prop] < b[prop]) {
+            return 1;
+        } else if (a[prop] > b[prop]) {
+            return -1;
+        }
+        return 0;
+    }
+}

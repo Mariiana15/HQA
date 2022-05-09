@@ -18,6 +18,7 @@ class CardMain extends React.Component {
     }
 
     render() {
+
         if (this.props.card_ !== undefined && !this.props.car) {
             let image = this.props.card_.typeUS === "alert" ? i_alert : this.props.card_.typeUS === "business" ? i_busi : i_prod;
             let userStory = this.props.card_.userStory.length > 120 ? this.props.card_.userStory.substring(0, 240) + " ..." : this.props.card_.userStory;
@@ -26,7 +27,6 @@ class CardMain extends React.Component {
             if (this.props.card_.result.message !== undefined) {
                 result = this.props.card_.result.detail.length > 120 ? this.props.card_.result.detail.substring(0, 150) + " ..." : this.props.card_.result.detail;
             }
-
             let resultClass =result.length > 0 ? 'col-4 col_result offset-md-1': 'car_menu_On';
 
             return (
@@ -84,7 +84,6 @@ class CardMain extends React.Component {
                                 <p className="main__sub"><span>Date:</span> <span>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(Number(this.props.card_.date) * 1000)}</span></p>
                             </div>
                         </div>
-
                     </div>
                     <div className={resultClass}>
                         <div className='row' >
@@ -117,12 +116,12 @@ class CardMain extends React.Component {
                 </div >
             )
         }
-
         return (<div></div>)
     }
 }
 
 const mapStateToProps = state => {
+    
     return { card_: state.streams.card };
 };
 

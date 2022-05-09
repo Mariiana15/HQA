@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/dashboard.scss';
 import '../styles/myStyle.scss';
-import images from '../utils/image.json'
+import { filterSpring } from '../../actions'
 
 class NavCard extends React.Component {
 
@@ -20,16 +20,21 @@ class NavCard extends React.Component {
     }
 
     render() {
+
         return (
             <div className="topnav">
-                <a className="active" id='cardAll' href="#all" onClick={()=>{this.activateMenu('cardAll')}}>All</a>
-                <a href="#spring" id='cardSpring' onClick={()=>{this.activateMenu('cardSpring')}}>Spring</a>
+                <a className="active" id='cardAll' href="#all" onClick={() => { this.activateMenu('cardAll'); this.props.filterSpring('all') }}>All</a>
+                <a href="#spring" id='cardSpring' onClick={() => { this.activateMenu('cardSpring'); this.props.filterSpring('spring') }}>Spring</a>
             </div>
-
-
         )
     }
 }
 
 
-export default connect()(NavCard);
+const mapStateToProps = state => {
+    
+    return {
+    };
+};
+
+export default connect(mapStateToProps, { filterSpring })(NavCard);

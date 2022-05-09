@@ -1,6 +1,8 @@
+import config from '../components/utils/configuration.json'
+
 export const GetTasksRich = (token, objectId, protocol, that) => {
 
-    let ws = new WebSocket('ws://localhost:8081/app', protocol)
+    let ws = new WebSocket(config.webSocket.service, protocol)
     ws.onopen = () => {
         console.log("connect")
         let object = {
@@ -15,6 +17,7 @@ export const GetTasksRich = (token, objectId, protocol, that) => {
     ws.onmessage = evt => {
         const message = JSON.parse(evt.data)
         that.props.setUS(message)
+       console.log(message)
         //ws.send(JSON.stringify({ token: "key", message }))
     }
     ws.onclose = () => {

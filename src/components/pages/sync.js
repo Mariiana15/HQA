@@ -17,11 +17,13 @@ class Sync extends React.Component {
     }
 
     getCodeVerifier() {
+
         sessionStorage.setItem("code_verifier", this.props.asanaOauth.code_verifier)
         return this.props.asanaOauth.url;
     }
 
     elementXs() {
+
         let ch_icon = {
             "xs_asana": "icon-a",
             "xs_trello": "icon-trello",
@@ -49,6 +51,7 @@ class Sync extends React.Component {
 
 
     render() {
+
         let ch_icon = this.elementXs();
         return (
             <div className="sync" websocket={this.ws} >
@@ -74,7 +77,7 @@ class Sync extends React.Component {
                             </div>
                             <div className="row ">
                                 <div className="col icon_sync_oauth_disable_jira">
-                                    <a onClick={() => { }}>
+                                    <a  href='/' onClick={() => { }}>
                                         <Circle container={`container ${ch_icon["xs_circle_jira"]}`} h2="Jira" h3="Sincroniza tu tablero" img="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" imgClass={ch_icon["xs_jira"]} ></Circle>
                                     </a>
                                 </div>
@@ -82,7 +85,7 @@ class Sync extends React.Component {
 
                             <div className="row ">
                                 <div className="col icon_sync_oauth_disable">
-                                    <a onClick={() => { }}>
+                                    <a href='/' onClick={() => { }}>
                                         <Circle container={`container ${ch_icon["xs_circle_trello"]}`} h2="Trello" h3="Sincroniza tu tablero" img="https://icons-for-free.com/download-icon-logo+social+trello+icon-1320194696754621808_512.png" imgClass={ch_icon["xs_trello"]} ></Circle>
                                     </a>
                                 </div>

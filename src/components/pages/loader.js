@@ -13,6 +13,7 @@ class Construction extends React.Component {
 
 
     render() {
+        
         return (
             <div className='col loader_page_'>
                 <div className='dash_construction'>
