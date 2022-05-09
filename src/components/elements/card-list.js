@@ -21,7 +21,6 @@ class CardList extends React.Component {
     createUserStory() {
 
         let typeStory = this.props.typetUs === '2' ? 'close' : 'open';
-        this.setState({ storyUser: { stories: this.props.storyUS, state: typeStory } })
         this.setState({ storyDiv: this.createCard(this.props.storyUS, typeStory) })
     }
 
@@ -101,15 +100,21 @@ class CardList extends React.Component {
             this.props.filterSpring(undefined);
         }
 
+
     }
 
     render() {
-       
+
+        let Story = this.state.storyDiv
+        if (this.state.storyDiv && this.props.storyUS.length > this.state.storyDiv.length) {
+            let typeStory = this.props.typetUs === '2' ? 'close' : 'open';
+            Story = this.createCard(this.props.storyUS, typeStory)
+        }
 
         return (
             <div className='list_card_unit' key="1">
                 <div className='list_cards'>
-                    {this.state.storyDiv}
+                    {Story}
                 </div>
             </div>
         )
