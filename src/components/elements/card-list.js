@@ -106,10 +106,10 @@ class CardList extends React.Component {
     render() {
 
         let Story = this.state.storyDiv
-        if (this.state.storyDiv && this.props.storyUS.length > this.state.storyDiv.length) {
+      /*  if (this.state.storyDiv && this.props.storyUS.length > this.state.storyDiv.length && this.props.filterSprings === undefined && this.props.filter === undefined) {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';
             Story = this.createCard(this.props.storyUS, typeStory)
-        }
+        }*/
 
         return (
             <div className='list_card_unit' key="1">
