@@ -13,7 +13,7 @@ class App extends React.Component {
 
   componentDidMount() {
 
-    this.props.GetHackToken(1, "username", "password")
+    this.props.GetHackToken("123456789", "mariana@gmail.com")
   }
 
 

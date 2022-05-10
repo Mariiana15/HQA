@@ -19,9 +19,10 @@ class CardList extends React.Component {
     }
 
     createUserStory() {
-
+        
         let typeStory = this.props.typetUs === '2' ? 'close' : 'open';
         this.setState({ storyDiv: this.createCard(this.props.storyUS, typeStory) })
+        this.Story = this.createCard(this.props.storyUS, typeStory);
     }
 
     orderOptions(stories) {
@@ -89,32 +90,30 @@ class CardList extends React.Component {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';;
             let storyUS = this.props.storyUS;
             let fill = this.props.filter
-            this.setState({ storyDiv: this.createCard(storyUS, typeStory, fill) })
+            this.Story = this.createCard(storyUS, typeStory, null, fill)
             this.props.filterSearch(undefined);
         }
         if (this.props.filterSprings !== undefined) {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';;
             let storyUS = this.props.storyUS;
             let fill = this.props.filterSprings
-            this.setState({ storyDiv: this.createCard(storyUS, typeStory, null, fill) })
+            this.Story = this.createCard(storyUS, typeStory, null, fill)
             this.props.filterSpring(undefined);
         }
-
 
     }
 
     render() {
 
-        let Story = this.state.storyDiv
-      /*  if (this.state.storyDiv && this.props.storyUS.length > this.state.storyDiv.length && this.props.filterSprings === undefined && this.props.filter === undefined) {
+        if (this.Story && this.props.storyUS.length > this.Story.length) {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';
-            Story = this.createCard(this.props.storyUS, typeStory)
-        }*/
+            this.Story = this.createCard(this.props.storyUS, typeStory)
+        }
 
         return (
             <div className='list_card_unit' key="1">
                 <div className='list_cards'>
-                    {Story}
+                    {this.Story}
                 </div>
             </div>
         )

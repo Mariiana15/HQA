@@ -6,11 +6,11 @@ import {
 import axios from "axios";
 import config from '../components/utils/configuration.json'
 
-export const GetHackToken = (id, username, password) => async (dispatch) => {
+export const GetHackToken = (id, email) => async (dispatch) => {
 
-    const response = await axios.post(config.back.token, { id, username, password }, {
+    const response = await axios.post(config.back.token, { id, email }, {
         headers: {
-            "Authorization": config.back.userBasic,
+           // "Authorization": config.back.userBasic,
         }
     }).then(({ data }) => { return data });
     sessionStorage.setItem("token", response.AccessToken)
