@@ -7,15 +7,17 @@ import Header from '../elements/header';
 import Menu from '../elements/lateral-menu';
 import Elist from '../elements/elist';
 import IconAux from '../elements/icon-menu-aux';
-import { pageDash, setMenu } from '../../actions';
+import { pageDash, setMenu, setUS } from '../../actions';
 import Home from './home';
 import { GetHackToken, RefreshToken, DeleteToken } from '../../apis/configBack'
-import Loader from './loader'
+import Loader from './loader';
+import { GetTasksRichBD } from '../../apis/webSocket';
+import { GetProtocol } from '../../apis/configBack';
 
 const timerLoadPage = 5500
 class Dashboard extends React.Component {
 
-    state = {};
+    state = { us: null };
 
     componentDidMount() {
 
@@ -23,9 +25,26 @@ class Dashboard extends React.Component {
         index.classList.remove("body_form");
         this.props.pageDash(<Loader message="Beginning ..."></Loader>);
         this.props.setMenu(<Elist title="Your Activity" />);
-        this.timeout = setTimeout(() => {
+        this.timeout2 = setTimeout(() => {
+            this.props.GetProtocol(this.props.token.AccessToken, "tasks")
+        }, 1000)
+        this.timeout3 = setTimeout(() => {
+            this.getUserStory();
+        }, 2000)
+        this.timeout1 = setTimeout(() => {
             this.props.pageDash(<Home></Home>);
         }, timerLoadPage)
+
+
+    }
+
+    getUserStory() {
+
+        let ws = GetTasksRichBD(this.props.token.AccessToken, this.props.asanaSectionId, this.props.protocol.protocol, this)
+        this.timeout = setTimeout(() => {
+            this.setState({ us: this.props.uss })
+            ws.close()
+        }, this.props.protocol.timer, ws)
     }
 
     variables() {
@@ -41,7 +60,7 @@ class Dashboard extends React.Component {
 
         let currentTimestamp = Date.now()
         if (this.props.token && currentTimestamp > Number(this.props.token.AtExpires) * 1000) {
-            this.props.RefreshToken(this.props.token.AccessToken, this.props.token.RefreshToken)
+            this.props.RefreshToken(this.props.token.RefreshToken)
             // this.props.DeleteToken(this.props.token.AccessToken)
         }
     }
@@ -73,9 +92,13 @@ class Dashboard extends React.Component {
 const mapStateToProps = state => {
     return {
         page: state.streams.page,
+
+        uss: state.streams.uss,
         token: state.streams.token,
         menu: state.streams.menu,
+        asanaSectionId: state.streams.asanaSectionId,
+        protocol: state.streams.protocol,
     };
 };
 
-export default connect(mapStateToProps, { pageDash, GetHackToken, RefreshToken, DeleteToken, setMenu })(Dashboard);
+export default connect(mapStateToProps, { pageDash, GetHackToken, RefreshToken, DeleteToken, setMenu, GetTasksRichBD, setUS, GetProtocol })(Dashboard);

@@ -21,7 +21,7 @@ class EForm extends React.Component {
         let form;
         switch (this.props.form) {
             case 'tech':
-                form = <FormTech typeWindow={this.props.typeWindow} />
+                form = <FormTech typeWindow={this.props.typeWindow} formObj={this.props.card} />
                 break
             case 'sync':
                 form = <Form typeWindow={this.props.typeWindow} />

@@ -11,7 +11,8 @@
         "token": "http://localhost:8081/login",
         "userBasic": "Basic VEZNOlRGbQ==",
         "refreshToken": "http://localhost:8081/token/refresh",
-        "deleteToken": "http://localhost:8081/token/logout"
+        "deleteToken": "http://localhost:8081/token/logout",
+        "paramsTech": "http://localhost:8081/hack/us/tech"
     },
     "webSocket": {
         "protocol": "http://localhost:8081/hack/protocol",

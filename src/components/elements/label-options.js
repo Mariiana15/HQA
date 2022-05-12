@@ -41,7 +41,7 @@ class LabelOptions extends React.Component {
     render() {
         
         return (
-            <div className="chip-group" tabIndex="-1">
+            <div className="chip-group" id={this.props.opId} tabIndex="-1">
                 {this.GenerateLabelOptions()}
             </div>
 

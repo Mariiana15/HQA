@@ -12,7 +12,11 @@ class CardIndex extends React.Component {
 
         this.timeout = setTimeout(() => {
             this.loadPageCard();
-        }, 2000)
+            let i = this.state.arrayCurrent.indexOf(this.props.uss ? this.props.uss.length : 5)
+            this.setState({ arrayCurrent: this.state.arrayCurrent.slice(0, i + 1) })
+
+        }, 1000)
+
     }
 
     loadPageCard() {
@@ -21,21 +25,25 @@ class CardIndex extends React.Component {
         let indexs = Array.from(document.querySelectorAll('.index'))
         let cur = -1
         indexs.forEach((index, i) => {
+
             index.addEventListener('click', (e) => {
 
-                this.props.setIndexProject(i);
+                this.props.setIndexProject(i)
                 c.className = 'container'
                 void c.offsetWidth; // Reflow
                 c.classList.add('open')
+                let ii = this.state.arrayCurrent.indexOf(i + 1)
+
                 if (this.state.arrayCurrent[4] > 9) { c.classList.add(`i${i + 1}${i + 1}`) }
                 else { c.classList.add(`i${i + 1}`) }
 
                 if (cur > i) {
                     c.classList.add('flip')
                 }
-                if (i === 4 || i === 0) {
+
+                if (ii === 4 || ii === 0) {
                     let current_index = this.state.arrayCurrent[4];
-                    if (i === 0)
+                    if (ii === 0)
                         current_index = this.state.arrayCurrent[0];
 
                     if (current_index > 1) {
@@ -50,6 +58,7 @@ class CardIndex extends React.Component {
 
                             if (current_index - 2 > 9) { c.classList.add(`i33`) }
                             else { c.classList.add(`i3`) }
+                            this.loadPageCard()
 
                         }, 1000)
                     }
@@ -60,8 +69,11 @@ class CardIndex extends React.Component {
     }
 
     renderIndex(i) {
-
-        this.setState({ arrayCurrent: [i - 2, i - 1, i, i + 1, i + 2] })
+        console.log(i)
+        let arr = [i - 2, i - 1, i, i + 1, i + 2];
+        let ind = arr.indexOf(this.props.uss ? this.props.uss.length : 5)
+        console.log(ind)
+        this.setState({ arrayCurrent: arr.slice(0, ind + 1) })
     }
 
 
@@ -83,7 +95,7 @@ class CardIndex extends React.Component {
                         <div className="container" id="card_cont"  >
                             <span>
                                 {
-                                    this.createIndex(this.state.arrayCurrent.slice(0, this.props.uss ? this.props.uss.length : 5))
+                                    this.createIndex(this.state.arrayCurrent)
                                 }
                             </span>
                             <svg viewBox="0 0 100 100">

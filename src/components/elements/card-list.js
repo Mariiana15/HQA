@@ -11,7 +11,7 @@ let daysSpring = Config.daysSpring;
 
 class CardList extends React.Component {
 
-    state = { storyUser: null, storyDiv: null, storyFlag: false };
+    state = { storyUser: null, storyDiv: null, storyFlag: false, stories: null, flag: false };
 
     componentDidMount() {
 
@@ -19,10 +19,14 @@ class CardList extends React.Component {
     }
 
     createUserStory() {
-        
+
         let typeStory = this.props.typetUs === '2' ? 'close' : 'open';
         this.setState({ storyDiv: this.createCard(this.props.storyUS, typeStory) })
         this.Story = this.createCard(this.props.storyUS, typeStory);
+
+        this.timeout3 = setTimeout(() => {
+            this.setState({ flag: true });
+        }, 5000);
     }
 
     orderOptions(stories) {
@@ -76,11 +80,17 @@ class CardList extends React.Component {
                     }
                     return element
                 }, filter);
+                if (list.length > 0) {
+                    this.setState({ stories: list.length })
+                }
             }
             if (list.length === 0) {
                 list.push(empty_list);
             }
+
         }
+
+
         return list;
     }
 
@@ -90,30 +100,39 @@ class CardList extends React.Component {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';;
             let storyUS = this.props.storyUS;
             let fill = this.props.filter
-            this.Story = this.createCard(storyUS, typeStory, null, fill)
+            this.setState({ storyDiv: this.createCard(storyUS, typeStory, fill, null) });
             this.props.filterSearch(undefined);
         }
         if (this.props.filterSprings !== undefined) {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';;
             let storyUS = this.props.storyUS;
             let fill = this.props.filterSprings
-            this.Story = this.createCard(storyUS, typeStory, null, fill)
+            this.setState({ storyDiv: this.createCard(storyUS, typeStory, null, fill) });
             this.props.filterSpring(undefined);
         }
 
     }
 
+
+
+
     render() {
 
-        if (this.Story && this.props.storyUS.length > this.Story.length) {
+
+
+        if (this.state.stories && this.props.storyUS.length !== this.state.stories && this.state.flag) {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';
-            this.Story = this.createCard(this.props.storyUS, typeStory)
+            this.setState({ storyDiv: this.createCard(this.props.storyUS, typeStory) })
+            this.setState({ flag: false })
+            this.timeout3 = setTimeout(() => {
+                this.setState({ flag: true });
+            }, 1200);
         }
 
         return (
             <div className='list_card_unit' key="1">
                 <div className='list_cards'>
-                    {this.Story}
+                    {this.state.storyDiv}
                 </div>
             </div>
         )

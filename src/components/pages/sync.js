@@ -10,10 +10,14 @@ import { GetHackToken, RefreshToken, DeleteToken, GetProtocol } from '../../apis
 
 
 class Sync extends React.Component {
+    
     state = {
     };
+
     componentDidMount() {
-        this.props.Code();
+        this.timeout = setTimeout(() => {
+            this.props.Code(this.props.token.AccessToken);
+        }, 1000)
     }
 
     getCodeVerifier() {
@@ -77,7 +81,7 @@ class Sync extends React.Component {
                             </div>
                             <div className="row ">
                                 <div className="col icon_sync_oauth_disable_jira">
-                                    <a  href='/' onClick={() => { }}>
+                                    <a href='/' onClick={() => { }}>
                                         <Circle container={`container ${ch_icon["xs_circle_jira"]}`} h2="Jira" h3="Sincroniza tu tablero" img="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" imgClass={ch_icon["xs_jira"]} ></Circle>
                                     </a>
                                 </div>
@@ -107,7 +111,8 @@ const mapStateToProps = state => {
         asanaOauth: state.streams.asanaOauth,
         token: state.streams.token,
         protocol: state.streams.protocol,
-       
+        token: state.streams.token,
+
     };
 };
 

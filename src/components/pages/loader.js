@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import '../styles/loader.scss';
 
 
-
 class Construction extends React.Component {
 
     state = {};
@@ -13,7 +12,7 @@ class Construction extends React.Component {
 
 
     render() {
-        
+
         return (
             <div className='col loader_page_'>
                 <div className='dash_construction'>

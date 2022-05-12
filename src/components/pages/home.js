@@ -6,7 +6,9 @@ import MainCard from '../elements/card-main';
 import CardFilter from '../elements/card-filter';
 import CardIndex from '../elements/card-index';
 import CardDash from '../elements/card-dash';
+import ActionPage from '../elements/action_page';
 
+import images from '../utils/image.json';
 
 class Home extends React.Component {
 
@@ -15,22 +17,39 @@ class Home extends React.Component {
     componentDidMount() {
     }
 
+
     render() {
 
-        let listProject = null
-        if (this.props.uss) {
-            listProject = <div className='card_dash_list'>
-                <CardDash tablero="Tablero Mi primera prueba" current={this.props.uss[this.props.indexProject ? this.props.indexProject : 0]}  />
-            </div>
+        let empty = 3
+        if (this.props.uss && this.props.uss.length === 1 && this.props.uss[0].storyUser === null) {
+            empty = 2
         }
-        return (
-            <div className='col'>
-                <MainCard />
-                <CardFilter />
-                {listProject}
-                <CardIndex />
-            </div>
-        )
+        else if (this.props.uss)
+            empty = 1
+
+
+
+        if (empty === 1)
+            return (
+                <div className='col'>
+                    <MainCard current={this.props.uss[this.props.indexProject ? this.props.indexProject : 0]} />
+                    <CardFilter />
+                    <div className='card_dash_list'>
+                        <CardDash tablero="Tablero Mi primera prueba" current={this.props.uss[this.props.indexProject ? this.props.indexProject : 0]} />
+                    </div>
+                    <CardIndex />
+                </div>
+            )
+        else if (empty === 2)
+            return (
+                <ActionPage img={images.fail_Page} title="Lo sentimos" msg="No hemos podido recuperar ninguna hisoria de usuario" btn="Volver a sincronizar" path="/"></ActionPage>
+            )
+        else {
+            return (
+                <div></div>
+            )
+
+        }
     }
 }
 

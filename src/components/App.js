@@ -12,8 +12,18 @@ class App extends React.Component {
 
 
   componentDidMount() {
-
     this.props.GetHackToken("123456789", "mariana@gmail.com")
+  }
+
+  componentDidUpdate() {
+
+    let currentTimestamp = Date.now()
+    if (this.props.token && currentTimestamp > Number(this.props.token.AtExpires) * 1000) {
+      console.log(currentTimestamp)
+
+      this.props.RefreshToken(this.props.token.AccessToken, this.props.token.RefreshToken)
+      // this.props.DeleteToken(this.props.token.AccessToken)
+    }
   }
 
 

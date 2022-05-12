@@ -7,7 +7,7 @@ import '../styles/mariana.scss'
 import { Link } from 'react-router-dom';
 import { Oauth, Projects, Sections } from '../../apis/asana';
 import { GetTasksRich } from '../../apis/webSocket';
-import { asanaSetProjectId, asanaSetSectionId, setTokenHack, setUS, setMenu } from '../../actions'
+import { asanaSetProjectId, asanaSetSectionId, setTokenHack, setUS, setMenu, openMenu } from '../../actions'
 import { GetToken } from '../utils'
 import { GetProtocol } from '../../apis/configBack';
 import Elist from '../elements/elist';
@@ -30,16 +30,22 @@ class FormSync extends React.Component {
         let code = params.get('code');
         if (code !== undefined) {
             let token = GetToken()
-            this.props.setTokenHack(token);
-            this.props.Oauth(code, sessionStorage.getItem('code_verifier'));
+            this.props.Oauth(code, sessionStorage.getItem('code_verifier'), token.AccessToken);
             this.props.GetProtocol(token.AccessToken, "tasks")
+        }
+
+    }
+
+    componentDidUpdate() {
+        if (this.props.token && !this.props.asanaOauth) {
+
         }
     }
 
     loadProjects() {
 
         if (this.props.asanaToken && !this.state.project) {
-            this.props.Projects(this.props.asanaToken)
+            this.props.Projects(this.props.asanaToken, this.props.token.AccessToken)
             this.setState({ project: true })
         }
     }
@@ -71,19 +77,24 @@ class FormSync extends React.Component {
         let index = e.target.selectedIndex;
         this.setState({ indexProject: index });
         this.props.asanaSetProjectId(this.props.asanaProjects[index].gid);
-        this.props.Sections(this.props.asanaToken, this.props.asanaProjects[index].gid);
+        this.props.Sections(this.props.asanaToken, this.props.asanaProjects[index].gid, this.props.token.AccessToken);
     }
 
     selectSection(e) {
 
+        if (this.state.indexProject === -1)
+            this.props.asanaSetProjectId(this.props.asanaProjects[0].gid);
         let index = e.target.selectedIndex;
         this.setState({ indexSection: index });
         this.props.asanaSetSectionId(this.props.asanaSections[index].gid);
     }
 
     Save() {
-
-        let ws = GetTasksRich(this.props.asanaToken, this.props.asanaSectionId, this.props.protocol.protocol, this)
+        this.props.openMenu("timer");
+        let sectionId = this.props.asanaSectionId
+        if (this.state.indexSection === -1)
+            sectionId = this.props.asanaSections[0].gid;
+        let ws = GetTasksRich(this.props.asanaToken, this.props.token.AccessToken, sectionId, this.props.protocol.protocol, this)
         this.timeout = setTimeout(() => {
             ws.close()
         }, this.props.protocol.timer, ws)
@@ -172,4 +183,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { Oauth, Projects, asanaSetProjectId, Sections, asanaSetSectionId, setTokenHack, GetProtocol, setUS, setMenu })(FormSync);
+export default connect(mapStateToProps, { Oauth, Projects, asanaSetProjectId, Sections, asanaSetSectionId, setTokenHack, GetProtocol, setUS, setMenu, openMenu })(FormSync);

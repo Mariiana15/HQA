@@ -65,7 +65,7 @@ class CardMain extends React.Component {
 
                         <div className='row col_tablero'>
                             <div className='col'>
-                                <p className="main__sub"><span>Tablero:</span> <span>{this.props.card_.projects[0].name}</span></p>
+                                <p className="main__sub"><span>Tablero:</span> <span>{this.props.current? this.props.current.project.name: ""}</span></p>
                             </div>
                             <div className='col'>
                                 <p className="main__sub"><span>Urgent(%):</span> <span>{this.props.card_.priority}</span></p>

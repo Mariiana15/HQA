@@ -19,7 +19,7 @@ class Card extends React.Component {
     }
 
 
-    selectCard(id, flagInfo) {
+    selectCard(id, flagInfo, cardObj) {
 
         if (this.props.card_ !== undefined && this.props.card_.idLast !== undefined && this.props.card_.idLast !== id) {
             let cardLast = document.getElementById(this.props.card_.idLast);
@@ -30,8 +30,8 @@ class Card extends React.Component {
             card.classList.add("card_unit_select");
             this.props.card['idLast'] = id;
             this.props.mainCard(this.props.card);
-            if (flagInfo === true)
-                this.addFormDescription()
+            if (flagInfo === 1)
+                this.addFormDescription(cardObj)
             else
                 this.formMetrics()
         }
@@ -41,10 +41,10 @@ class Card extends React.Component {
     }
 
 
-    addFormDescription() {
+    addFormDescription(card) {
 
         this.props.openMenu(true);
-        this.props.setMenu(<EForm title="You should be complete" form="tech" typeWindow="subMenu" alert="true" icon="warn" />)
+        this.props.setMenu(<EForm title="You should be complete" form="tech" typeWindow="subMenu" alert="true" icon="warn" card={card} />)
     }
 
     formMetrics() {
@@ -60,12 +60,12 @@ class Card extends React.Component {
         let end = this.props.card.state === "close" ? "card_unit_ok" : "";
         let userStory = this.props.card.userStory.length > 65 ? this.props.card.userStory.substring(0, 65) + " ..." : this.props.card.userStory;
         let name = this.props.card.name.length > 15 ? this.props.card.name.substring(0, 15) : this.props.card.name;
-        let warn = this.props.card.addInfo === true ? <div className="clash-card__image--warn">
+        let warn = this.props.card.addInfo === 1 ? <div className="clash-card__image--warn">
             <img src={i_warn} alt="barbarian" />
         </div> : null;
         return (
             <div className='card_unit' key={this.props.card.name} >
-                <div className={`clash-card barbarian ${end}`} id={this.props.card.gid} onClick={() => { this.selectCard(this.props.card.gid, this.props.card.addInfo) }}>
+                <div className={`clash-card barbarian ${end}`} id={this.props.card.gid} onClick={() => { this.selectCard(this.props.card.gid, this.props.card.addInfo,this.props.card ) }}>
                     <div className="clash-card__image--barbarian">
                         <img src={image} alt="barbarian" />
                     </div>
