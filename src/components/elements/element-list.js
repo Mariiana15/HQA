@@ -17,7 +17,7 @@ class ElementList extends React.Component {
             
             <li className="main__card" id={`elist${this.props.id}`} style={{ "--hue": styles.hue[Math.round(Math.random() * (9) + 1)] }} >
                 <div className="main__card-image-container">
-                    <img src={images.unsplash[Math.round(Math.random() * (9) + 1)]} alt="" className="main__card-image" />
+                    <img src={images.unsplash[Math.round(Math.random() * (5) + 1)]} alt="" className="main__card-image" />
                 </div>
                 <h3 className="main__card-heading">{this.props.head}</h3>
                 <p className="main__card-heading-sub">{this.props.shead}</p>

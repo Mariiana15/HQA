@@ -6,9 +6,13 @@ import i_alert from '../../images/ico_alert.png';
 import i_prod from '../../images/ico_prod.png';
 import i_busi from '../../images/ico_business.png';
 import i_warn from '../../images/ico_warn.png';
-import { mainCard, setMenu, openMenu } from '../../actions';
+import { mainCard, setMenu, openMenu, setUS } from '../../actions';
 import EForm from './eform';
 import Elist from './elist';
+import trash from '../../images/trash.png';
+import check from '../../images/ico_check.png';
+import { SetStateUserStory } from '../../apis/configBack';
+import { GetTasksRichBD } from '../../apis/webSocket';
 
 class Card extends React.Component {
 
@@ -30,7 +34,7 @@ class Card extends React.Component {
             card.classList.add("card_unit_select");
             this.props.card['idLast'] = id;
             this.props.mainCard(this.props.card);
-            if (flagInfo === 1)
+            if (flagInfo === 1 && cardObj.state === "open")
                 this.addFormDescription(cardObj)
             else
                 this.formMetrics()
@@ -53,6 +57,16 @@ class Card extends React.Component {
         this.props.setMenu(<Elist title="Your Activity" />)
     }
 
+    updateCard(){
+
+        this.props.setUS(null);
+        let ws = GetTasksRichBD(this.props.token.AccessToken, this.props.asanaSectionId, this.props.protocol.protocol, this)
+        this.timeout = setTimeout(() => {
+            ws.close()
+        }, this.props.protocol.timer, ws)
+
+    }
+
     render() {
 
         let image = this.props.card.typeUS === "alert" ? i_alert : this.props.card.typeUS === "business" ? i_busi : i_prod;
@@ -63,14 +77,24 @@ class Card extends React.Component {
         let warn = this.props.card.addInfo === 1 ? <div className="clash-card__image--warn">
             <img src={i_warn} alt="barbarian" />
         </div> : null;
+        let chk = this.props.card.state === 'open' ? <div className='btn btn__secondary btn_ico_card_complete' onClick={() => { SetStateUserStory(this.props.token.AccessToken, "close", this.props.card.hid); this.updateCard(); }}>
+            <img className='ico_card_complete' src={check} alt="success cut out png @transparentpng.com" />
+        </div> : null
         return (
             <div className='card_unit' key={this.props.card.name} >
-                <div className={`clash-card barbarian ${end}`} id={this.props.card.gid} onClick={() => { this.selectCard(this.props.card.gid, this.props.card.addInfo,this.props.card ) }}>
+                <div className={`clash-card barbarian ${end}`} id={this.props.card.gid} >
                     <div className="clash-card__image--barbarian">
                         <img src={image} alt="barbarian" />
                     </div>
                     {warn}
-                    <div className='container row_card'>
+                    <div className='cont_btns'>
+                        {chk}
+                        <div className={`btn btn__secondary ${chk ? "btn_ico_card_complete_" : "btn_ico_card_complete_X"}`} onClick={() => { SetStateUserStory(this.props.token.AccessToken, "delete", this.props.card.hid); this.updateCard(); }}>
+                            <img className='ico_card_complete_trash' src={trash} alt="success cut out png" />
+                        </div>
+
+                    </div>
+                    <div className='container row_card' onClick={() => { this.selectCard(this.props.card.gid, this.props.card.addInfo, this.props.card) }}>
                         <div className='row'>
                             <div className='col-1'>
                                 <div className='row'>
@@ -128,7 +152,11 @@ class Card extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { card_: state.streams.card };
+    return {
+        card_: state.streams.card,
+        token: state.streams.token,
+        protocol: state.streams.protocol,
+    };
 };
 
-export default connect(mapStateToProps, { mainCard, setMenu, openMenu })(Card);
+export default connect(mapStateToProps, { mainCard, setMenu, openMenu, setUS })(Card);

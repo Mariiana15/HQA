@@ -12,7 +12,8 @@
         "userBasic": "Basic VEZNOlRGbQ==",
         "refreshToken": "http://localhost:8081/token/refresh",
         "deleteToken": "http://localhost:8081/token/logout",
-        "paramsTech": "http://localhost:8081/hack/us/tech"
+        "paramsTech": "http://localhost:8081/hack/us/tech",
+        "changeState": "http://localhost:8081/hack/us/state"
     },
     "webSocket": {
         "protocol": "http://localhost:8081/hack/protocol",

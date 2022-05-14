@@ -15,7 +15,7 @@ class CardIndex extends React.Component {
             let i = this.state.arrayCurrent.indexOf(this.props.uss ? this.props.uss.length : 5)
             this.setState({ arrayCurrent: this.state.arrayCurrent.slice(0, i + 1) })
 
-        }, 1000)
+        }, 500)
 
     }
 

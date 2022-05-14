@@ -75,8 +75,8 @@ class CardList extends React.Component {
                             list.push(<Card key={index} card={element}></Card>);
                             index++;
                         }
-                        if (index === 1)
-                            this.props.mainCard(element)
+                       // if (index === 1)
+                           // this.props.mainCard(element)
                     }
                     return element
                 }, filter);

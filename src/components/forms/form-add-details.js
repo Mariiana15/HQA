@@ -13,7 +13,7 @@ import config from '../utils/variables.json';
 import { SetParamsTech } from '../../apis/configBack';
 import { openMenu, setMenu, setUS } from '../../actions';
 import Elayout from '../elements/elayout';
-import { GetTasksRich } from '../../apis/webSocket';
+import { GetTasksRichBD } from '../../apis/webSocket';
 
 class FormAddDetails extends React.Component {
 
@@ -44,11 +44,10 @@ class FormAddDetails extends React.Component {
         let arq = this.getOptionsSelect('op1');
         let tech = this.getOptionsSelect('op2');
         SetParamsTech(this.props.token.AccessToken, tech, arq, this.state.text, this.props.formObj.hid)
-        console.log("Cambio")
         this.props.openMenu("timer");
         this.props.setUS(null);
         this.props.setMenu(<Elayout title="Genial" text='Hemos actualizado correctamente la "User Story"' classT= "tanks_menu_page"></Elayout>);
-        let ws = GetTasksRich(this.props.asanaToken, this.props.token.AccessToken, this.props.asanaSectionId, this.props.protocol.protocol, this)
+        let ws = GetTasksRichBD(this.props.token.AccessToken, this.props.asanaSectionId, this.props.protocol.protocol, this)
         this.timeout = setTimeout(() => {
             ws.close()
         }, this.props.protocol.timer, ws)
@@ -160,4 +159,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { Oauth, openMenu, setMenu, GetTasksRich, setUS })(FormAddDetails);
+export default connect(mapStateToProps, { Oauth, openMenu, setMenu, GetTasksRichBD, setUS })(FormAddDetails);

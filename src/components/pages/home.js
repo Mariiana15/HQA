@@ -19,6 +19,21 @@ class Home extends React.Component {
 
 
     render() {
+        console.log(this.props.flagMenu)
+
+       
+        this.timeout3 = setTimeout(() => {
+            let element = document.getElementById('col_dh');
+            if (this.props.flagMenu === true || this.props.flagMenu === "open") {
+                element.setAttribute("disabled", "true")
+                element.classList.add("dimmer")
+            }
+            else if (this.props.flagMenu === null) {
+                element.removeAttribute("disabled")
+                element.classList.remove("dimmer")
+            }
+        }, 250);
+
 
         let empty = 3
         if (this.props.uss && this.props.uss.length === 1 && this.props.uss[0].storyUser === null) {
@@ -31,7 +46,7 @@ class Home extends React.Component {
 
         if (empty === 1)
             return (
-                <div className='col'>
+                <div className="col" id='col_dh'>
                     <MainCard current={this.props.uss[this.props.indexProject ? this.props.indexProject : 0]} />
                     <CardFilter />
                     <div className='card_dash_list'>
@@ -57,7 +72,9 @@ class Home extends React.Component {
 const mapStateToProps = state => {
     return {
         uss: state.streams.uss,
-        indexProject: state.streams.indexProject
+        indexProject: state.streams.indexProject,
+        flagMenu: state.streams.flagMenu
+
 
     };
 };

@@ -72,8 +72,18 @@ export const GetProtocol = (token, query) => async (dispatch) => {
 
 export const SetParamsTech = (token, technologies, architecture, requirement, id) => {
 
-    console.log("ee")
     const response =  axios.post(config.back.paramsTech, { technologies, architecture, requirement, id },{
+        headers: {
+            "Authorization": "Bearer " + token,
+        }
+    }).then(({ data }) => { return data });
+      console.log(response)
+    return response
+}
+
+export const SetStateUserStory = (token, state, id) => {
+
+    const response =  axios.post(config.back.changeState, { state, id },{
         headers: {
             "Authorization": "Bearer " + token,
         }

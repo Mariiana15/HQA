@@ -37,11 +37,13 @@ class IconMenu extends React.Component {
 
         let element = document.getElementById('menu');
         if (this.state.icon_state === true) {
+            this.props.openMenu("open");
             element.classList.remove("menu_On");
             this.setState({ icon: this.open })
         }
         else {
             element.classList.add("menu_On");
+            this.props.openMenu(null);
             this.setState({ icon: this.close })
         }
         this.setState({ icon_state: !this.state.icon_state });
