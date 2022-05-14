@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import '../styles/dashboard.scss';
 import '../styles/myStyle.scss';
 import ListCard from '../elements/card-list';
-
 import trash from '../../images/trash.png';
+import { SetStateSection } from '../../apis/configBack';
+import { GetTasksRichBD } from '../../apis/webSocket';
+import { setUS } from '../../actions';
 class CardDash extends React.Component {
 
     state = {};
@@ -21,6 +23,15 @@ class CardDash extends React.Component {
 
     }
 
+    updateCard(){
+        this.props.setUS(null);
+        let ws = GetTasksRichBD(this.props.token.AccessToken, this.props.asanaSectionId, this.props.protocol.protocol, this)
+        this.timeout = setTimeout(() => {
+            ws.close()
+        }, this.props.protocol.timer, ws)
+
+    }
+
     render() {
 
         if (this.props.current !== undefined && this.props.current.storyUser !== undefined && this.props.current.storyUser !== null) {
@@ -33,7 +44,7 @@ class CardDash extends React.Component {
                         <div>{this.props.current.storyUser.length > 2 ? this.props.current.project.name + "-" + this.props.current.name : this.props.current.name}</div>
                     </div>
                     <div className="col" >
-                        <div className="btn btn__secondary btn_trash_section" onClick={() => { }}>
+                        <div className="btn btn__secondary btn_trash_section" onClick={() => { SetStateSection(this.props.token.AccessToken, "delete", this.props.uss[this.props.indexProject ? this.props.indexProject : 0].gid); this.updateCard(); }}>
                             <img className='ico_trash_section' src={trash} alt="success cut out png" />
                         </div>
 
@@ -58,8 +69,12 @@ class CardDash extends React.Component {
 const mapStateToProps = state => {
     return {
         uss: state.streams.uss,
+        token: state.streams.token,
         indexProject: state.streams.indexProject,
+        protocol: state.streams.protocol,
+        asanaSectionId: state.streams.asanaSectionId,
+        
     };
 };
 
-export default connect(mapStateToProps, {})(CardDash);
+export default connect(mapStateToProps, {setUS})(CardDash);

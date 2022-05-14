@@ -126,7 +126,7 @@ class CardList extends React.Component {
             this.setState({ flag: false })
             this.timeout3 = setTimeout(() => {
                 this.setState({ flag: true });
-            }, 1200);
+            }, 500);
         }
 
         return (

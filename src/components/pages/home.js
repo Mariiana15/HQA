@@ -7,8 +7,9 @@ import CardFilter from '../elements/card-filter';
 import CardIndex from '../elements/card-index';
 import CardDash from '../elements/card-dash';
 import ActionPage from '../elements/action_page';
-
 import images from '../utils/image.json';
+import {setIndexProject} from '../../actions';
+
 
 class Home extends React.Component {
 
@@ -19,9 +20,7 @@ class Home extends React.Component {
 
 
     render() {
-        console.log(this.props.flagMenu)
 
-       
         this.timeout3 = setTimeout(() => {
             let element = document.getElementById('col_dh');
             if (this.props.flagMenu === true || this.props.flagMenu === "open") {
@@ -35,12 +34,14 @@ class Home extends React.Component {
         }, 250);
 
 
-        let empty = 3
+        let empty = 2;
         if (this.props.uss && this.props.uss.length === 1 && this.props.uss[0].storyUser === null) {
-            empty = 2
+            empty = 2;
         }
-        else if (this.props.uss)
-            empty = 1
+        else if (this.props.uss && this.props.uss[0].storyUser !== null)
+           { empty = 1;
+
+           }
 
 
 
@@ -79,4 +80,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {})(Home);
+export default connect(mapStateToProps, {setIndexProject})(Home);

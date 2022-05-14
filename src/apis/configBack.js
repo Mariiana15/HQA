@@ -91,3 +91,15 @@ export const SetStateUserStory = (token, state, id) => {
       console.log(response)
     return response
 }
+
+export const SetStateSection = (token, state, id) => {
+
+    console.log("ingeso x")
+    const response =  axios.post(config.back.changeStateSection, { state, id },{
+        headers: {
+            "Authorization": "Bearer " + token,
+        }
+    }).then(({ data }) => { return data });
+      console.log(response)
+    return response
+}

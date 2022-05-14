@@ -6,7 +6,7 @@ import { setIndexProject } from '../../actions';
 
 class CardIndex extends React.Component {
 
-    state = { current: 0, arrayCurrent: [1, 2, 3, 4, 5] };
+    state = { current: 0, arrayCurrent: [1, 2, 3, 4, 5], flag : true };
 
     componentDidMount() {
 
@@ -69,10 +69,8 @@ class CardIndex extends React.Component {
     }
 
     renderIndex(i) {
-        console.log(i)
         let arr = [i - 2, i - 1, i, i + 1, i + 2];
         let ind = arr.indexOf(this.props.uss ? this.props.uss.length : 5)
-        console.log(ind)
         this.setState({ arrayCurrent: arr.slice(0, ind + 1) })
     }
 
@@ -84,6 +82,17 @@ class CardIndex extends React.Component {
             list.push(<div key={element} className="index">{element}</div>);
         });
         return list;
+    }
+
+    componentDidUpdate() {
+        if (this.state.arrayCurrent !== this.props.uss.length && this.state.flag) {
+            this.setState({flag: false})
+            let i = this.state.arrayCurrent.indexOf(this.props.uss ? this.props.uss.length : 5)
+            this.setState({ arrayCurrent: this.state.arrayCurrent.slice(0, i + 1) })
+            this.timeout3 = setTimeout(() => {
+                this.setState({ flag: true });
+            }, 1500);
+        }
     }
 
 

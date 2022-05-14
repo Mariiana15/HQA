@@ -13,7 +13,8 @@
         "refreshToken": "http://localhost:8081/token/refresh",
         "deleteToken": "http://localhost:8081/token/logout",
         "paramsTech": "http://localhost:8081/hack/us/tech",
-        "changeState": "http://localhost:8081/hack/us/state"
+        "changeState": "http://localhost:8081/hack/us/state",
+        "changeStateSection": "http://localhost:8081/hack/us/section/state"
     },
     "webSocket": {
         "protocol": "http://localhost:8081/hack/protocol",

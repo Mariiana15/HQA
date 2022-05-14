@@ -14,7 +14,7 @@ import Loader from './loader';
 import { GetTasksRichBD } from '../../apis/webSocket';
 import { GetProtocol } from '../../apis/configBack';
 
-const timerLoadPage = 5500
+const timerLoadPage = 6500
 class Dashboard extends React.Component {
 
     state = { us: null };
