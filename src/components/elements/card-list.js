@@ -11,7 +11,7 @@ let daysSpring = Config.daysSpring;
 
 class CardList extends React.Component {
 
-    state = { storyUser: null, storyDiv: null, storyFlag: false, stories: null, flag: false };
+    state = { storyUser: null, storyDiv: null, storyFlag: false, stories: null, flag: false , fill: null, fillSpring: null};
 
     componentDidMount() {
 
@@ -100,6 +100,8 @@ class CardList extends React.Component {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';;
             let storyUS = this.props.storyUS;
             let fill = this.props.filter
+            this.setState({fill: fill});
+            console.log(fill)
             this.setState({ storyDiv: this.createCard(storyUS, typeStory, fill, null) });
             this.props.filterSearch(undefined);
         }
@@ -107,6 +109,7 @@ class CardList extends React.Component {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';;
             let storyUS = this.props.storyUS;
             let fill = this.props.filterSprings
+            this.setState({fillSpring: fill});
             this.setState({ storyDiv: this.createCard(storyUS, typeStory, null, fill) });
             this.props.filterSpring(undefined);
         }
@@ -122,7 +125,7 @@ class CardList extends React.Component {
 
         if (this.state.stories && this.props.storyUS.length !== this.state.stories && this.state.flag) {
             let typeStory = this.props.typetUs === '2' ? 'close' : 'open';
-            this.setState({ storyDiv: this.createCard(this.props.storyUS, typeStory) })
+            this.setState({ storyDiv: this.createCard(this.props.storyUS, typeStory, this.state.fill, this.state.fillSpring) })
             this.setState({ flag: false })
             this.timeout3 = setTimeout(() => {
                 this.setState({ flag: true });

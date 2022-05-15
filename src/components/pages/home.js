@@ -21,9 +21,10 @@ class Home extends React.Component {
 
     render() {
 
+        console.log(this.props.flagMenu)
         this.timeout3 = setTimeout(() => {
             let element = document.getElementById('col_dh');
-            if (this.props.flagMenu === true || this.props.flagMenu === "open") {
+            if (this.props.flagMenu  || this.props.flagMenu === false|| this.props.flagMenu === "open") {
                 element.setAttribute("disabled", "true")
                 element.classList.add("dimmer")
             }
@@ -38,7 +39,7 @@ class Home extends React.Component {
         if (this.props.uss && this.props.uss.length === 1 && this.props.uss[0].storyUser === null) {
             empty = 2;
         }
-        else if (this.props.uss && this.props.uss[0].storyUser !== null)
+        else if (this.props.uss && this.props.uss.length >= 1  && this.props.uss[0].storyUser !== null)
            { empty = 1;
 
            }

@@ -13,6 +13,7 @@ import { GetHackToken, RefreshToken, DeleteToken } from '../../apis/configBack'
 import Loader from './loader';
 import { GetTasksRichBD } from '../../apis/webSocket';
 import { GetProtocol } from '../../apis/configBack';
+import { CodeVerifier, Oauth } from '../../apis/asana'
 
 const timerLoadPage = 6500
 class Dashboard extends React.Component {
@@ -29,6 +30,7 @@ class Dashboard extends React.Component {
             this.props.GetProtocol(this.props.token.AccessToken, "tasks")
         }, 1000)
         this.timeout3 = setTimeout(() => {
+            console.log(this.props.asanaOauth)
             this.getUserStory();
         }, 2000)
         this.timeout1 = setTimeout(() => {
@@ -98,7 +100,9 @@ const mapStateToProps = state => {
         menu: state.streams.menu,
         asanaSectionId: state.streams.asanaSectionId,
         protocol: state.streams.protocol,
+        asanaOauth: state.streams.asanaOauth,
+
     };
 };
 
-export default connect(mapStateToProps, { pageDash, GetHackToken, RefreshToken, DeleteToken, setMenu, GetTasksRichBD, setUS, GetProtocol })(Dashboard);
+export default connect(mapStateToProps, { pageDash, GetHackToken, RefreshToken, DeleteToken, setMenu, GetTasksRichBD, setUS, GetProtocol, CodeVerifier, Oauth })(Dashboard);

@@ -4,10 +4,11 @@ import '../styles/dashboard.scss';
 import '../styles/myStyle.scss';
 import { openMenu, setMenu } from '../../actions';
 import Elist from './elist';
+import { sassNull } from 'sass';
 
 class IconMenu extends React.Component {
 
-    state = { icon: null, icon_state: true, };
+    state = { icon: null, icon_state: true, flag: false};
 
     componentDidMount() {
 
@@ -37,6 +38,7 @@ class IconMenu extends React.Component {
 
         let element = document.getElementById('menu');
         if (this.state.icon_state === true) {
+            this.setState({ flag : true })
             this.props.openMenu("open");
             element.classList.remove("menu_On");
             this.setState({ icon: this.open })
@@ -44,23 +46,26 @@ class IconMenu extends React.Component {
         else {
             element.classList.add("menu_On");
             this.props.openMenu(null);
+            this.setState({ flag : false })    
             this.setState({ icon: this.close })
         }
         this.setState({ icon_state: !this.state.icon_state });
     }
 
+    
+
     componentDidUpdate() {
 
-        if (this.props.flagMenu === true) {
+        if (this.props.flagMenu === true && this.state.flag === false) {
             let element = document.getElementById('menu');
             element.classList.remove("menu_On");
             this.setState({ icon_state: false });
-            this.props.openMenu(false);
+            this.setState({ flag : true });
             this.setState({ icon: this.open })
         }
 
         else if (this.props.flagMenu === "timer") {
-            this.props.openMenu(false);
+            this.props.openMenu(null);
             this.timeout = setTimeout(() => {
                 this.props.setMenu(<Elist title="Your Activity" />);
                 let element = document.getElementById('menu');
@@ -68,6 +73,11 @@ class IconMenu extends React.Component {
                 element.classList.add("menu_On");
                 this.setState({ icon: this.close });
             }, 3000)
+        }
+        else if (this.props.flagMenu === "close" && this.state.flag === true) {
+
+            this.setState({ flag : false });
+            this.props.openMenu(null);
         }
     }
     render() {

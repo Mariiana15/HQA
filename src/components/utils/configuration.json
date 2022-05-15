@@ -5,7 +5,8 @@
         "oauthAsanaCode": "http://localhost:8081/asana/code",
         "oauth2Asana": "http://localhost:8081/asana/oauth",
         "asanaProjects": "http://localhost:8081/asana/projects",
-        "asanaSections": "http://localhost:8081/asana/sections"
+        "asanaSections": "http://localhost:8081/asana/sections",
+        "asanaCodeDB": "http://localhost:8081/asana/code/v1"
     },
     "back": {
         "token": "http://localhost:8081/login",

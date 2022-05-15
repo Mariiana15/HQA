@@ -34,8 +34,9 @@ class Card extends React.Component {
             card.classList.add("card_unit_select");
             this.props.card['idLast'] = id;
             this.props.mainCard(this.props.card);
-            if (flagInfo === 1 && cardObj.state === "open")
+            if (flagInfo === 1 && cardObj.state === "open") {
                 this.addFormDescription(cardObj)
+            }
             else
                 this.formMetrics()
         }
@@ -53,11 +54,11 @@ class Card extends React.Component {
 
     formMetrics() {
 
-        this.props.openMenu(false);
+       // this.props.openMenu(null);
         this.props.setMenu(<Elist title="Your Activity" />)
     }
 
-    updateCard(){
+    updateCard() {
 
         this.props.setUS(null);
         let ws = GetTasksRichBD(this.props.token.AccessToken, this.props.asanaSectionId, this.props.protocol.protocol, this)

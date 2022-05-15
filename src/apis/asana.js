@@ -51,3 +51,16 @@ export const Sections = (token, projectId, token_) => async (dispatch) => {
     }).then(({ data }) => { return data });
     dispatch({ type: ASANA_SESCTIONS, payload: response });
 }
+
+export const CodeVerifier = (token) => async (dispatch) => {
+
+    const response = await axios.get(config.asana.asanaCodeDB, {
+        headers: {
+            "Authorization": "Bearer " + token,
+        }
+    }).then(({ data }) => {
+        return data
+    });
+    console.log(response)
+    dispatch({ type: ASANA_OAUTH, payload: response });
+}
