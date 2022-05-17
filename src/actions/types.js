@@ -23,6 +23,7 @@ export const FILTER = 'FILTER';
 export const FILTERSPRING = 'FILTERSPRING';
 export const ORDER = 'ORDER';
 export const INDEXPROJECT = 'INDEXPROJECT';
+export const VALIDATE = 'VALIDATE';
 
 
 

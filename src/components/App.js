@@ -6,8 +6,10 @@ import history from '../history';
 import FormSyncro from './forms/form-Sync';
 import Dashboard from './pages/dashboard';
 import Sync from './pages/sync';
+import Intro from './pages/intro';
 import FromMores from './forms/form-add-details';
-import { GetHackToken } from '../apis/configBack'
+import { GetHackToken } from '../apis/configBack';
+
 class App extends React.Component {
 
 
@@ -33,9 +35,11 @@ class App extends React.Component {
         <BrowserRouter history={history}>
           <div>
             <Routes>
-              <Route path="/" exact element={<Sync />} />
+              <Route path="/sync" exact element={<Sync />} />
+
+              <Route path="/" exact element={<Intro />} />
               <Route path="/dashboard" exact element={<Dashboard />} />
-              <Route path="/sync" exact element={<FormSyncro />} />
+              <Route path="/form/sync" exact element={<FormSyncro />} />
               <Route path="/technical" exact element={<FromMores />} />
             </Routes>
           </div>

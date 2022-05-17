@@ -15,6 +15,7 @@
         "deleteToken": "http://localhost:8081/token/logout",
         "paramsTech": "http://localhost:8081/hack/us/tech",
         "changeState": "http://localhost:8081/hack/us/state",
+        "validate": "http://localhost:8081/hack/us/validate",
         "changeStateSection": "http://localhost:8081/hack/us/section/state"
     },
     "webSocket": {

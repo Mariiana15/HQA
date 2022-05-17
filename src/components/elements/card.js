@@ -27,13 +27,15 @@ class Card extends React.Component {
 
         if (this.props.card_ !== undefined && this.props.card_.idLast !== undefined && this.props.card_.idLast !== id) {
             let cardLast = document.getElementById(this.props.card_.idLast);
-            cardLast.classList.remove("card_unit_select");
+            if (cardLast)
+                cardLast.classList.remove("card_unit_select");
         }
         let card = document.getElementById(id);
         if (card) {
             card.classList.add("card_unit_select");
             this.props.card['idLast'] = id;
             this.props.mainCard(this.props.card);
+            
             if (flagInfo === 1 && cardObj.state === "open") {
                 this.addFormDescription(cardObj)
             }
@@ -54,7 +56,7 @@ class Card extends React.Component {
 
     formMetrics() {
 
-       // this.props.openMenu(null);
+        this.props.openMenu("close");
         this.props.setMenu(<Elist title="Your Activity" />)
     }
 
@@ -81,6 +83,7 @@ class Card extends React.Component {
         let chk = this.props.card.state === 'open' ? <div className='btn btn__secondary btn_ico_card_complete' onClick={() => { SetStateUserStory(this.props.token.AccessToken, "close", this.props.card.hid); this.updateCard(); }}>
             <img className='ico_card_complete' src={check} alt="success cut out png @transparentpng.com" />
         </div> : null
+
         return (
             <div className='card_unit' key={this.props.card.name} >
                 <div className={`clash-card barbarian ${end}`} id={this.props.card.gid} >

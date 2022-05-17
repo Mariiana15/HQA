@@ -5,19 +5,40 @@ import '../styles/myStyle.scss';
 import logo from '../../images/logo3.png';
 import Circle from '../elements/circle-icon';
 import { Code } from '../../apis/asana';
+import { GetToken } from '../utils'
+import { GetValidateSync } from '../../apis/configBack';
+import { Oauth } from '../../apis/asana';
+import { Link } from 'react-router-dom';
 
 import { GetHackToken, RefreshToken, DeleteToken, GetProtocol } from '../../apis/configBack'
 
-
 class Sync extends React.Component {
-    
+
     state = {
     };
 
     componentDidMount() {
-        this.timeout = setTimeout(() => {
-            this.props.Code(this.props.token.AccessToken);
-        }, 1000)
+
+        const querystring = window.location.search;
+        const params = new URLSearchParams(querystring);
+        let code = params.get('code');
+        if (code !== undefined) {
+            let token = GetToken()
+            this.props.Oauth(code, sessionStorage.getItem('code_verifier'), token.AccessToken);
+            this.props.GetValidateSync(token.AccessToken)
+            this.timeout = setTimeout(() => {
+                if (this.props.validate) {
+                    //       this.u.push("/")
+                }
+
+            }, 200)
+        }
+        else {
+            this.timeout = setTimeout(() => {
+                this.props.Code(this.props.token.AccessToken);
+            }, 200)
+        }
+
     }
 
     getCodeVerifier() {
@@ -69,9 +90,9 @@ class Sync extends React.Component {
                         <div className="col-6 offset-md-1 icons-sync">
                             <div className="row ">
                                 <div className="col icon_sync_oauth">
-                                    <a href={this.props.asanaOauth ? this.getCodeVerifier() : ""}>
-                                        <Circle container={`container ${ch_icon["xs_circle_asana"]}`} h2="Asana" h3="Sincroniza tu tablero" img="https://cdn.iconscout.com/icon/free/png-256/asana-226537.png" imgClass={ch_icon["xs_asana"]} ></Circle>
-                                    </a>
+                                    <Link to="/form/sync">
+                                        <Circle start={this.props.validate !== undefined? true : false} container={`container ${ch_icon["xs_circle_asana"]}`} h2="Asana" h3="Sincroniza tu tablero" img="https://cdn.iconscout.com/icon/free/png-256/asana-226537.png" imgClass={ch_icon["xs_asana"]} ></Circle>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="row ">
@@ -80,10 +101,8 @@ class Sync extends React.Component {
                                 </div>
                             </div>
                             <div className="row ">
-                                <div className="col icon_sync_oauth_disable_jira">
-                                    <a href='/' onClick={() => { }}>
-                                        <Circle container={`container ${ch_icon["xs_circle_jira"]}`} h2="Jira" h3="Sincroniza tu tablero" img="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" imgClass={ch_icon["xs_jira"]} ></Circle>
-                                    </a>
+                                <div className="col icon_sync_oauth_disable_jira" onClick={() => { }}>
+                                    <Circle container={`container ${ch_icon["xs_circle_jira"]}`} h2="Jira" h3="Sincroniza tu tablero" img="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" imgClass={ch_icon["xs_jira"]} ></Circle>
                                 </div>
                             </div>
 
@@ -111,10 +130,11 @@ const mapStateToProps = state => {
         asanaOauth: state.streams.asanaOauth,
         token: state.streams.token,
         protocol: state.streams.protocol,
-        token: state.streams.token,
+        validate: state.streams.validate,
 
     };
 };
 
-export default connect(mapStateToProps, { Code, GetHackToken, RefreshToken, DeleteToken, GetProtocol })(Sync);
 
+
+export default connect(mapStateToProps, { Code, GetHackToken, RefreshToken, DeleteToken, GetProtocol, GetValidateSync, Oauth })(Sync);

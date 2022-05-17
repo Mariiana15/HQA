@@ -21,7 +21,8 @@ import {
   FILTER,
   FILTERSPRING,
   ORDER,
-  INDEXPROJECT
+  INDEXPROJECT,
+  VALIDATE
 
 } from "../actions/types";
 
@@ -43,6 +44,7 @@ const INTIAL_STATE = {
   filterSprings: null,
   order: [],
   indexProject: 0,
+  validate: null
 };
 
 const streamReducer = (state = { INTIAL_STATE }, action) => {
@@ -93,6 +95,8 @@ const streamReducer = (state = { INTIAL_STATE }, action) => {
       return { ...state, order: action.payload };
     case INDEXPROJECT:
       return { ...state, indexProject: action.payload };
+    case VALIDATE:
+      return { ...state, validate: action.payload };
 
 
     case DELETE_STREAM:

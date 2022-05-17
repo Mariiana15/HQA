@@ -8,7 +8,7 @@ import CardIndex from '../elements/card-index';
 import CardDash from '../elements/card-dash';
 import ActionPage from '../elements/action_page';
 import images from '../utils/image.json';
-import {setIndexProject} from '../../actions';
+import { setIndexProject } from '../../actions';
 
 
 class Home extends React.Component {
@@ -21,10 +21,10 @@ class Home extends React.Component {
 
     render() {
 
-        console.log(this.props.flagMenu)
         this.timeout3 = setTimeout(() => {
             let element = document.getElementById('col_dh');
-            if (this.props.flagMenu  || this.props.flagMenu === false|| this.props.flagMenu === "open") {
+
+            if (this.props.flagMenu === true || this.props.flagMenu === "open") {
                 element.setAttribute("disabled", "true")
                 element.classList.add("dimmer")
             }
@@ -39,24 +39,25 @@ class Home extends React.Component {
         if (this.props.uss && this.props.uss.length === 1 && this.props.uss[0].storyUser === null) {
             empty = 2;
         }
-        else if (this.props.uss && this.props.uss.length >= 1  && this.props.uss[0].storyUser !== null)
-           { empty = 1;
+        else if (this.props.uss && this.props.uss.length >= 1 && this.props.uss[0].storyUser !== null) {
+            empty = 1;
 
-           }
+        }
 
-
-
-        if (empty === 1)
+        if (empty === 1) {
+            let idx = this.props.indexProject ? this.props.indexProject : 0;
+            idx = idx === this.props.uss.length ? idx - 1 : idx;
             return (
                 <div className="col" id='col_dh'>
-                    <MainCard current={this.props.uss[this.props.indexProject ? this.props.indexProject : 0]} />
+                    <MainCard current={this.props.uss[idx]} />
                     <CardFilter />
                     <div className='card_dash_list'>
-                        <CardDash tablero="Tablero Mi primera prueba" current={this.props.uss[this.props.indexProject ? this.props.indexProject : 0]} />
+                        <CardDash tablero="Tablero Mi primera prueba" current={this.props.uss[idx]} />
                     </div>
                     <CardIndex />
                 </div>
             )
+        }
         else if (empty === 2)
             return (
                 <ActionPage img={images.fail_Page} title="Lo sentimos" msg="No hemos podido recuperar ninguna hisoria de usuario" btn="Volver a sincronizar" path="/"></ActionPage>
@@ -81,4 +82,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {setIndexProject})(Home);
+export default connect(mapStateToProps, { setIndexProject })(Home);

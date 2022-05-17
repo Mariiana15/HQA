@@ -6,11 +6,12 @@ import logo from '../../images/logo3.png';
 import '../styles/mariana.scss'
 import { Link } from 'react-router-dom';
 import { Oauth, Projects, Sections } from '../../apis/asana';
-import { GetTasksRich } from '../../apis/webSocket';
+import { GetTasksRich, GetTasksRichBD } from '../../apis/webSocket';
 import { asanaSetProjectId, asanaSetSectionId, setTokenHack, setUS, setMenu, openMenu } from '../../actions'
 import { GetToken } from '../utils'
 import { GetProtocol } from '../../apis/configBack';
 import Elist from '../elements/elist';
+import Elayout from '../elements/elayout';
 
 
 class FormSync extends React.Component {
@@ -30,7 +31,7 @@ class FormSync extends React.Component {
         let code = params.get('code');
         if (code !== undefined) {
             let token = GetToken()
-            this.props.Oauth(code, sessionStorage.getItem('code_verifier'), token.AccessToken);
+            //this.props.Oauth(code, sessionStorage.getItem('code_verifier'), token.AccessToken);
             this.props.GetProtocol(token.AccessToken, "tasks")
         }
 
@@ -98,7 +99,17 @@ class FormSync extends React.Component {
         this.timeout = setTimeout(() => {
             ws.close()
         }, this.props.protocol.timer, ws)
-        this.props.setMenu(<Elist title="Your Activity" />);
+        this.props.setMenu(<Elayout title="Genial" text='Hemos actualizado correctamente la "User Story"' classT="tanks_menu_page"></Elayout>);
+        this.props.setMenu(<Elayout title="Genial" text='Hemos actualizado correctamente la "User Story"' classT="tanks_menu_page"></Elayout>);
+        this.timeout = setTimeout(() => {
+            this.props.setUS(null);
+            let ws = GetTasksRichBD(this.props.token.AccessToken, sectionId, this.props.protocol.protocol, this)
+            this.timeout = setTimeout(() => {
+                ws.close()
+            }, this.props.protocol.timer, ws)
+        }, 30000, sectionId)
+
+
     }
 
     render() {

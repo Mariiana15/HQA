@@ -2,14 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/sync.scss';
 import '../styles/myStyle.scss';
+import { useNavigate } from 'react-router-dom'
 
 class IconCircle extends React.Component {
 
     state = {
     };
 
-    componentDidMount() {
-
+    componentDidUpdate() {
+        if (this.props.start)
+            this.props.navigation('/dashboard')
     }
 
 
@@ -17,7 +19,9 @@ class IconCircle extends React.Component {
 
         return (
             <div className={this.props.container} >
-                <div className='circle '>
+                <div className='circle' onClick={() => {
+                    this.props.navigation('/dashboard')
+                }}>
                     <div className='circle_title'>
                         <h2>{this.props.h2}</h2>
                         <h3>{this.props.h3}</h3>
@@ -40,5 +44,9 @@ class IconCircle extends React.Component {
     }
 }
 
+export default function (props) {
+    const navigation = useNavigate();
 
-export default connect()(IconCircle);
+    return <IconCircle {...props} navigation={navigation} />;
+}
+

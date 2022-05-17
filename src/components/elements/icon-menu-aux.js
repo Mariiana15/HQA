@@ -65,7 +65,7 @@ class IconMenu extends React.Component {
         }
 
         else if (this.props.flagMenu === "timer") {
-            this.props.openMenu(null);
+            this.props.openMenu("close");
             this.timeout = setTimeout(() => {
                 this.props.setMenu(<Elist title="Your Activity" />);
                 let element = document.getElementById('menu');

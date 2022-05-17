@@ -1,0 +1,183 @@
+.mainDiv {
+    position: relative;
+    background: no-repeat center center;
+    background-size: cover;
+    min-height: 150vh;
+}
+
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+.brk-page-intro__sorting-item {
+    display: inline-block;
+    position: relative;
+    width: 90px;
+    height: 152px;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+    transition: 0.5s border-color;
+    cursor: pointer;
+    margin: 3px 28px;
+    opacity: 0;
+}
+
+.brk-page-intro__sorting-item:hover {
+    transform: scale(1.5);
+}
+
+.brk-page-intro__sorting-item:before {
+    transform: rotate(60deg);
+}
+.brk-page-intro__sorting-item:after,
+.brk-page-intro__sorting-item:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 4px);
+    border-bottom: inherit;
+    border-top: inherit;
+    bottom: -2px;
+}
+.brk-page-intro__sorting-item:after {
+    transform: rotate(-60deg);
+}
+
+.btn_sec_intro {
+    z-index: 1500;
+    position: relative;
+    font-weight: 900;
+    font-size-adjust: inherit;
+    font-size: 85px;
+    color: #fff;
+}
+
+.icon_intro_hqa{
+    opacity: 0.2;
+    position: absolute;
+    top: 17em;
+    width: 30em;
+    left: 40em;
+}
+.brk-page-intro__sorting-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    z-index: 2;
+}
+
+.brk-page-intro__sorting-before {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+    -webkit-clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    transition: all 0.8s ease-in-out;
+    background: linear-gradient(70deg, rgba(0, 0, 255, 0.25), rgba(181, 95, 174, 0.56));
+    transition: all 0.8s ease-in-out;
+    border-top: 2px solid rgba(255, 255, 255, 0);
+    border-bottom: 0px solid rgba(255, 255, 255, 0);
+}
+
+.text_center_hex{
+    visibility: visible;
+}
+
+.brk-page-intro__sorting-item:nth-child(even) {
+    margin-top: 80px;
+}
+
+.brk-page-intro__sorting-count {
+    position: absolute;
+    top: 18px;
+    right: -28px;
+    width: 23px;
+    height: 23px;
+    text-align: center;
+    font-size: 0.8125rem;
+    line-height: 23px;
+    color: #2675ff;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.brk-page-intro__sorting-item.checked .brk-page-intro__sorting-before,
+.brk-page-intro__sorting-item:hover .brk-page-intro__sorting-before {
+    background: linear-gradient(to bottom, #0e0e20 0%, #6706e7 99%);
+    transition: all 0.8s ease-in-out;
+    border-top: 2.5em solid rgba(255, 255, 255, 0);
+    border-bottom: 0px solid rgba(255, 255, 255, 0);
+}
+
+.brk-page-intro__sorting-item.checked .brk-page-intro__sorting-before,
+.brk-page-intro__sorting-item:hover {
+    border-color: transparent;
+}
+.bordertr {
+    border-color: transparent;
+}
+.BordName {
+    color: white;
+    font-size: 6.2em;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-transform: uppercase;
+    font-family: auto;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.47);
+    position: relative;
+    z-index: 3;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.mt100 {
+    margin-top: 100px;
+}
+
+@media (max-width: 320px), (max-height: 220px) {
+    .BordName {
+        font-size: 50px;
+    }
+
+    .mainDiv {
+        min-height: 900vh;
+    }
+}
+
+@media (max-width: 768px), (max-height: 321px) {
+    .BordName {
+        font-size: 50px;
+    }
+
+    .mainDiv {
+        min-height: 500vh;
+    }
+}
+
+/////////////////////////////////////////   ///////////////////////////
+
+.row_padding_intro{
+    margin-top: 5em;
+}

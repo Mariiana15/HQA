@@ -397,7 +397,6 @@ a:focus {
 }
 
 .btn_ico_card_complete_ {
-
     width: 6%;
     height: 3em;
     left: 8em;
@@ -407,8 +406,8 @@ a:focus {
 .cont_btns {
     position: relative;
     left: 35em;
-    top: 1em;
-    height: 0.001em;
+    top: 1.6em;
+    height: 0.1em;
     z-index: 1500;
 }
 
@@ -438,7 +437,6 @@ a:focus {
 
 .ico_trash_section {
     width: 150%;
-    
 }
 
 .main__cards-container-form {
@@ -453,15 +451,14 @@ a:focus {
     z-index: 10000;
 }
 
-.btn_trash_section{
+.btn_trash_section {
     top: 0.2em;
     left: 5em;
     width: 50px;
     position: relative;
-    
 }
 
-.border_2_center{
+.border_2_center {
     left: -7vw;
     position: relative;
 }
@@ -470,6 +467,8 @@ div[disabled] {
     pointer-events: none;
     opacity: 0.4;
 }
+
+
 
 .dimmer {
     background: #030226;
@@ -531,7 +530,7 @@ div[disabled] {
 }
 
 .tanks_menu_page {
-    width: 40%;
+    width: 80%;
     background-color: hsl(270deg, 50%, 11%);
     background-image: var(--bg);
     box-shadow: 0 6px 16px 0 hsl(270deg 30% 3% / 40%);
@@ -539,7 +538,7 @@ div[disabled] {
     padding: 2rem 3.6rem;
     display: flex;
     align-items: center;
-    transform: translate(209%, 2.4rem);
+    transform: translate(10%, 2.4rem);
     position: relative;
     z-index: 2;
     height: 25vh;

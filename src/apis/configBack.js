@@ -2,6 +2,7 @@ import history from "../history";
 import {
     PROTOCOL,
     TOKEN,
+    VALIDATE,
 } from "../actions/types";
 import axios from "axios";
 import config from '../components/utils/configuration.json';
@@ -72,34 +73,46 @@ export const GetProtocol = (token, query) => async (dispatch) => {
 
 export const SetParamsTech = (token, technologies, architecture, requirement, id) => {
 
-    const response =  axios.post(config.back.paramsTech, { technologies, architecture, requirement, id },{
+    const response = axios.post(config.back.paramsTech, { technologies, architecture, requirement, id }, {
         headers: {
             "Authorization": "Bearer " + token,
         }
     }).then(({ data }) => { return data });
-      console.log(response)
+    console.log(response)
     return response
 }
 
 export const SetStateUserStory = (token, state, id) => {
 
-    const response =  axios.post(config.back.changeState, { state, id },{
+    const response = axios.post(config.back.changeState, { state, id }, {
         headers: {
             "Authorization": "Bearer " + token,
         }
     }).then(({ data }) => { return data });
-      console.log(response)
+    console.log(response)
     return response
 }
 
 export const SetStateSection = (token, state, id) => {
 
-    console.log("ingeso x")
-    const response =  axios.post(config.back.changeStateSection, { state, id },{
+    const response = axios.post(config.back.changeStateSection, { state, id }, {
         headers: {
             "Authorization": "Bearer " + token,
         }
     }).then(({ data }) => { return data });
-      console.log(response)
+    console.log(response)
     return response
+}
+
+
+export const GetValidateSync = (token) => async (dispatch) => {
+
+    const response = await axios.get(config.back.validate, {
+        headers: {
+            "Authorization": "Bearer " + token,
+        }
+    }).then(({ data }) => { return data });
+    console.log(response)
+    if (response.error === undefined)
+        dispatch({ type: VALIDATE, payload: response });
 }
