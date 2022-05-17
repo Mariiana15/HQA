@@ -115,7 +115,9 @@ class Card extends React.Component {
                                 </div>
                             </div>
                             <div className='col-9 offset-md-2'>
-                                <div className="clash-card__unit-name"> {name}-{this.props.card.typeTest}</div>
+                                <div className="clash-card__unit-name"> {name}{
+                                //this.props.card.typeTest
+                                }</div>
                             </div>
                         </div>
                         <div className='row'>
