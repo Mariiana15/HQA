@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import '../styles/sync.scss';
 import '../styles/myStyle.scss';
 import logo from '../../images/logo3.png';
-import '../styles/mariana.scss'
+import '../styles/form.scss'
 import { Link } from 'react-router-dom';
 import { Oauth, Projects, Sections } from '../../apis/asana';
 import { GetTasksRich, GetTasksRichBD } from '../../apis/webSocket';

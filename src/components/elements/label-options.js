@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import '../styles/mariana.scss';
+import '../styles/form.scss';
 import '../styles/myStyle.scss';
 
 class LabelOptions extends React.Component {
