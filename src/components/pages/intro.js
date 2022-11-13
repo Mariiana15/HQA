@@ -10,12 +10,14 @@ import logo from '../../images/logo3.png';
 
 import { Code } from '../../apis/asana';
 
+var pjson = require('../../../package.json');
+
 class Intro extends React.Component {
 
     state = { us: null };
 
     componentDidMount() {
-       
+
         this.timeout = setTimeout(() => {
             this.props.Code(this.props.token.AccessToken);
         }, 200)
@@ -67,15 +69,19 @@ class Intro extends React.Component {
                                     </li>
                                 </ul>
                             </div>
+
                         </div>
                     </div>
                     <div className='row row_padding_intro'>
                         <div className='col-2 offset-md-5'>
                             <a href={this.props.asanaOauth ? this.getCodeVerifier() : ""}>
                                 <div className="btn btn__secondary btn_sec_intro " onClick={() => { }}>
-                                   <h2>Comencemos</h2> </div>
+                                    <h2>Comencemos</h2> </div>
                             </a>
                         </div>
+                    </div>
+                    <div>
+                        {pjson.version}
                     </div>
                 </div>
             </div>

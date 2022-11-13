@@ -1,26 +1,27 @@
 {
     "asana": {
-        "serverBack": "http://localhost:8081",
+       
+        "serverBack": "http://localhost:8080",
         "userBasic": "Basic VEZNOlRGbQ==",
-        "oauthAsanaCode": "http://localhost:8081/asana/code",
-        "oauth2Asana": "http://localhost:8081/asana/oauth",
-        "asanaProjects": "http://localhost:8081/asana/projects",
-        "asanaSections": "http://localhost:8081/asana/sections",
-        "asanaCodeDB": "http://localhost:8081/asana/code/v1"
+        "oauthAsanaCode": "/asana/code",
+        "oauth2Asana": "/asana/oauth",
+        "asanaProjects": "/asana/projects",
+        "asanaSections": "/asana/sections",
+        "asanaCodeDB": "/asana/code/v1"
     },
     "back": {
-        "token": "http://localhost:8081/login",
+        "token": "/login",
         "userBasic": "Basic VEZNOlRGbQ==",
-        "refreshToken": "http://localhost:8081/token/refresh",
-        "deleteToken": "http://localhost:8081/token/logout",
-        "paramsTech": "http://localhost:8081/hack/us/tech",
-        "changeState": "http://localhost:8081/hack/us/state",
-        "validate": "http://localhost:8081/hack/us/validate",
-        "changeStateSection": "http://localhost:8081/hack/us/section/state"
+        "refreshToken": "/token/refresh",
+        "deleteToken": "/token/logout",
+        "paramsTech": "/hack/us/tech",
+        "changeState": "/hack/us/state",
+        "validate": "/hack/us/validate",
+        "changeStateSection": "/hack/us/section/state"
     },
     "webSocket": {
-        "protocol": "http://localhost:8081/hack/protocol",
-        "service": "ws://localhost:8081/app"
+        "protocol": "/hack/protocol",
+        "service": "ws://localhost:8080/app"
     },
     "daysSpring": 7
 }

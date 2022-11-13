@@ -15,7 +15,7 @@ class Sync extends React.Component {
     componentDidMount() {
         this.props.Code();
       
-            const ws = new WebSocket('ws://localhost:3000/app')
+            const ws = new WebSocket('ws://helloworld-bbe50b0-njhrvwtjhq-uc.a.run.app/app')
             ws.onopen = () => {
                 // on connecting, do nothing but log it to the console
                 console.log('connected')

@@ -6,6 +6,7 @@ import history from '../history';
 import FormSyncro from './forms/form-Sync';
 import Dashboard from './pages/dashboard';
 import Sync from './pages/sync';
+import Project from './pages/loaderProject';
 import Intro from './pages/intro';
 import FromMores from './forms/form-add-details';
 import { GetHackToken } from '../apis/configBack';
@@ -41,6 +42,7 @@ class App extends React.Component {
               <Route path="/dashboard" exact element={<Dashboard />} />
               <Route path="/form/sync" exact element={<FormSyncro />} />
               <Route path="/technical" exact element={<FromMores />} />
+              <Route path="/loader/project" exact element={<Project />} />
             </Routes>
           </div>
         </BrowserRouter>

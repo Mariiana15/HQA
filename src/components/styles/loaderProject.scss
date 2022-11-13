@@ -1,0 +1,359 @@
+/*	
+	Table Responsive
+	===================
+	Author: https://github.com/pablorgarcia
+ */
+ $dark: #222222;
+ $lessDark: #333;
+ $light: #DFDFDF;
+ $grey: #DDDDDD;
+ $color: #556B2F;
+ 
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+ 
+ .loader-project{
+ 
+ h1 {
+   font-size:3em; 
+   font-weight: 300;
+   line-height:1em;
+   text-align: center;
+   color: #e2edf2;
+ }
+ 
+ h2 {
+   font-size:5em; 
+   font-weight: 300;
+   text-align: center;
+   display: block;
+   line-height:1em;
+   padding-bottom: 2em;
+   color: #a6a5a7;
+ }
+ 
+ h2 a {
+   font-weight: 700;
+   text-transform: uppercase;
+   color: #a6a5a7;
+   text-decoration: none;
+ }
+ 
+ .blue { color: #185875; }
+ .yellow { color: #FFF842; }
+ 
+ .container th h1 {
+       font-weight: bold;
+   text-align: left;
+   color: #efefef;
+ }
+ 
+ .container td {
+       font-weight: normal;
+       font-size: 1em;
+   -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+        -moz-box-shadow: 0 2px 2px -2px #0E1119;
+             box-shadow: 0 2px 2px -2px #0E1119;
+ }
+ 
+ .container {
+       text-align: left;
+       overflow: hidden;
+       width: 80%;
+       margin: 0 auto;
+   display: table;
+   padding: 0 0 8em 0;
+ }
+ 
+ .container td, .container th {
+       padding-bottom: 2%;
+       padding-top: 2%;
+   padding-left:2%;  
+ }
+ 
+ 
+ 
+ /* Background-color of the even rows */
+
+ .container td:first-child { color: #a6a5a7; }
+ 
+ 
+ 
+ @media (max-width: 800px) {
+ .container td:nth-child(4),
+ .container th:nth-child(4) { display: none; }
+ }
+
+ #progress {
+    /*STEP 1 |||||||||||||||||||||||*/
+    /*||||||||||||CHANGE||||||||||||*/
+
+               width: 85.5%; 
+
+    /*||||||||||PERCENTAGE||||||||||*/
+    /*||||||||||||||||||||||||||||||*/
+    /*Next step is at the bottom! Scroll down!*/
+
+    float: left;
+    border-radius: 6px;
+    height: 20px;
+    background: #36B8E9; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(-90deg, #71F7F2, #36B8E9); /* For Safari 5.1 to 6.0 */
+    background: -moz-linear-gradient(-90deg, #71F7F2, #36B8E9); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #71F7F2, #36B8E9); /* Standard syntax */
+    z-index: 333;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  #countdown-wrap {
+    width: 120%;
+    height: 160px;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif, Arial;
+    font-weight: 500;
+  }
+  #goal {
+    font-size: 15px;
+    text-align: right;
+    width:80%;
+  }
+  @media only screen and (max-width: 540px) {
+    #goal {
+      text-align: center;
+    }
+  }
+
+
+  #glass {
+    width: 80%;
+    height: 20px;
+    border-radius: 6px;
+    background: #eee0e0;
+    float: left;
+    overflow: hidden;
+    background-color: #dee0e0;
+    box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+  }
+  .goal-stat {
+    width: 20%;
+    height: 30px;
+    padding: 10px;
+    float: left;
+    margin: 0;
+  }
+  @media only screen and (max-width: 540px) {
+    .goal-stat {
+      width: 40%;
+      text-align: center;
+    }
+  }
+  .goal-number,
+  .goal-label {
+    display: block;
+    font-size: 20px;
+  }
+  .goal-number {
+    font-weight: bold;
+  }
+  #goal-words {
+    float: right;
+    width: 26%;
+    font-size: 15px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @mixin center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .shop-card {
+    @include center;
+    width: 450px;
+    background: #f5f5f5;
+    box-shadow: 0 10px 20px rgba(0,0,0,.3);
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    z-index: 2;
+  
+    figure {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      outline: none!important;
+  
+      & img {
+        margin: -95px 0 -60px;
+        width: 100%;
+      }
+    }
+  
+    .title {
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 30px;
+      color: #23211f;
+      margin-bottom: 5px;
+    }
+  
+    .desc {
+      font-size: 17px;
+      opacity: .8;
+      margin-bottom: 3px;
+    }
+  
+    .cta {
+      padding: 20px 20px 5px;
+  
+      &::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+  
+    .price {
+      float: left;
+      color: #FF3100;
+      font-size: 22px;
+      font-weight: 900;
+      padding-top: 2px;
+      transition: color .3s ease-in-out;
+      margin-top: 4px;
+    }
+  
+    .btn {
+      position: relative;
+      z-index: 1;
+      float: right;
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #580497;
+      padding: 12px 18px;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+      line-height: .95;
+      border: none;
+      background: none;
+      outline: none;
+      border: 1px solid #580497;
+      border-radius: 20px;
+      overflow: hidden;
+      
+      & .bg {
+        width: 101%;
+        height: 101%;
+        display: block!important;
+        z-index: -1;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+        background: linear-gradient(135deg, #580497, #580497);
+      }
+      
+      &:hover {
+        color: #fff!important;
+        border: 1px solid transparent!important;
+        
+        & .bg {
+          opacity: 1;
+        }
+      }
+     
+      
+    }
+  
+  }
+  .hq-text-complete{
+    position: relative;
+    left: -45px;
+  }
+  .btn-process{
+    margin-top: -80px;
+    position: relative;
+    left: -20%;
+    font-size: 10px;
+    padding: 10px 14px;
+    width: 10em;
+  }
+  /*--------------------
+  Slick Dots
+  ---------------------*/
+  .slick-dots {
+    bottom: -30px;
+    
+    a {
+      position: relative;
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+    
+    span {
+      @include center;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+  
+    circle {
+      fill: none;
+      stroke-width: 1;
+      stroke-linecap: round;
+      stroke-dasharray: 39 39;
+      stroke-dashoffset: 39;
+      transition: all .9s ease-in-out;
+      transition: stroke-dashoffset 0.5s;
+    }
+  
+    .slick-active circle {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  
+  /*--------------------
+  Background
+  --------------------*/
+  .bg {
+    @include center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(15deg, #d33f34 50%, #a61322 50.1%);
+    z-index: 1;
+    display: none;
+  }
+  
+  
+  .the-most {
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 50vw;
+    max-width: 200px;
+    padding: 10px;
+    
+    img {
+      max-width: 100%;
+    }
+  }
+
+
+}

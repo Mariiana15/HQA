@@ -1,4 +1,3 @@
-import history from "../history";
 import {
     ASANA_OAUTH,
     ASANA_TOKEN,
@@ -10,7 +9,7 @@ import config from '../components/utils/configuration.json'
 
 export const Code = (token) => async (dispatch) => {
 
-    const response = await axios.get(config.asana.oauthAsanaCode, {
+    const response = await axios.get(config.asana.serverBack + config.asana.oauthAsanaCode, {
         headers: {
             "Authorization": "Bearer " + token,
         }
@@ -20,7 +19,7 @@ export const Code = (token) => async (dispatch) => {
 
 
 export const Oauth = (code, code_verifier, token) => async (dispatch) => {
-    const response = await axios.post(config.asana.oauth2Asana, { code, code_verifier }, {
+    const response = await axios.post(config.asana.serverBack + config.asana.oauth2Asana, { code, code_verifier }, {
         headers: {
             "Authorization": "Bearer " + token,
         }
@@ -30,7 +29,7 @@ export const Oauth = (code, code_verifier, token) => async (dispatch) => {
 
 export const Projects = (token, token_) => async (dispatch) => {
 
-    const response = await axios.get(config.asana.asanaProjects, {
+    const response = await axios.get(config.asana.serverBack + config.asana.asanaProjects, {
         headers: {
             "Authorization": "Bearer " + token_,
             token
@@ -42,7 +41,7 @@ export const Projects = (token, token_) => async (dispatch) => {
 
 export const Sections = (token, projectId, token_) => async (dispatch) => {
 
-    const response = await axios.get(config.asana.asanaSections, {
+    const response = await axios.get(config.asana.serverBack + config.asana.asanaSections, {
         headers: {
             "Authorization": "Bearer " + token_,
             token,
@@ -54,7 +53,7 @@ export const Sections = (token, projectId, token_) => async (dispatch) => {
 
 export const CodeVerifier = (token) => async (dispatch) => {
 
-    const response = await axios.get(config.asana.asanaCodeDB, {
+    const response = await axios.get(config.asana.serverBack + config.asana.asanaCodeDB, {
         headers: {
             "Authorization": "Bearer " + token,
         }

@@ -166,7 +166,7 @@ class FormSync extends React.Component {
                     </div>
                     <div className="row justify-content-md-center">
                         <div className={src.btn}>
-                            <Link to={this.props.typeWindow ? "" : "/dashboard"}>
+                            <Link to={this.props.typeWindow ? "" : "/loader/project"}>
                                 <div className="btn btn__primary" onClick={() => { this.Save() }} ><p>Sincronizar</p></div>
                             </Link>
                         </div>

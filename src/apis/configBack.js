@@ -15,7 +15,7 @@ export const GetHackToken = (id, email) => async (dispatch) => {
     if (Number(token.AtExpires) * 1000 < currentTimestamp) {
 
         console.log("token")
-        const response = await axios.post(config.back.token, { id, email }, {
+        const response = await axios.post(config.asana.serverBack + config.back.token, { id, email }, {
             headers: {
                 // "Authorization": config.back.userBasic,
             }
@@ -36,7 +36,7 @@ export const GetHackToken = (id, email) => async (dispatch) => {
 
 export const RefreshToken = (refresh_token) => async (dispatch) => {
 
-    const response = await axios.post(config.back.refreshToken, { refresh_token }, {
+    const response = await axios.post(config.asana.serverBack + config.back.refreshToken, { refresh_token }, {
         headers: {
             //"Authorization": "Bearer " + token,
         }
@@ -51,7 +51,7 @@ export const RefreshToken = (refresh_token) => async (dispatch) => {
 
 export const DeleteToken = (token) => async (dispatch) => {
 
-    const response = await axios.post(config.back.deleteToken, {}, {
+    const response = await axios.post(config.asana.serverBack +config.back.deleteToken, {}, {
         headers: {
             "Authorization": "Bearer " + token,
         }
@@ -61,7 +61,7 @@ export const DeleteToken = (token) => async (dispatch) => {
 
 export const GetProtocol = (token, query) => async (dispatch) => {
 
-    const response = await axios.get(config.webSocket.protocol, {
+    const response = await axios.get(config.asana.serverBack + config.webSocket.protocol, {
         headers: {
             "Authorization": "Bearer " + token,
         },
@@ -73,7 +73,7 @@ export const GetProtocol = (token, query) => async (dispatch) => {
 
 export const SetParamsTech = (token, technologies, architecture, requirement, id) => {
 
-    const response = axios.post(config.back.paramsTech, { technologies, architecture, requirement, id }, {
+    const response = axios.post(config.asana.serverBack + config.back.paramsTech, { technologies, architecture, requirement, id }, {
         headers: {
             "Authorization": "Bearer " + token,
         }
@@ -84,7 +84,7 @@ export const SetParamsTech = (token, technologies, architecture, requirement, id
 
 export const SetStateUserStory = (token, state, id) => {
 
-    const response = axios.post(config.back.changeState, { state, id }, {
+    const response = axios.post(config.asana.serverBack + config.back.changeState, { state, id }, {
         headers: {
             "Authorization": "Bearer " + token,
         }
@@ -95,7 +95,7 @@ export const SetStateUserStory = (token, state, id) => {
 
 export const SetStateSection = (token, state, id) => {
 
-    const response = axios.post(config.back.changeStateSection, { state, id }, {
+    const response = axios.post(config.asana.serverBack + config.back.changeStateSection, { state, id }, {
         headers: {
             "Authorization": "Bearer " + token,
         }
@@ -107,7 +107,7 @@ export const SetStateSection = (token, state, id) => {
 
 export const GetValidateSync = (token) => async (dispatch) => {
 
-    const response = await axios.get(config.back.validate, {
+    const response = await axios.get(config.asana.serverBack + config.back.validate, {
         headers: {
             "Authorization": "Bearer " + token,
         }
